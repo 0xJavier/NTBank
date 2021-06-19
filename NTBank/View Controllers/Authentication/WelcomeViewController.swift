@@ -21,13 +21,13 @@ class WelcomeViewController: WelcomeScreenViewController, WelcomeScreenViewContr
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
-    
+        
     //MARK: - WelcomeScreenViewControllerDelegate
     func didSelectLoginButton() {
-        print("Tapped Login")
+        navigationController?.pushViewController(LoginViewController(), animated: true)
     }
     
     func didSelectSignupButton() {
-        print("Tapped Signup")
+        navigationController?.pushViewController(SignupViewController(), animated: true)
     }
 }

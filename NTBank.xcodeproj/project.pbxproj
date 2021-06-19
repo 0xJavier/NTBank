@@ -28,6 +28,10 @@
 		302782D326794F5E00BC9077 /* NTSecurefield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302782D226794F5E00BC9077 /* NTSecurefield.swift */; };
 		30E10BA1267DA94400F4816B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BA0267DA94400F4816B /* User.swift */; };
 		30E10BA3267DA95C00F4816B /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BA2267DA95C00F4816B /* Transaction.swift */; };
+		30E10BA6267DABDB00F4816B /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BA5267DABDB00F4816B /* MainTabViewController.swift */; };
+		30E10BA8267DABF400F4816B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BA7267DABF400F4816B /* HomeViewController.swift */; };
+		30E10BAD267DAD2700F4816B /* NTCreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BAC267DAD2700F4816B /* NTCreditCard.swift */; };
+		30E10BB1267DAE2800F4816B /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BB0267DAE2800F4816B /* HomeScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +79,10 @@
 		302782D226794F5E00BC9077 /* NTSecurefield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTSecurefield.swift; sourceTree = "<group>"; };
 		30E10BA0267DA94400F4816B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		30E10BA2267DA95C00F4816B /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		30E10BA5267DABDB00F4816B /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
+		30E10BA7267DABF400F4816B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		30E10BAC267DAD2700F4816B /* NTCreditCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTCreditCard.swift; sourceTree = "<group>"; };
+		30E10BB0267DAE2800F4816B /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,9 +176,8 @@
 		302782AB2679055000BC9077 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				302782A92679054900BC9077 /* WelcomeViewController.swift */,
-				302782C0267934AA00BC9077 /* LoginViewController.swift */,
-				302782C526794AB900BC9077 /* SignupViewController.swift */,
+				30E10BA9267DACE600F4816B /* Authentication */,
+				30E10BA7267DABF400F4816B /* HomeViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -178,6 +185,7 @@
 		302782AC2679255A00BC9077 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				30E10BA4267DABAE00F4816B /* Tab View Controllers */,
 				302782B02679278C00BC9077 /* Views */,
 				302782AD2679256500BC9077 /* View Controllers */,
 			);
@@ -190,6 +198,7 @@
 				302782B926792BB300BC9077 /* WelcomeScreenViewController.swift */,
 				302782C726794B6300BC9077 /* LoginScreenViewController.swift */,
 				302782C926794B7C00BC9077 /* SignupScreenViewController.swift */,
+				30E10BB0267DAE2800F4816B /* HomeScreenViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -201,6 +210,7 @@
 				302782CB26794D5700BC9077 /* NTHeaderView.swift */,
 				302782D026794F4400BC9077 /* NTTextfield.swift */,
 				302782D226794F5E00BC9077 /* NTSecurefield.swift */,
+				30E10BAC267DAD2700F4816B /* NTCreditCard.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -221,6 +231,24 @@
 				30E10BA2267DA95C00F4816B /* Transaction.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		30E10BA4267DABAE00F4816B /* Tab View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				30E10BA5267DABDB00F4816B /* MainTabViewController.swift */,
+			);
+			path = "Tab View Controllers";
+			sourceTree = "<group>";
+		};
+		30E10BA9267DACE600F4816B /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				302782A92679054900BC9077 /* WelcomeViewController.swift */,
+				302782C0267934AA00BC9077 /* LoginViewController.swift */,
+				302782C526794AB900BC9077 /* SignupViewController.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -352,8 +380,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30E10BAD267DAD2700F4816B /* NTCreditCard.swift in Sources */,
 				302782C826794B6300BC9077 /* LoginScreenViewController.swift in Sources */,
 				302782B22679289800BC9077 /* NTButton.swift in Sources */,
+				30E10BA8267DABF400F4816B /* HomeViewController.swift in Sources */,
 				302782D326794F5E00BC9077 /* NTSecurefield.swift in Sources */,
 				302782BD26792CEC00BC9077 /* UIView+Extension.swift in Sources */,
 				30E10BA1267DA94400F4816B /* User.swift in Sources */,
@@ -369,6 +399,8 @@
 				302782C1267934AA00BC9077 /* LoginViewController.swift in Sources */,
 				30278288267839E400BC9077 /* ViewControllerPreview.swift in Sources */,
 				302782D126794F4400BC9077 /* NTTextfield.swift in Sources */,
+				30E10BA6267DABDB00F4816B /* MainTabViewController.swift in Sources */,
+				30E10BB1267DAE2800F4816B /* HomeScreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

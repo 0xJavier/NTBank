@@ -16,9 +16,16 @@ class LoginViewController: LoginScreenViewController, LoginScreenViewControllerD
         loginDelegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     //MARK: - LoginScreenViewControllerDelegate
     func didSelectLoginButton() {
-        
+        let tabview = MainTabViewController()
+        UIApplication.shared.windows.first?.rootViewController = tabview
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
     }
     
     func didSelectForgotPasswordButton() {

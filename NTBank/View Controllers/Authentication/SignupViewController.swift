@@ -16,8 +16,15 @@ class SignupViewController: SignupScreenViewController, SignupScreenViewControll
         signupDelegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     //MARK: - SignupScreenViewControllerDelegate
     func didSelectCreateButton() {
-        
+        let tabview = MainTabViewController()
+        UIApplication.shared.windows.first?.rootViewController = tabview
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
     }
 }
