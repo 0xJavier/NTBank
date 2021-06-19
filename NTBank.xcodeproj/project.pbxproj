@@ -32,6 +32,9 @@
 		30E10BA8267DABF400F4816B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BA7267DABF400F4816B /* HomeViewController.swift */; };
 		30E10BAD267DAD2700F4816B /* NTCreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BAC267DAD2700F4816B /* NTCreditCard.swift */; };
 		30E10BB1267DAE2800F4816B /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BB0267DAE2800F4816B /* HomeScreenViewController.swift */; };
+		30E10BB7267DB7F200F4816B /* UserModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BB6267DB7F200F4816B /* UserModelController.swift */; };
+		30E10BBA267DB8C900F4816B /* UserLogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BB9267DB8C900F4816B /* UserLogicController.swift */; };
+		30E10BBC267DB91100F4816B /* UserMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BBB267DB91100F4816B /* UserMockData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +86,9 @@
 		30E10BA7267DABF400F4816B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		30E10BAC267DAD2700F4816B /* NTCreditCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTCreditCard.swift; sourceTree = "<group>"; };
 		30E10BB0267DAE2800F4816B /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
+		30E10BB6267DB7F200F4816B /* UserModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelController.swift; sourceTree = "<group>"; };
+		30E10BB9267DB8C900F4816B /* UserLogicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLogicController.swift; sourceTree = "<group>"; };
+		30E10BBB267DB91100F4816B /* UserMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMockData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +142,9 @@
 				302782542677DC1000BC9077 /* AppDelegate.swift */,
 				302782562677DC1000BC9077 /* SceneDelegate.swift */,
 				302782AB2679055000BC9077 /* View Controllers */,
+				30E10BB5267DB48500F4816B /* Cells */,
 				30E10B9F267DA92D00F4816B /* Models */,
+				30E10BB2267DB3B700F4816B /* Data */,
 				302782AC2679255A00BC9077 /* Interface */,
 				302782BB26792C9800BC9077 /* Utilities */,
 				302782862678399100BC9077 /* Previews */,
@@ -249,6 +257,31 @@
 				302782C526794AB900BC9077 /* SignupViewController.swift */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		30E10BB2267DB3B700F4816B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				30E10BB8267DB8B600F4816B /* User */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		30E10BB5267DB48500F4816B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		30E10BB8267DB8B600F4816B /* User */ = {
+			isa = PBXGroup;
+			children = (
+				30E10BB6267DB7F200F4816B /* UserModelController.swift */,
+				30E10BB9267DB8C900F4816B /* UserLogicController.swift */,
+				30E10BBB267DB91100F4816B /* UserMockData.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -380,6 +413,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30E10BB7267DB7F200F4816B /* UserModelController.swift in Sources */,
 				30E10BAD267DAD2700F4816B /* NTCreditCard.swift in Sources */,
 				302782C826794B6300BC9077 /* LoginScreenViewController.swift in Sources */,
 				302782B22679289800BC9077 /* NTButton.swift in Sources */,
@@ -390,10 +424,12 @@
 				302782C626794AB900BC9077 /* SignupViewController.swift in Sources */,
 				30E10BA3267DA95C00F4816B /* Transaction.swift in Sources */,
 				302782AA2679054A00BC9077 /* WelcomeViewController.swift in Sources */,
+				30E10BBA267DB8C900F4816B /* UserLogicController.swift in Sources */,
 				302782552677DC1000BC9077 /* AppDelegate.swift in Sources */,
 				302782BF2679330F00BC9077 /* UIStackView+Extension.swift in Sources */,
 				302782572677DC1000BC9077 /* SceneDelegate.swift in Sources */,
 				302782CC26794D5700BC9077 /* NTHeaderView.swift in Sources */,
+				30E10BBC267DB91100F4816B /* UserMockData.swift in Sources */,
 				302782CA26794B7C00BC9077 /* SignupScreenViewController.swift in Sources */,
 				302782BA26792BB300BC9077 /* WelcomeScreenViewController.swift in Sources */,
 				302782C1267934AA00BC9077 /* LoginViewController.swift in Sources */,
