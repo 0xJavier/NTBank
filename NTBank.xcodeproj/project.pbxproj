@@ -26,6 +26,8 @@
 		302782CC26794D5700BC9077 /* NTHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302782CB26794D5700BC9077 /* NTHeaderView.swift */; };
 		302782D126794F4400BC9077 /* NTTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302782D026794F4400BC9077 /* NTTextfield.swift */; };
 		302782D326794F5E00BC9077 /* NTSecurefield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302782D226794F5E00BC9077 /* NTSecurefield.swift */; };
+		30E10BA1267DA94400F4816B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BA0267DA94400F4816B /* User.swift */; };
+		30E10BA3267DA95C00F4816B /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BA2267DA95C00F4816B /* Transaction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		302782CB26794D5700BC9077 /* NTHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTHeaderView.swift; sourceTree = "<group>"; };
 		302782D026794F4400BC9077 /* NTTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTTextfield.swift; sourceTree = "<group>"; };
 		302782D226794F5E00BC9077 /* NTSecurefield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTSecurefield.swift; sourceTree = "<group>"; };
+		30E10BA0267DA94400F4816B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		30E10BA2267DA95C00F4816B /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +128,7 @@
 				302782542677DC1000BC9077 /* AppDelegate.swift */,
 				302782562677DC1000BC9077 /* SceneDelegate.swift */,
 				302782AB2679055000BC9077 /* View Controllers */,
+				30E10B9F267DA92D00F4816B /* Models */,
 				302782AC2679255A00BC9077 /* Interface */,
 				302782BB26792C9800BC9077 /* Utilities */,
 				302782862678399100BC9077 /* Previews */,
@@ -207,6 +212,15 @@
 				302782BE2679330F00BC9077 /* UIStackView+Extension.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		30E10B9F267DA92D00F4816B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				30E10BA0267DA94400F4816B /* User.swift */,
+				30E10BA2267DA95C00F4816B /* Transaction.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,7 +356,9 @@
 				302782B22679289800BC9077 /* NTButton.swift in Sources */,
 				302782D326794F5E00BC9077 /* NTSecurefield.swift in Sources */,
 				302782BD26792CEC00BC9077 /* UIView+Extension.swift in Sources */,
+				30E10BA1267DA94400F4816B /* User.swift in Sources */,
 				302782C626794AB900BC9077 /* SignupViewController.swift in Sources */,
+				30E10BA3267DA95C00F4816B /* Transaction.swift in Sources */,
 				302782AA2679054A00BC9077 /* WelcomeViewController.swift in Sources */,
 				302782552677DC1000BC9077 /* AppDelegate.swift in Sources */,
 				302782BF2679330F00BC9077 /* UIStackView+Extension.swift in Sources */,
