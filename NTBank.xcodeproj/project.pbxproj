@@ -35,6 +35,13 @@
 		30E10BB7267DB7F200F4816B /* UserModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BB6267DB7F200F4816B /* UserModelController.swift */; };
 		30E10BBA267DB8C900F4816B /* UserLogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BB9267DB8C900F4816B /* UserLogicController.swift */; };
 		30E10BBC267DB91100F4816B /* UserMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BBB267DB91100F4816B /* UserMockData.swift */; };
+		30E10BBF267DBC5B00F4816B /* TransactionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BBE267DBC5B00F4816B /* TransactionTableViewController.swift */; };
+		30E10BC3267DBF1400F4816B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BC2267DBF1400F4816B /* UIViewController+Extension.swift */; };
+		30E10BC6267DC0E900F4816B /* ActionCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BC5267DC0E900F4816B /* ActionCollectionViewController.swift */; };
+		30E10BC8267E6B2700F4816B /* ActionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BC7267E6B2700F4816B /* ActionCollectionViewCell.swift */; };
+		30E10BCC2680F55300F4816B /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BCB2680F55300F4816B /* TransactionTableViewCell.swift */; };
+		30E10BCE2680F6CC00F4816B /* NTSymbolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BCD2680F6CC00F4816B /* NTSymbolView.swift */; };
+		30E10BD02681009A00F4816B /* QuickAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BCF2681009A00F4816B /* QuickAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +96,13 @@
 		30E10BB6267DB7F200F4816B /* UserModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelController.swift; sourceTree = "<group>"; };
 		30E10BB9267DB8C900F4816B /* UserLogicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLogicController.swift; sourceTree = "<group>"; };
 		30E10BBB267DB91100F4816B /* UserMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMockData.swift; sourceTree = "<group>"; };
+		30E10BBE267DBC5B00F4816B /* TransactionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewController.swift; sourceTree = "<group>"; };
+		30E10BC2267DBF1400F4816B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		30E10BC5267DC0E900F4816B /* ActionCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCollectionViewController.swift; sourceTree = "<group>"; };
+		30E10BC7267E6B2700F4816B /* ActionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCollectionViewCell.swift; sourceTree = "<group>"; };
+		30E10BCB2680F55300F4816B /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
+		30E10BCD2680F6CC00F4816B /* NTSymbolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTSymbolView.swift; sourceTree = "<group>"; };
+		30E10BCF2681009A00F4816B /* QuickAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,9 +207,11 @@
 		302782AC2679255A00BC9077 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				30E10BC4267DC0B900F4816B /* Collection View Controllers */,
+				30E10BBD267DBC2D00F4816B /* Table View Controllers */,
 				30E10BA4267DABAE00F4816B /* Tab View Controllers */,
-				302782B02679278C00BC9077 /* Views */,
 				302782AD2679256500BC9077 /* View Controllers */,
+				302782B02679278C00BC9077 /* Views */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -219,6 +235,7 @@
 				302782D026794F4400BC9077 /* NTTextfield.swift */,
 				302782D226794F5E00BC9077 /* NTSecurefield.swift */,
 				30E10BAC267DAD2700F4816B /* NTCreditCard.swift */,
+				30E10BCD2680F6CC00F4816B /* NTSymbolView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -228,6 +245,7 @@
 			children = (
 				302782BC26792CEC00BC9077 /* UIView+Extension.swift */,
 				302782BE2679330F00BC9077 /* UIStackView+Extension.swift */,
+				30E10BC2267DBF1400F4816B /* UIViewController+Extension.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -237,6 +255,7 @@
 			children = (
 				30E10BA0267DA94400F4816B /* User.swift */,
 				30E10BA2267DA95C00F4816B /* Transaction.swift */,
+				30E10BCF2681009A00F4816B /* QuickAction.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -270,6 +289,8 @@
 		30E10BB5267DB48500F4816B /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				30E10BC7267E6B2700F4816B /* ActionCollectionViewCell.swift */,
+				30E10BCB2680F55300F4816B /* TransactionTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -282,6 +303,22 @@
 				30E10BBB267DB91100F4816B /* UserMockData.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		30E10BBD267DBC2D00F4816B /* Table View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				30E10BBE267DBC5B00F4816B /* TransactionTableViewController.swift */,
+			);
+			path = "Table View Controllers";
+			sourceTree = "<group>";
+		};
+		30E10BC4267DC0B900F4816B /* Collection View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				30E10BC5267DC0E900F4816B /* ActionCollectionViewController.swift */,
+			);
+			path = "Collection View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -413,19 +450,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30E10BC3267DBF1400F4816B /* UIViewController+Extension.swift in Sources */,
 				30E10BB7267DB7F200F4816B /* UserModelController.swift in Sources */,
 				30E10BAD267DAD2700F4816B /* NTCreditCard.swift in Sources */,
 				302782C826794B6300BC9077 /* LoginScreenViewController.swift in Sources */,
+				30E10BCE2680F6CC00F4816B /* NTSymbolView.swift in Sources */,
 				302782B22679289800BC9077 /* NTButton.swift in Sources */,
 				30E10BA8267DABF400F4816B /* HomeViewController.swift in Sources */,
 				302782D326794F5E00BC9077 /* NTSecurefield.swift in Sources */,
 				302782BD26792CEC00BC9077 /* UIView+Extension.swift in Sources */,
 				30E10BA1267DA94400F4816B /* User.swift in Sources */,
 				302782C626794AB900BC9077 /* SignupViewController.swift in Sources */,
+				30E10BD02681009A00F4816B /* QuickAction.swift in Sources */,
 				30E10BA3267DA95C00F4816B /* Transaction.swift in Sources */,
 				302782AA2679054A00BC9077 /* WelcomeViewController.swift in Sources */,
 				30E10BBA267DB8C900F4816B /* UserLogicController.swift in Sources */,
 				302782552677DC1000BC9077 /* AppDelegate.swift in Sources */,
+				30E10BC8267E6B2700F4816B /* ActionCollectionViewCell.swift in Sources */,
 				302782BF2679330F00BC9077 /* UIStackView+Extension.swift in Sources */,
 				302782572677DC1000BC9077 /* SceneDelegate.swift in Sources */,
 				302782CC26794D5700BC9077 /* NTHeaderView.swift in Sources */,
@@ -435,8 +476,11 @@
 				302782C1267934AA00BC9077 /* LoginViewController.swift in Sources */,
 				30278288267839E400BC9077 /* ViewControllerPreview.swift in Sources */,
 				302782D126794F4400BC9077 /* NTTextfield.swift in Sources */,
+				30E10BCC2680F55300F4816B /* TransactionTableViewCell.swift in Sources */,
+				30E10BC6267DC0E900F4816B /* ActionCollectionViewController.swift in Sources */,
 				30E10BA6267DABDB00F4816B /* MainTabViewController.swift in Sources */,
 				30E10BB1267DAE2800F4816B /* HomeScreenViewController.swift in Sources */,
+				30E10BBF267DBC5B00F4816B /* TransactionTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

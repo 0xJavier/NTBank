@@ -20,7 +20,7 @@ class HomeScreenViewController: UIViewController {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Send Money"
+        label.text = "Quick Actions"
         label.font = UIFont.systemFont(ofSize: 22, weight: .bold)
         
         return label
@@ -38,7 +38,7 @@ class HomeScreenViewController: UIViewController {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Transactions"
+        label.text = "Latest Transactions"
         label.font = UIFont.systemFont(ofSize: 22, weight: .bold)
         
         return label
@@ -51,6 +51,10 @@ class HomeScreenViewController: UIViewController {
         
         return view
     }()
+    
+    lazy var actionChildViewController = ActionCollectionViewController()
+    
+    lazy var transactionChildViewController = TransactionTableViewController()
     
     weak var homeDelegate: HomeScreenViewControllerDelegate?
     
@@ -66,6 +70,8 @@ class HomeScreenViewController: UIViewController {
                          transactionLabel, transactionContainerView)
         
         setUpConstraints()
+        add(childVC: transactionChildViewController, to: transactionContainerView)
+        add(childVC: actionChildViewController, to: sendMoneyContainerView)
     }
     
     private func setUpConstraints() {
@@ -99,7 +105,7 @@ class HomeScreenViewController: UIViewController {
         let top = sendMoneyContainerView.topAnchor.constraint(equalTo: sendMoneyLabel.bottomAnchor)
         let leading = sendMoneyContainerView.leadingAnchor.constraint(equalTo: creditCard.leadingAnchor)
         let trailing = sendMoneyContainerView.trailingAnchor.constraint(equalTo: creditCard.trailingAnchor)
-        let height = sendMoneyContainerView.heightAnchor.constraint(equalToConstant: 83)
+        let height = sendMoneyContainerView.heightAnchor.constraint(equalToConstant: 105)
         
         return [top, leading, trailing, height]
     }
@@ -126,8 +132,14 @@ class HomeScreenViewController: UIViewController {
 
 struct HomeScreenViewController_Previews: PreviewProvider {
     static var previews: some View {
-        ViewControllerPreview {
-            HomeScreenViewController()
+        Group {
+            ViewControllerPreview {
+                HomeScreenViewController()
+            }
+            ViewControllerPreview {
+                HomeScreenViewController()
+            }
+            .preferredColorScheme(.dark)
         }
     }
 }

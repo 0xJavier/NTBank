@@ -37,6 +37,7 @@ class HomeViewController: HomeScreenViewController, HomeScreenViewControllerDele
         super.viewWillAppear(animated)
         
         updateCreditCard()
+        transactionChildViewController.dataValues = userData.transactions
     }
 
     func updateCreditCard() {
