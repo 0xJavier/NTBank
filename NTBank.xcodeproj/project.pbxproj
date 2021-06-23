@@ -155,13 +155,15 @@
 			children = (
 				302782542677DC1000BC9077 /* AppDelegate.swift */,
 				302782562677DC1000BC9077 /* SceneDelegate.swift */,
-				302782AB2679055000BC9077 /* View Controllers */,
-				30E10BB5267DB48500F4816B /* Cells */,
-				30E10B9F267DA92D00F4816B /* Models */,
-				30E10BB2267DB3B700F4816B /* Data */,
-				302782AC2679255A00BC9077 /* Interface */,
-				302782BB26792C9800BC9077 /* Utilities */,
-				302782862678399100BC9077 /* Previews */,
+				30E10BED2683BA8000F4816B /* Networking */,
+				30E10BEC2683BA4000F4816B /* Models */,
+				30E10BF22683BAAB00F4816B /* Views */,
+				30E10BF12683BAA500F4816B /* Controllers */,
+				30E10BFF2683C03400F4816B /* Data */,
+				30E10C002683C06400F4816B /* Navigation */,
+				30E10BEF2683BA9400F4816B /* Types */,
+				30E10BF02683BA9D00F4816B /* Utilities */,
+				30E10BEE2683BA8A00F4816B /* Services */,
 				3027825D2677DC1300BC9077 /* Assets.xcassets */,
 				302782622677DC1400BC9077 /* Info.plist */,
 				3027825F2677DC1300BC9077 /* LaunchScreen.storyboard */,
@@ -187,70 +189,7 @@
 			path = NTBankUITests;
 			sourceTree = "<group>";
 		};
-		302782862678399100BC9077 /* Previews */ = {
-			isa = PBXGroup;
-			children = (
-				30278287267839E400BC9077 /* ViewControllerPreview.swift */,
-			);
-			path = Previews;
-			sourceTree = "<group>";
-		};
-		302782AB2679055000BC9077 /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				30E10BA9267DACE600F4816B /* Authentication */,
-				30E10BA7267DABF400F4816B /* HomeViewController.swift */,
-			);
-			path = "View Controllers";
-			sourceTree = "<group>";
-		};
-		302782AC2679255A00BC9077 /* Interface */ = {
-			isa = PBXGroup;
-			children = (
-				30E10BC4267DC0B900F4816B /* Collection View Controllers */,
-				30E10BBD267DBC2D00F4816B /* Table View Controllers */,
-				30E10BA4267DABAE00F4816B /* Tab View Controllers */,
-				302782AD2679256500BC9077 /* View Controllers */,
-				302782B02679278C00BC9077 /* Views */,
-			);
-			path = Interface;
-			sourceTree = "<group>";
-		};
-		302782AD2679256500BC9077 /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				302782B926792BB300BC9077 /* WelcomeScreenViewController.swift */,
-				302782C726794B6300BC9077 /* LoginScreenViewController.swift */,
-				302782C926794B7C00BC9077 /* SignupScreenViewController.swift */,
-				30E10BB0267DAE2800F4816B /* HomeScreenViewController.swift */,
-			);
-			path = "View Controllers";
-			sourceTree = "<group>";
-		};
-		302782B02679278C00BC9077 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				302782B12679289800BC9077 /* NTButton.swift */,
-				302782CB26794D5700BC9077 /* NTHeaderView.swift */,
-				302782D026794F4400BC9077 /* NTTextfield.swift */,
-				302782D226794F5E00BC9077 /* NTSecurefield.swift */,
-				30E10BAC267DAD2700F4816B /* NTCreditCard.swift */,
-				30E10BCD2680F6CC00F4816B /* NTSymbolView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		302782BB26792C9800BC9077 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				302782BC26792CEC00BC9077 /* UIView+Extension.swift */,
-				302782BE2679330F00BC9077 /* UIStackView+Extension.swift */,
-				30E10BC2267DBF1400F4816B /* UIViewController+Extension.swift */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
-		30E10B9F267DA92D00F4816B /* Models */ = {
+		30E10BEC2683BA4000F4816B /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				30E10BA0267DA94400F4816B /* User.swift */,
@@ -260,33 +199,144 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		30E10BA4267DABAE00F4816B /* Tab View Controllers */ = {
+		30E10BED2683BA8000F4816B /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				30E10BA5267DABDB00F4816B /* MainTabViewController.swift */,
 			);
-			path = "Tab View Controllers";
+			path = Networking;
 			sourceTree = "<group>";
 		};
-		30E10BA9267DACE600F4816B /* Authentication */ = {
+		30E10BEE2683BA8A00F4816B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		30E10BEF2683BA9400F4816B /* Types */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
+		30E10BF02683BA9D00F4816B /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				30E10BFB2683BEEF00F4816B /* Previews */,
+				30E10BFA2683BEE400F4816B /* Extensions */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		30E10BF12683BAA500F4816B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				30E10BF42683BC6400F4816B /* View Controllers */,
+				30E10BFC2683BFE700F4816B /* Table View Controllers */,
+				30E10BFD2683BFEE00F4816B /* Collection View Controllers */,
+				30E10BF62683BC7100F4816B /* Model Controllers */,
+				30E10BF52683BC6B00F4816B /* Logic Controllers */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		30E10BF22683BAAB00F4816B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				30E10BF72683BC9100F4816B /* Interfaces */,
+				30E10BF82683BC9800F4816B /* Components */,
+				30E10BFE2683C00500F4816B /* Cells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		30E10BF42683BC6400F4816B /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				302782A92679054900BC9077 /* WelcomeViewController.swift */,
 				302782C0267934AA00BC9077 /* LoginViewController.swift */,
 				302782C526794AB900BC9077 /* SignupViewController.swift */,
+				30E10BA7267DABF400F4816B /* HomeViewController.swift */,
 			);
-			path = Authentication;
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
-		30E10BB2267DB3B700F4816B /* Data */ = {
+		30E10BF52683BC6B00F4816B /* Logic Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				30E10BB8267DB8B600F4816B /* User */,
+				30E10BB9267DB8C900F4816B /* UserLogicController.swift */,
 			);
-			path = Data;
+			path = "Logic Controllers";
 			sourceTree = "<group>";
 		};
-		30E10BB5267DB48500F4816B /* Cells */ = {
+		30E10BF62683BC7100F4816B /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				30E10BB6267DB7F200F4816B /* UserModelController.swift */,
+			);
+			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
+		30E10BF72683BC9100F4816B /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				302782B926792BB300BC9077 /* WelcomeScreenViewController.swift */,
+				302782C726794B6300BC9077 /* LoginScreenViewController.swift */,
+				302782C926794B7C00BC9077 /* SignupScreenViewController.swift */,
+				30E10BB0267DAE2800F4816B /* HomeScreenViewController.swift */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		30E10BF82683BC9800F4816B /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				302782B12679289800BC9077 /* NTButton.swift */,
+				302782CB26794D5700BC9077 /* NTHeaderView.swift */,
+				302782D026794F4400BC9077 /* NTTextfield.swift */,
+				302782D226794F5E00BC9077 /* NTSecurefield.swift */,
+				30E10BAC267DAD2700F4816B /* NTCreditCard.swift */,
+				30E10BCD2680F6CC00F4816B /* NTSymbolView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		30E10BFA2683BEE400F4816B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				302782BC26792CEC00BC9077 /* UIView+Extension.swift */,
+				302782BE2679330F00BC9077 /* UIStackView+Extension.swift */,
+				30E10BC2267DBF1400F4816B /* UIViewController+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		30E10BFB2683BEEF00F4816B /* Previews */ = {
+			isa = PBXGroup;
+			children = (
+				30278287267839E400BC9077 /* ViewControllerPreview.swift */,
+			);
+			path = Previews;
+			sourceTree = "<group>";
+		};
+		30E10BFC2683BFE700F4816B /* Table View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				30E10BBE267DBC5B00F4816B /* TransactionTableViewController.swift */,
+			);
+			path = "Table View Controllers";
+			sourceTree = "<group>";
+		};
+		30E10BFD2683BFEE00F4816B /* Collection View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				30E10BC5267DC0E900F4816B /* ActionCollectionViewController.swift */,
+			);
+			path = "Collection View Controllers";
+			sourceTree = "<group>";
+		};
+		30E10BFE2683C00500F4816B /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				30E10BC7267E6B2700F4816B /* ActionCollectionViewCell.swift */,
@@ -295,30 +345,20 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		30E10BB8267DB8B600F4816B /* User */ = {
+		30E10BFF2683C03400F4816B /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				30E10BB6267DB7F200F4816B /* UserModelController.swift */,
-				30E10BB9267DB8C900F4816B /* UserLogicController.swift */,
 				30E10BBB267DB91100F4816B /* UserMockData.swift */,
 			);
-			path = User;
+			path = Data;
 			sourceTree = "<group>";
 		};
-		30E10BBD267DBC2D00F4816B /* Table View Controllers */ = {
+		30E10C002683C06400F4816B /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				30E10BBE267DBC5B00F4816B /* TransactionTableViewController.swift */,
+				30E10BA5267DABDB00F4816B /* MainTabViewController.swift */,
 			);
-			path = "Table View Controllers";
-			sourceTree = "<group>";
-		};
-		30E10BC4267DC0B900F4816B /* Collection View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				30E10BC5267DC0E900F4816B /* ActionCollectionViewController.swift */,
-			);
-			path = "Collection View Controllers";
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
