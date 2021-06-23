@@ -7,18 +7,25 @@
 
 import UIKit
 
-class LoginViewController: LoginScreenViewController, LoginScreenViewControllerDelegate {
+class LoginViewController: UIViewController, LoginInterfaceViewDelegate {
+    
+    var loginInterface = LoginInterfaceView()
     
     //MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        loginDelegate = self
+        loginInterface.loginDelegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    override func loadView() {
+        view = loginInterface
+        view.backgroundColor = .systemBackground
     }
     
     //MARK: - LoginScreenViewControllerDelegate

@@ -7,18 +7,25 @@
 
 import UIKit
 
-class SignupViewController: SignupScreenViewController, SignupScreenViewControllerDelegate {
+class SignupViewController: UIViewController, SignupInterfaceViewDelegate {
+    
+    var signupInterface = SignupInterfaceView()
     
     //MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        signupDelegate = self
+        signupInterface.signupDelegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    override func loadView() {
+        view = signupInterface
+        view.backgroundColor = .systemBackground
     }
     
     //MARK: - SignupScreenViewControllerDelegate

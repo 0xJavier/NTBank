@@ -1,5 +1,5 @@
 //
-//  HomeScreenViewController.swift
+//  HomeInterfaceView.swift
 //  NTBank
 //
 //  Created by Javier Munoz on 6/19/21.
@@ -8,11 +8,11 @@
 import UIKit
 import SwiftUI
 
-protocol HomeScreenViewControllerDelegate: HomeScreenViewController {}
+protocol HomeInterfaceViewDelegate: AnyObject {}
 
 private extension CGFloat {}
 
-class HomeScreenViewController: UIViewController {
+class HomeInterfaceView: UIView {
     
     lazy var creditCard = NTCreditCard()
     
@@ -52,26 +52,24 @@ class HomeScreenViewController: UIViewController {
         return view
     }()
     
-    lazy var actionChildViewController = ActionCollectionViewController()
+    weak var homeDelegate: HomeInterfaceViewDelegate?
     
-    lazy var transactionChildViewController = TransactionTableViewController()
+    // MARK: Initalizers
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setUpViews()
+    }
     
-    weak var homeDelegate: HomeScreenViewControllerDelegate?
-    
-    //MARK: - View Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
         setUpViews()
     }
     
     private func setUpViews() {
-        view.addSubviews(creditCard, sendMoneyLabel, sendMoneyContainerView,
+        addSubviews(creditCard, sendMoneyLabel, sendMoneyContainerView,
                          transactionLabel, transactionContainerView)
         
         setUpConstraints()
-        add(childVC: transactionChildViewController, to: transactionContainerView)
-        add(childVC: actionChildViewController, to: sendMoneyContainerView)
     }
     
     private func setUpConstraints() {
@@ -88,8 +86,8 @@ class HomeScreenViewController: UIViewController {
     
     private func createCreditCardConstraints() -> [NSLayoutConstraint] {
         return [
-            creditCard.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
-            creditCard.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            creditCard.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
+            creditCard.centerXAnchor.constraint(equalTo: centerXAnchor)
         ]
     }
     
@@ -120,26 +118,12 @@ class HomeScreenViewController: UIViewController {
     
     private func createTransactionContainerViewConstraints() -> [NSLayoutConstraint] {
         let top = transactionContainerView.topAnchor.constraint(equalTo: transactionLabel.bottomAnchor)
-        let leading = transactionContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+        let leading = transactionContainerView.leadingAnchor.constraint(equalTo: leadingAnchor)
         let trailing = transactionContainerView.trailingAnchor.constraint(equalTo: creditCard.trailingAnchor)
-        let bottom = transactionContainerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 16)
+        let bottom = transactionContainerView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 16)
         
         return [top, leading, trailing, bottom]
     }
     
     //MARK: - Selectors
-}
-
-struct HomeScreenViewController_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            ViewControllerPreview {
-                HomeScreenViewController()
-            }
-            ViewControllerPreview {
-                HomeScreenViewController()
-            }
-            .preferredColorScheme(.dark)
-        }
-    }
 }

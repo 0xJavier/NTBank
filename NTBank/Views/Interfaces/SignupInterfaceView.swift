@@ -1,5 +1,5 @@
 //
-//  SignupScreenViewController.swift
+//  SignupInterfaceView.swift
 //  NTBank
 //
 //  Created by Javier Munoz on 6/15/21.
@@ -8,13 +8,13 @@
 import UIKit
 import SwiftUI
 
-protocol SignupScreenViewControllerDelegate: SignupScreenViewController {
+protocol SignupInterfaceViewDelegate: AnyObject {
     func didSelectCreateButton()
 }
 
 private extension CGFloat {}
 
-class SignupScreenViewController: UIViewController {
+class SignupInterfaceView: UIView {
     
     fileprivate let cardColors = ["blue", "red", "green", "pink", "purple", "orange"]
     
@@ -62,24 +62,22 @@ class SignupScreenViewController: UIViewController {
         return button
     }()
     
-    weak var signupDelegate: SignupScreenViewControllerDelegate?
+    weak var signupDelegate: SignupInterfaceViewDelegate?
 
     // MARK: Initalizers
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    //MARK: - View Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        view.backgroundColor = .systemBackground
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setUpViews()
-        
+        setupPickerview()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setUpViews()
+        setupPickerview()
+    }
+    
+    private func setupPickerview() {
         colorPickerView.delegate = self
         colorPickerView.dataSource = self
         
@@ -87,7 +85,7 @@ class SignupScreenViewController: UIViewController {
     }
 
     private func setUpViews() {
-        view.addSubviews(headerView, titleLabel, stackview, createButton)
+        addSubviews(headerView, titleLabel, stackview, createButton)
         
         stackview.addArrangedSubviews(nameTextfield, emailTextfield, colorTextfield, passwordTextfield, confirmPasswordTextfield)
         
@@ -107,22 +105,22 @@ class SignupScreenViewController: UIViewController {
 
     private func createHeaderViewConstraints() -> [NSLayoutConstraint] {
         return [
-            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
-            headerView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            headerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 30),
+            headerView.centerXAnchor.constraint(equalTo: centerXAnchor)
         ]
     }
     
     private func createTitleLabelConstraints() -> [NSLayoutConstraint] {
         return [
             titleLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 14),
-            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
         ]
     }
     
     private func createStackviewConstraints() -> [NSLayoutConstraint] {
         return [
             stackview.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
-            stackview.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            stackview.centerXAnchor.constraint(equalTo: centerXAnchor),
             stackview.widthAnchor.constraint(equalToConstant: 343),
             stackview.heightAnchor.constraint(equalToConstant: 250)
         ]
@@ -131,7 +129,7 @@ class SignupScreenViewController: UIViewController {
     private func createButtonConstraints() -> [NSLayoutConstraint] {
         return [
             createButton.topAnchor.constraint(equalTo: stackview.bottomAnchor, constant: 10),
-            createButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            createButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             createButton.widthAnchor.constraint(equalToConstant: 343),
             createButton.heightAnchor.constraint(equalToConstant: 50)
         ]
@@ -145,7 +143,7 @@ class SignupScreenViewController: UIViewController {
 }
 
 //MARK: - Pickerview
-extension SignupScreenViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+extension SignupInterfaceView: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -161,13 +159,5 @@ extension SignupScreenViewController: UIPickerViewDelegate, UIPickerViewDataSour
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         colorTextfield.text = cardColors[row]
         colorTextfield.resignFirstResponder()
-    }
-}
-
-struct SignupScreenViewController_Previews: PreviewProvider {
-    static var previews: some View {
-        ViewControllerPreview {
-            SignupScreenViewController()
-        }
     }
 }

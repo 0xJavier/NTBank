@@ -1,5 +1,5 @@
 //
-//  WelcomeScreenViewController.swift
+//  WelcomeInterfaceView.swift
 //  NTBank
 //
 //  Created by Javier Munoz on 6/15/21.
@@ -8,14 +8,14 @@
 import UIKit
 import SwiftUI
 
-protocol WelcomeScreenViewControllerDelegate: WelcomeScreenViewController {
+protocol WelcomeInterfaceViewDelegate: AnyObject {
     func didSelectLoginButton()
     func didSelectSignupButton()
 }
 
 private extension CGFloat {}
 
-class WelcomeScreenViewController: UIViewController {
+class WelcomeInterfaceView: UIView {
     
     lazy var backgroundImage: UIImageView = {
         let imageView = UIImageView()
@@ -88,27 +88,22 @@ class WelcomeScreenViewController: UIViewController {
         return button
     }()
     
-    weak var welcomeDelegate: WelcomeScreenViewControllerDelegate?
+    weak var welcomeDelegate: WelcomeInterfaceViewDelegate?
     
     // MARK: Initalizers
-    init() {
-        super.init(nibName: nil, bundle: nil)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setUpViews()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    //MARK: - View Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
         setUpViews()
     }
     
     private func setUpViews() {
-        view.addSubviews(backgroundImage, buttonStackview,
-                         bodyLabel, titleLabel, dollarSignImage)
+        addSubviews(backgroundImage, buttonStackview,
+                    bodyLabel, titleLabel, dollarSignImage)
         
         buttonStackview.addArrangedSubviews(loginButton, signupButton)
         
@@ -128,17 +123,17 @@ class WelcomeScreenViewController: UIViewController {
     }
     
     private func createBackgroundConstraints() -> [NSLayoutConstraint] {
-        let top = backgroundImage.topAnchor.constraint(equalTo: view.topAnchor)
-        let leading = backgroundImage.leadingAnchor.constraint(equalTo: view.leadingAnchor)
-        let bottom = backgroundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        let trailing = backgroundImage.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        let top = backgroundImage.topAnchor.constraint(equalTo: topAnchor)
+        let leading = backgroundImage.leadingAnchor.constraint(equalTo: leadingAnchor)
+        let bottom = backgroundImage.bottomAnchor.constraint(equalTo: bottomAnchor)
+        let trailing = backgroundImage.trailingAnchor.constraint(equalTo: trailingAnchor)
         
         return [top, leading, bottom, trailing]
     }
     
     private func createButtonStackViewConstraints() -> [NSLayoutConstraint] {
-        let bottom = buttonStackview.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
-        let centerX = buttonStackview.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        let bottom = buttonStackview.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20)
+        let centerX = buttonStackview.centerXAnchor.constraint(equalTo: centerXAnchor)
         let width = buttonStackview.widthAnchor.constraint(equalToConstant: 343)
         let height = buttonStackview.heightAnchor.constraint(equalToConstant: 116)
 
@@ -181,20 +176,5 @@ class WelcomeScreenViewController: UIViewController {
     @objc
     private func didTapSignupButton() {
         welcomeDelegate?.didSelectSignupButton()
-    }
-}
-
-//MARK: - SwiftUI Preview
-struct WelcomeScreenViewController_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            ViewControllerPreview {
-                WelcomeScreenViewController()
-            }
-            ViewControllerPreview {
-                WelcomeScreenViewController()
-            }
-            .preferredColorScheme(.dark)
-        }
     }
 }

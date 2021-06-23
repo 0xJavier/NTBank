@@ -1,5 +1,5 @@
 //
-//  LoginScreenViewController.swift
+//  LoginInterfaceView.swift
 //  NTBank
 //
 //  Created by Javier Munoz on 6/15/21.
@@ -8,14 +8,14 @@
 import UIKit
 import SwiftUI
 
-protocol LoginScreenViewControllerDelegate: LoginScreenViewController {
+protocol LoginInterfaceViewDelegate: AnyObject {
     func didSelectLoginButton()
     func didSelectForgotPasswordButton()
 }
 
 private extension CGFloat {}
 
-class LoginScreenViewController: UIViewController {
+class LoginInterfaceView: UIView {
     
     lazy var headerView = NTHeaderView()
     
@@ -74,27 +74,21 @@ class LoginScreenViewController: UIViewController {
         return button
     }()
     
-    weak var loginDelegate: LoginScreenViewControllerDelegate?
+    weak var loginDelegate: LoginInterfaceViewDelegate?
     
     // MARK: Initalizers
-    init() {
-        super.init(nibName: nil, bundle: nil)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setUpViews()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    //MARK: - View Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        view.backgroundColor = .systemBackground
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
         setUpViews()
     }
     
     private func setUpViews() {
-        view.addSubviews(headerView, titleLabel, stackview, seperatorView, forgotPasswordButton)
+        addSubviews(headerView, titleLabel, stackview, seperatorView, forgotPasswordButton)
         
         stackview.addArrangedSubviews(emailTextfield, passwordTextfield, loginButton)
         
@@ -114,22 +108,22 @@ class LoginScreenViewController: UIViewController {
     }
     
     private func createHeaderViewConstraints() -> [NSLayoutConstraint] {
-        let top = headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30)
-        let centerX = headerView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        let top = headerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 30)
+        let centerX = headerView.centerXAnchor.constraint(equalTo: centerXAnchor)
         
         return [top, centerX]
     }
     
     private func createTitleLabelConstraints() -> [NSLayoutConstraint] {
         let top = titleLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 10)
-        let centerX = titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        let centerX = titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
         
         return [top, centerX]
     }
     
     private func createStackViewConstraints() -> [NSLayoutConstraint] {
         let top = stackview.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 32)
-        let centerX = stackview.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        let centerX = stackview.centerXAnchor.constraint(equalTo: centerXAnchor)
         let width = stackview.widthAnchor.constraint(equalToConstant: 343)
         let height = stackview.heightAnchor.constraint(equalToConstant: 170)
         
@@ -138,8 +132,8 @@ class LoginScreenViewController: UIViewController {
     
     private func createSeperatorViewConstraints() -> [NSLayoutConstraint] {
         let top = seperatorView.topAnchor.constraint(equalTo: stackview.bottomAnchor, constant: 16)
-        let leading = seperatorView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
-        let trailing = seperatorView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        let leading = seperatorView.leadingAnchor.constraint(equalTo: leadingAnchor)
+        let trailing = seperatorView.trailingAnchor.constraint(equalTo: trailingAnchor)
         let height = seperatorView.heightAnchor.constraint(equalToConstant: 2)
         
         return [top, leading, trailing, height]
@@ -147,7 +141,7 @@ class LoginScreenViewController: UIViewController {
     
     private func createForgotPasswordButtonConstraints() -> [NSLayoutConstraint] {
         let top = forgotPasswordButton.topAnchor.constraint(equalTo: seperatorView.bottomAnchor)
-        let centerX = forgotPasswordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        let centerX = forgotPasswordButton.centerXAnchor.constraint(equalTo: centerXAnchor)
         let width = forgotPasswordButton.widthAnchor.constraint(equalToConstant: 242)
         let height = forgotPasswordButton.heightAnchor.constraint(equalToConstant: 50)
         
@@ -163,13 +157,5 @@ class LoginScreenViewController: UIViewController {
     @objc
     private func didTapForgotPasswordButton() {
         loginDelegate?.didSelectForgotPasswordButton()
-    }
-}
-
-struct LoginScreenViewController_Previews: PreviewProvider {
-    static var previews: some View {
-        ViewControllerPreview {
-            LoginScreenViewController()
-        }
     }
 }

@@ -6,23 +6,28 @@
 //
 
 import UIKit
-import SwiftUI
 
-class WelcomeViewController: WelcomeScreenViewController, WelcomeScreenViewControllerDelegate {
+class WelcomeViewController: UIViewController, WelcomeInterfaceViewDelegate {
+    
+    var welcomeInterface = WelcomeInterfaceView()
     
     //MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        welcomeDelegate = self
+        welcomeInterface.welcomeDelegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
+    
+    override func loadView() {
+        view = welcomeInterface
+    }
         
-    //MARK: - WelcomeScreenViewControllerDelegate
+    //MARK: - WelcomeInterfaceViewDelegate
     func didSelectLoginButton() {
         navigationController?.pushViewController(LoginViewController(), animated: true)
     }

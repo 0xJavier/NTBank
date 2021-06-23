@@ -16,13 +16,13 @@
 		30278288267839E400BC9077 /* ViewControllerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30278287267839E400BC9077 /* ViewControllerPreview.swift */; };
 		302782AA2679054A00BC9077 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302782A92679054900BC9077 /* WelcomeViewController.swift */; };
 		302782B22679289800BC9077 /* NTButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302782B12679289800BC9077 /* NTButton.swift */; };
-		302782BA26792BB300BC9077 /* WelcomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302782B926792BB300BC9077 /* WelcomeScreenViewController.swift */; };
+		302782BA26792BB300BC9077 /* WelcomeInterfaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302782B926792BB300BC9077 /* WelcomeInterfaceView.swift */; };
 		302782BD26792CEC00BC9077 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302782BC26792CEC00BC9077 /* UIView+Extension.swift */; };
 		302782BF2679330F00BC9077 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302782BE2679330F00BC9077 /* UIStackView+Extension.swift */; };
 		302782C1267934AA00BC9077 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302782C0267934AA00BC9077 /* LoginViewController.swift */; };
 		302782C626794AB900BC9077 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302782C526794AB900BC9077 /* SignupViewController.swift */; };
-		302782C826794B6300BC9077 /* LoginScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302782C726794B6300BC9077 /* LoginScreenViewController.swift */; };
-		302782CA26794B7C00BC9077 /* SignupScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302782C926794B7C00BC9077 /* SignupScreenViewController.swift */; };
+		302782C826794B6300BC9077 /* LoginInterfaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302782C726794B6300BC9077 /* LoginInterfaceView.swift */; };
+		302782CA26794B7C00BC9077 /* SignupInterfaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302782C926794B7C00BC9077 /* SignupInterfaceView.swift */; };
 		302782CC26794D5700BC9077 /* NTHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302782CB26794D5700BC9077 /* NTHeaderView.swift */; };
 		302782D126794F4400BC9077 /* NTTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302782D026794F4400BC9077 /* NTTextfield.swift */; };
 		302782D326794F5E00BC9077 /* NTSecurefield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302782D226794F5E00BC9077 /* NTSecurefield.swift */; };
@@ -31,7 +31,7 @@
 		30E10BA6267DABDB00F4816B /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BA5267DABDB00F4816B /* MainTabViewController.swift */; };
 		30E10BA8267DABF400F4816B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BA7267DABF400F4816B /* HomeViewController.swift */; };
 		30E10BAD267DAD2700F4816B /* NTCreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BAC267DAD2700F4816B /* NTCreditCard.swift */; };
-		30E10BB1267DAE2800F4816B /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BB0267DAE2800F4816B /* HomeScreenViewController.swift */; };
+		30E10BB1267DAE2800F4816B /* HomeInterfaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BB0267DAE2800F4816B /* HomeInterfaceView.swift */; };
 		30E10BB7267DB7F200F4816B /* UserModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BB6267DB7F200F4816B /* UserModelController.swift */; };
 		30E10BBA267DB8C900F4816B /* UserLogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BB9267DB8C900F4816B /* UserLogicController.swift */; };
 		30E10BBC267DB91100F4816B /* UserMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BBB267DB91100F4816B /* UserMockData.swift */; };
@@ -77,13 +77,13 @@
 		30278287267839E400BC9077 /* ViewControllerPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerPreview.swift; sourceTree = "<group>"; };
 		302782A92679054900BC9077 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		302782B12679289800BC9077 /* NTButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTButton.swift; sourceTree = "<group>"; };
-		302782B926792BB300BC9077 /* WelcomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenViewController.swift; sourceTree = "<group>"; };
+		302782B926792BB300BC9077 /* WelcomeInterfaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeInterfaceView.swift; sourceTree = "<group>"; };
 		302782BC26792CEC00BC9077 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		302782BE2679330F00BC9077 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 		302782C0267934AA00BC9077 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		302782C526794AB900BC9077 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
-		302782C726794B6300BC9077 /* LoginScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenViewController.swift; sourceTree = "<group>"; };
-		302782C926794B7C00BC9077 /* SignupScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupScreenViewController.swift; sourceTree = "<group>"; };
+		302782C726794B6300BC9077 /* LoginInterfaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInterfaceView.swift; sourceTree = "<group>"; };
+		302782C926794B7C00BC9077 /* SignupInterfaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupInterfaceView.swift; sourceTree = "<group>"; };
 		302782CB26794D5700BC9077 /* NTHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTHeaderView.swift; sourceTree = "<group>"; };
 		302782D026794F4400BC9077 /* NTTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTTextfield.swift; sourceTree = "<group>"; };
 		302782D226794F5E00BC9077 /* NTSecurefield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTSecurefield.swift; sourceTree = "<group>"; };
@@ -92,7 +92,7 @@
 		30E10BA5267DABDB00F4816B /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		30E10BA7267DABF400F4816B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		30E10BAC267DAD2700F4816B /* NTCreditCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTCreditCard.swift; sourceTree = "<group>"; };
-		30E10BB0267DAE2800F4816B /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
+		30E10BB0267DAE2800F4816B /* HomeInterfaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInterfaceView.swift; sourceTree = "<group>"; };
 		30E10BB6267DB7F200F4816B /* UserModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelController.swift; sourceTree = "<group>"; };
 		30E10BB9267DB8C900F4816B /* UserLogicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLogicController.swift; sourceTree = "<group>"; };
 		30E10BBB267DB91100F4816B /* UserMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMockData.swift; sourceTree = "<group>"; };
@@ -233,8 +233,6 @@
 			isa = PBXGroup;
 			children = (
 				30E10BF42683BC6400F4816B /* View Controllers */,
-				30E10BFC2683BFE700F4816B /* Table View Controllers */,
-				30E10BFD2683BFEE00F4816B /* Collection View Controllers */,
 				30E10BF62683BC7100F4816B /* Model Controllers */,
 				30E10BF52683BC6B00F4816B /* Logic Controllers */,
 			);
@@ -254,10 +252,9 @@
 		30E10BF42683BC6400F4816B /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				302782A92679054900BC9077 /* WelcomeViewController.swift */,
-				302782C0267934AA00BC9077 /* LoginViewController.swift */,
-				302782C526794AB900BC9077 /* SignupViewController.swift */,
-				30E10BA7267DABF400F4816B /* HomeViewController.swift */,
+				30E10C012683C8D500F4816B /* Screens */,
+				30E10BC5267DC0E900F4816B /* ActionCollectionViewController.swift */,
+				30E10BBE267DBC5B00F4816B /* TransactionTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -281,10 +278,10 @@
 		30E10BF72683BC9100F4816B /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
-				302782B926792BB300BC9077 /* WelcomeScreenViewController.swift */,
-				302782C726794B6300BC9077 /* LoginScreenViewController.swift */,
-				302782C926794B7C00BC9077 /* SignupScreenViewController.swift */,
-				30E10BB0267DAE2800F4816B /* HomeScreenViewController.swift */,
+				302782B926792BB300BC9077 /* WelcomeInterfaceView.swift */,
+				302782C726794B6300BC9077 /* LoginInterfaceView.swift */,
+				302782C926794B7C00BC9077 /* SignupInterfaceView.swift */,
+				30E10BB0267DAE2800F4816B /* HomeInterfaceView.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -320,22 +317,6 @@
 			path = Previews;
 			sourceTree = "<group>";
 		};
-		30E10BFC2683BFE700F4816B /* Table View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				30E10BBE267DBC5B00F4816B /* TransactionTableViewController.swift */,
-			);
-			path = "Table View Controllers";
-			sourceTree = "<group>";
-		};
-		30E10BFD2683BFEE00F4816B /* Collection View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				30E10BC5267DC0E900F4816B /* ActionCollectionViewController.swift */,
-			);
-			path = "Collection View Controllers";
-			sourceTree = "<group>";
-		};
 		30E10BFE2683C00500F4816B /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,6 +340,17 @@
 				30E10BA5267DABDB00F4816B /* MainTabViewController.swift */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		30E10C012683C8D500F4816B /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				302782A92679054900BC9077 /* WelcomeViewController.swift */,
+				302782C0267934AA00BC9077 /* LoginViewController.swift */,
+				302782C526794AB900BC9077 /* SignupViewController.swift */,
+				30E10BA7267DABF400F4816B /* HomeViewController.swift */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -493,7 +485,7 @@
 				30E10BC3267DBF1400F4816B /* UIViewController+Extension.swift in Sources */,
 				30E10BB7267DB7F200F4816B /* UserModelController.swift in Sources */,
 				30E10BAD267DAD2700F4816B /* NTCreditCard.swift in Sources */,
-				302782C826794B6300BC9077 /* LoginScreenViewController.swift in Sources */,
+				302782C826794B6300BC9077 /* LoginInterfaceView.swift in Sources */,
 				30E10BCE2680F6CC00F4816B /* NTSymbolView.swift in Sources */,
 				302782B22679289800BC9077 /* NTButton.swift in Sources */,
 				30E10BA8267DABF400F4816B /* HomeViewController.swift in Sources */,
@@ -511,15 +503,15 @@
 				302782572677DC1000BC9077 /* SceneDelegate.swift in Sources */,
 				302782CC26794D5700BC9077 /* NTHeaderView.swift in Sources */,
 				30E10BBC267DB91100F4816B /* UserMockData.swift in Sources */,
-				302782CA26794B7C00BC9077 /* SignupScreenViewController.swift in Sources */,
-				302782BA26792BB300BC9077 /* WelcomeScreenViewController.swift in Sources */,
+				302782CA26794B7C00BC9077 /* SignupInterfaceView.swift in Sources */,
+				302782BA26792BB300BC9077 /* WelcomeInterfaceView.swift in Sources */,
 				302782C1267934AA00BC9077 /* LoginViewController.swift in Sources */,
 				30278288267839E400BC9077 /* ViewControllerPreview.swift in Sources */,
 				302782D126794F4400BC9077 /* NTTextfield.swift in Sources */,
 				30E10BCC2680F55300F4816B /* TransactionTableViewCell.swift in Sources */,
 				30E10BC6267DC0E900F4816B /* ActionCollectionViewController.swift in Sources */,
 				30E10BA6267DABDB00F4816B /* MainTabViewController.swift in Sources */,
-				30E10BB1267DAE2800F4816B /* HomeScreenViewController.swift in Sources */,
+				30E10BB1267DAE2800F4816B /* HomeInterfaceView.swift in Sources */,
 				30E10BBF267DBC5B00F4816B /* TransactionTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
