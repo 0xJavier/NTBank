@@ -44,6 +44,9 @@
 		30E10C052684D5C800F4816B /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10C042684D5C800F4816B /* Alert.swift */; };
 		30E10C072685204B00F4816B /* LotteryInterfaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10C062685204B00F4816B /* LotteryInterfaceView.swift */; };
 		30E10C09268520DB00F4816B /* LotteryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10C08268520DB00F4816B /* LotteryViewController.swift */; };
+		30E10C0B2685300300F4816B /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10C0A2685300300F4816B /* RankingViewController.swift */; };
+		30E10C0D2685304500F4816B /* RankingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10C0C2685304500F4816B /* RankingTableViewController.swift */; };
+		30E10C0F2685346200F4816B /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10C0E2685346200F4816B /* RankingTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +110,9 @@
 		30E10C042684D5C800F4816B /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		30E10C062685204B00F4816B /* LotteryInterfaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryInterfaceView.swift; sourceTree = "<group>"; };
 		30E10C08268520DB00F4816B /* LotteryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryViewController.swift; sourceTree = "<group>"; };
+		30E10C0A2685300300F4816B /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
+		30E10C0C2685304500F4816B /* RankingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTableViewController.swift; sourceTree = "<group>"; };
+		30E10C0E2685346200F4816B /* RankingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,6 +265,7 @@
 				30E10C012683C8D500F4816B /* Screens */,
 				30E10BC5267DC0E900F4816B /* ActionCollectionViewController.swift */,
 				30E10BBE267DBC5B00F4816B /* TransactionTableViewController.swift */,
+				30E10C0C2685304500F4816B /* RankingTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -319,6 +326,7 @@
 			children = (
 				30E10BC7267E6B2700F4816B /* ActionCollectionViewCell.swift */,
 				30E10BCB2680F55300F4816B /* TransactionTableViewCell.swift */,
+				30E10C0E2685346200F4816B /* RankingTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -347,6 +355,7 @@
 				302782C526794AB900BC9077 /* SignupViewController.swift */,
 				30E10BA7267DABF400F4816B /* HomeViewController.swift */,
 				30E10C08268520DB00F4816B /* LotteryViewController.swift */,
+				30E10C0A2685300300F4816B /* RankingViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -482,6 +491,7 @@
 			files = (
 				30E10BC3267DBF1400F4816B /* UIViewController+Extension.swift in Sources */,
 				30E10C09268520DB00F4816B /* LotteryViewController.swift in Sources */,
+				30E10C0F2685346200F4816B /* RankingTableViewCell.swift in Sources */,
 				30E10BB7267DB7F200F4816B /* UserModelController.swift in Sources */,
 				30E10BAD267DAD2700F4816B /* NTCreditCard.swift in Sources */,
 				302782C826794B6300BC9077 /* LoginInterfaceView.swift in Sources */,
@@ -503,10 +513,12 @@
 				302782CC26794D5700BC9077 /* NTHeaderView.swift in Sources */,
 				30E10C072685204B00F4816B /* LotteryInterfaceView.swift in Sources */,
 				30E10BBC267DB91100F4816B /* UserMockData.swift in Sources */,
+				30E10C0D2685304500F4816B /* RankingTableViewController.swift in Sources */,
 				302782CA26794B7C00BC9077 /* SignupInterfaceView.swift in Sources */,
 				302782BA26792BB300BC9077 /* WelcomeInterfaceView.swift in Sources */,
 				302782C1267934AA00BC9077 /* LoginViewController.swift in Sources */,
 				30E10C052684D5C800F4816B /* Alert.swift in Sources */,
+				30E10C0B2685300300F4816B /* RankingViewController.swift in Sources */,
 				302782D126794F4400BC9077 /* NTTextfield.swift in Sources */,
 				30E10BCC2680F55300F4816B /* TransactionTableViewCell.swift in Sources */,
 				30E10BC6267DC0E900F4816B /* ActionCollectionViewController.swift in Sources */,

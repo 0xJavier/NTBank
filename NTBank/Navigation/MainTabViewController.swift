@@ -28,7 +28,8 @@ class MainTabViewController: UITabBarController {
     func setUpTabViewController() {
         let viewControllers = [
             createHomeViewController(),
-            createLotteryViewController()
+            createLotteryViewController(),
+            createRankingViewController()
         ]
         
         self.viewControllers = viewControllers.map {
@@ -52,6 +53,16 @@ class MainTabViewController: UITabBarController {
         viewController.tabBarItem = UITabBarItem(title: "Lottery",
                                                  image: UIImage(systemName: "dollarsign.square"),
                                                  selectedImage: UIImage(systemName: "dollarsign.square.fill"))
+        
+        return viewController
+    }
+    
+    private func createRankingViewController() -> UIViewController {
+        let viewController = RankingViewController(with: userData)
+        
+        viewController.tabBarItem = UITabBarItem(title: "Ranking",
+                                                 image: UIImage(systemName: "person.3"),
+                                                 selectedImage: UIImage(systemName: "person.3.fill"))
         
         return viewController
     }
