@@ -7,8 +7,8 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, HomeInterfaceViewDelegate {
-
+class HomeViewController: UIViewController, HomeInterfaceViewDelegate, ActionCollectionViewControllerDelegate {
+    
     var homeInterface = HomeInterfaceView()
     
     var actionController = ActionCollectionViewController()
@@ -33,6 +33,7 @@ class HomeViewController: UIViewController, HomeInterfaceViewDelegate {
         super.viewDidLoad()
         
         homeInterface.homeDelegate = self
+        actionController.actionDelegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,4 +56,87 @@ class HomeViewController: UIViewController, HomeInterfaceViewDelegate {
     }
 }
 
+//MARK: - Action Collection View Delegate
+extension HomeViewController {
+    func didSelectSendMoney() {
+        //TODO: Show Send Money View
+    }
+    
+    func didSelectPayBank() {
+        let title = "Pay Bank"
+        let message = "Please enter the amount you would like to send to the bank"
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
+        alertController.addTextField()
+        alertController.textFields![0].keyboardType = .numberPad
+
+        let saveAction = UIAlertAction(title: "Send", style: .default) { action in
+            guard let input = alertController.textFields![0].text else { return }
+            print(input)
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+            return
+        }
+
+        alertController.addAction(cancelAction)
+        alertController.addAction(saveAction)
+
+        DispatchQueue.main.async {
+            self.present(alertController, animated: true)
+        }
+    }
+    
+    func didSelectPayLottery() {
+        let title = "Pay Lottery"
+        let message = "Please enter the amount you would like to pay the lottery"
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        alertController.addTextField()
+        alertController.textFields![0].keyboardType = .numberPad
+        
+        let saveAction = UIAlertAction(title: "Confirm", style: .default) { action in
+            guard let input = alertController.textFields![0].text else { return }
+            print(input)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+            return
+        }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(saveAction)
+        
+        DispatchQueue.main.async {
+            self.present(alertController, animated: true)
+        }
+    }
+    
+    func didSelectRecieveMoney() {
+        let title = "Recieve Money"
+        let message = "Please enter the amount you would like to recieve from the bank"
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        alertController.addTextField()
+        alertController.textFields![0].keyboardType = .numberPad
+        
+        let saveAction = UIAlertAction(title: "Confirm", style: .default) { action in
+            guard let input = alertController.textFields![0].text else { return }
+            print(input)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+            return
+        }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(saveAction)
+        
+        DispatchQueue.main.async {
+            self.present(alertController, animated: true)
+        }
+    }
+}

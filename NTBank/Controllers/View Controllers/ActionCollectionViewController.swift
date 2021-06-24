@@ -7,6 +7,12 @@
 
 import UIKit
 
+protocol ActionCollectionViewControllerDelegate: AnyObject {
+    func didSelectSendMoney()
+    func didSelectPayBank()
+    func didSelectPayLottery()
+    func didSelectRecieveMoney()
+}
 
 class ActionCollectionViewController: UIViewController {
 
@@ -19,6 +25,7 @@ class ActionCollectionViewController: UIViewController {
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.dataSource = self
+        collectionView.delegate = self
         collectionView.register(ActionCollectionViewCell.self, forCellWithReuseIdentifier: Self.cellIdentifier)
         collectionView.showsHorizontalScrollIndicator = false
         
@@ -31,6 +38,8 @@ class ActionCollectionViewController: UIViewController {
         QuickAction(title: "Pay Lottery", backgroundColor: .systemOrange, image: UIImage(systemName: "car.fill")!),
         QuickAction(title: "Recieve Money", backgroundColor: .systemPurple, image: UIImage(systemName: "chevron.down.square.fill")!)
     ]
+    
+    weak var actionDelegate: ActionCollectionViewControllerDelegate?
     
     // MARK: - Initalizers
     
@@ -93,7 +102,7 @@ class ActionCollectionViewController: UIViewController {
     }
 }
 
-extension ActionCollectionViewController: UICollectionViewDataSource {
+extension ActionCollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data.count
     }
@@ -111,5 +120,20 @@ extension ActionCollectionViewController: UICollectionViewDataSource {
         cell.symbolImageView.symbolImageView.image = item.image
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            actionDelegate?.didSelectSendMoney()
+        case 1:
+            actionDelegate?.didSelectPayBank()
+        case 2:
+            actionDelegate?.didSelectPayLottery()
+        case 3:
+            actionDelegate?.didSelectRecieveMoney()
+        default:
+            print("Could not get index for collection view")
+        }
     }
 }

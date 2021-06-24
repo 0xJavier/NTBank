@@ -13,7 +13,6 @@
 		302782612677DC1300BC9077 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3027825F2677DC1300BC9077 /* LaunchScreen.storyboard */; };
 		3027826C2677DC1400BC9077 /* NTBankTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3027826B2677DC1400BC9077 /* NTBankTests.swift */; };
 		302782772677DC1400BC9077 /* NTBankUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302782762677DC1400BC9077 /* NTBankUITests.swift */; };
-		30278288267839E400BC9077 /* ViewControllerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30278287267839E400BC9077 /* ViewControllerPreview.swift */; };
 		302782AA2679054A00BC9077 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302782A92679054900BC9077 /* WelcomeViewController.swift */; };
 		302782B22679289800BC9077 /* NTButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302782B12679289800BC9077 /* NTButton.swift */; };
 		302782BA26792BB300BC9077 /* WelcomeInterfaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302782B926792BB300BC9077 /* WelcomeInterfaceView.swift */; };
@@ -42,6 +41,7 @@
 		30E10BCC2680F55300F4816B /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BCB2680F55300F4816B /* TransactionTableViewCell.swift */; };
 		30E10BCE2680F6CC00F4816B /* NTSymbolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BCD2680F6CC00F4816B /* NTSymbolView.swift */; };
 		30E10BD02681009A00F4816B /* QuickAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BCF2681009A00F4816B /* QuickAction.swift */; };
+		30E10C052684D5C800F4816B /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10C042684D5C800F4816B /* Alert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,7 +74,6 @@
 		302782722677DC1400BC9077 /* NTBankUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NTBankUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		302782762677DC1400BC9077 /* NTBankUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTBankUITests.swift; sourceTree = "<group>"; };
 		302782782677DC1400BC9077 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		30278287267839E400BC9077 /* ViewControllerPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerPreview.swift; sourceTree = "<group>"; };
 		302782A92679054900BC9077 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		302782B12679289800BC9077 /* NTButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTButton.swift; sourceTree = "<group>"; };
 		302782B926792BB300BC9077 /* WelcomeInterfaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeInterfaceView.swift; sourceTree = "<group>"; };
@@ -103,6 +102,7 @@
 		30E10BCB2680F55300F4816B /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
 		30E10BCD2680F6CC00F4816B /* NTSymbolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTSymbolView.swift; sourceTree = "<group>"; };
 		30E10BCF2681009A00F4816B /* QuickAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAction.swift; sourceTree = "<group>"; };
+		30E10C042684D5C800F4816B /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,7 +223,7 @@
 		30E10BF02683BA9D00F4816B /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				30E10BFB2683BEEF00F4816B /* Previews */,
+				30E10C042684D5C800F4816B /* Alert.swift */,
 				30E10BFA2683BEE400F4816B /* Extensions */,
 			);
 			path = Utilities;
@@ -307,14 +307,6 @@
 				30E10BC2267DBF1400F4816B /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		30E10BFB2683BEEF00F4816B /* Previews */ = {
-			isa = PBXGroup;
-			children = (
-				30278287267839E400BC9077 /* ViewControllerPreview.swift */,
-			);
-			path = Previews;
 			sourceTree = "<group>";
 		};
 		30E10BFE2683C00500F4816B /* Cells */ = {
@@ -506,7 +498,7 @@
 				302782CA26794B7C00BC9077 /* SignupInterfaceView.swift in Sources */,
 				302782BA26792BB300BC9077 /* WelcomeInterfaceView.swift in Sources */,
 				302782C1267934AA00BC9077 /* LoginViewController.swift in Sources */,
-				30278288267839E400BC9077 /* ViewControllerPreview.swift in Sources */,
+				30E10C052684D5C800F4816B /* Alert.swift in Sources */,
 				302782D126794F4400BC9077 /* NTTextfield.swift in Sources */,
 				30E10BCC2680F55300F4816B /* TransactionTableViewCell.swift in Sources */,
 				30E10BC6267DC0E900F4816B /* ActionCollectionViewController.swift in Sources */,
