@@ -42,6 +42,8 @@
 		30E10BCE2680F6CC00F4816B /* NTSymbolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BCD2680F6CC00F4816B /* NTSymbolView.swift */; };
 		30E10BD02681009A00F4816B /* QuickAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BCF2681009A00F4816B /* QuickAction.swift */; };
 		30E10C052684D5C800F4816B /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10C042684D5C800F4816B /* Alert.swift */; };
+		30E10C072685204B00F4816B /* LotteryInterfaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10C062685204B00F4816B /* LotteryInterfaceView.swift */; };
+		30E10C09268520DB00F4816B /* LotteryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10C08268520DB00F4816B /* LotteryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +105,8 @@
 		30E10BCD2680F6CC00F4816B /* NTSymbolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTSymbolView.swift; sourceTree = "<group>"; };
 		30E10BCF2681009A00F4816B /* QuickAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAction.swift; sourceTree = "<group>"; };
 		30E10C042684D5C800F4816B /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		30E10C062685204B00F4816B /* LotteryInterfaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryInterfaceView.swift; sourceTree = "<group>"; };
+		30E10C08268520DB00F4816B /* LotteryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +286,7 @@
 				302782C726794B6300BC9077 /* LoginInterfaceView.swift */,
 				302782C926794B7C00BC9077 /* SignupInterfaceView.swift */,
 				30E10BB0267DAE2800F4816B /* HomeInterfaceView.swift */,
+				30E10C062685204B00F4816B /* LotteryInterfaceView.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -341,6 +346,7 @@
 				302782C0267934AA00BC9077 /* LoginViewController.swift */,
 				302782C526794AB900BC9077 /* SignupViewController.swift */,
 				30E10BA7267DABF400F4816B /* HomeViewController.swift */,
+				30E10C08268520DB00F4816B /* LotteryViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -475,6 +481,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30E10BC3267DBF1400F4816B /* UIViewController+Extension.swift in Sources */,
+				30E10C09268520DB00F4816B /* LotteryViewController.swift in Sources */,
 				30E10BB7267DB7F200F4816B /* UserModelController.swift in Sources */,
 				30E10BAD267DAD2700F4816B /* NTCreditCard.swift in Sources */,
 				302782C826794B6300BC9077 /* LoginInterfaceView.swift in Sources */,
@@ -494,6 +501,7 @@
 				302782BF2679330F00BC9077 /* UIStackView+Extension.swift in Sources */,
 				302782572677DC1000BC9077 /* SceneDelegate.swift in Sources */,
 				302782CC26794D5700BC9077 /* NTHeaderView.swift in Sources */,
+				30E10C072685204B00F4816B /* LotteryInterfaceView.swift in Sources */,
 				30E10BBC267DB91100F4816B /* UserMockData.swift in Sources */,
 				302782CA26794B7C00BC9077 /* SignupInterfaceView.swift in Sources */,
 				302782BA26792BB300BC9077 /* WelcomeInterfaceView.swift in Sources */,
