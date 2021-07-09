@@ -41,7 +41,7 @@ class SignupInterfaceView: UIView {
     
     lazy var passwordTextfield = NTSecurefield(placeholder: "Password")
     
-    lazy var confirmPasswordTextfield = NTTextfield(placeholder: "Confirm Password")
+    lazy var confirmPasswordTextfield = NTSecurefield(placeholder: "Confirm Password")
     
     lazy var stackview: UIStackView = {
         let stackview = UIStackView()
