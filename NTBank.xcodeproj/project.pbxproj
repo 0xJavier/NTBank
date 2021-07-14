@@ -29,6 +29,7 @@
 		3074753C2697BD110053E20F /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3074753B2697BD110053E20F /* FirebaseFirestore */; };
 		3074753E2697BD110053E20F /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 3074753D2697BD110053E20F /* FirebaseFirestoreSwift-Beta */; };
 		307475402697BD640053E20F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3074753F2697BD640053E20F /* GoogleService-Info.plist */; };
+		3074754A269F6E0B0053E20F /* PlayerModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30747549269F6E0B0053E20F /* PlayerModelController.swift */; };
 		30DA48EB268E52810096ECF3 /* LotteryModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DA48EA268E52810096ECF3 /* LotteryModelController.swift */; };
 		30E10BA1267DA94400F4816B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BA0267DA94400F4816B /* User.swift */; };
 		30E10BA3267DA95C00F4816B /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BA2267DA95C00F4816B /* Transaction.swift */; };
@@ -96,6 +97,7 @@
 		302782D026794F4400BC9077 /* NTTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTTextfield.swift; sourceTree = "<group>"; };
 		302782D226794F5E00BC9077 /* NTSecurefield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTSecurefield.swift; sourceTree = "<group>"; };
 		3074753F2697BD640053E20F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		30747549269F6E0B0053E20F /* PlayerModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModelController.swift; sourceTree = "<group>"; };
 		30DA48EA268E52810096ECF3 /* LotteryModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryModelController.swift; sourceTree = "<group>"; };
 		30E10BA0267DA94400F4816B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		30E10BA2267DA95C00F4816B /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 			children = (
 				30E10BB6267DB7F200F4816B /* UserModelController.swift */,
 				30DA48EA268E52810096ECF3 /* LotteryModelController.swift */,
+				30747549269F6E0B0053E20F /* PlayerModelController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 				302782D126794F4400BC9077 /* NTTextfield.swift in Sources */,
 				30E10BCC2680F55300F4816B /* TransactionTableViewCell.swift in Sources */,
 				30E10BC6267DC0E900F4816B /* ActionCollectionViewController.swift in Sources */,
+				3074754A269F6E0B0053E20F /* PlayerModelController.swift in Sources */,
 				30E10BA6267DABDB00F4816B /* MainTabViewController.swift in Sources */,
 				30E10BB1267DAE2800F4816B /* HomeInterfaceView.swift in Sources */,
 				30E10BBF267DBC5B00F4816B /* TransactionTableViewController.swift in Sources */,

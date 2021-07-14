@@ -10,6 +10,7 @@ import UIKit
 class MainTabViewController: UITabBarController {
     
     let userData = UserMockData()
+    let playerModel = PlayerModelController()
 
     // MARK: - Initializers
     
@@ -58,7 +59,7 @@ class MainTabViewController: UITabBarController {
     }
     
     private func createRankingViewController() -> UIViewController {
-        let viewController = RankingViewController(with: userData)
+        let viewController = RankingViewController(with: playerModel)
         
         viewController.tabBarItem = UITabBarItem(title: "Ranking",
                                                  image: UIImage(systemName: "person.3"),

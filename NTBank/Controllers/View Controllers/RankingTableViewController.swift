@@ -32,6 +32,7 @@ class RankingTableViewController: UITableViewController {
     func setUpTableView() {
         tableView.register(RankingTableViewCell.self, forCellReuseIdentifier: Self.cellIdentifier)
         tableView.showsVerticalScrollIndicator = false
+        tableView.allowsSelection = false
     }
     
     // MARK: - Data Life Cycle

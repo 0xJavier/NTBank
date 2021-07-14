@@ -7,14 +7,14 @@
 
 import UIKit
 
-class RankingViewController: RankingTableViewController {
-        
-    let userData: UserMockData
+class RankingViewController: RankingTableViewController, PlayerModelControllerDelegate {
+    
+    let playerModel: PlayerModelController
     
     // MARK: Initalizers
     
-    init(with userData: UserMockData) {
-        self.userData = userData
+    init(with playerModel: PlayerModelController) {
+        self.playerModel = playerModel
         super.init()
     }
     
@@ -24,7 +24,29 @@ class RankingViewController: RankingTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        data = userData.players
         title = tabBarItem.title
+        playerModel.playerDelegate = self
+        data = playerModel.players
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        playerModel.retrievePlayers()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        data = playerModel.players
+        reloadTableview()
+    }
+    
+    func didFetchPlayers(players: [User]) {
+        data = players
+        reloadTableview()
+    }
+    
+    func reloadTableview() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 }
