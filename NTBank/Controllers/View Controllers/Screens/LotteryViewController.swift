@@ -46,7 +46,7 @@ class LotteryViewController: UIViewController, LotteryInterfaceViewDelegate, Lot
     func didSelectCollectButton() {
         let title = "Collect Lottery"
         let message = "Are you sure you want to collect the lottery"
-        
+
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
         let collectAction = UIAlertAction(title: "Collect", style: .default) { [weak self] _ in
@@ -65,21 +65,22 @@ class LotteryViewController: UIViewController, LotteryInterfaceViewDelegate, Lot
     }
     
     func collectLottery() {
-        lotteryModelController.collectLottery { [weak self] in
-            guard let self = self else { return }
-            let title = "Success"
-            let message = "Successfully collected lottery"
-            
-            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        lotteryModelController.collectLottery { bool in
+            if bool {
+                let title = "Success"
+                let message = "Successfully collected lottery"
 
-            let confirmAction = UIAlertAction(title: "Okay", style: .default) { _ in
-                return
+                let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+
+                let confirmAction = UIAlertAction(title: "Okay", style: .default) { _ in
+                    return
+                }
+
+                alertController.addAction(confirmAction)
+
+                DispatchQueue.main.async { self.present(alertController, animated: true) }
+                self.render()
             }
-
-            alertController.addAction(confirmAction)
-
-            DispatchQueue.main.async { self.present(alertController, animated: true) }
-            self.render()
         }
     }
     

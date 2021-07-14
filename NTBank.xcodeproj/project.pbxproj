@@ -37,7 +37,6 @@
 		30E10BAD267DAD2700F4816B /* NTCreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BAC267DAD2700F4816B /* NTCreditCard.swift */; };
 		30E10BB1267DAE2800F4816B /* HomeInterfaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BB0267DAE2800F4816B /* HomeInterfaceView.swift */; };
 		30E10BB7267DB7F200F4816B /* UserModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BB6267DB7F200F4816B /* UserModelController.swift */; };
-		30E10BBA267DB8C900F4816B /* UserLogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BB9267DB8C900F4816B /* UserLogicController.swift */; };
 		30E10BBC267DB91100F4816B /* UserMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BBB267DB91100F4816B /* UserMockData.swift */; };
 		30E10BBF267DBC5B00F4816B /* TransactionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BBE267DBC5B00F4816B /* TransactionTableViewController.swift */; };
 		30E10BC3267DBF1400F4816B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BC2267DBF1400F4816B /* UIViewController+Extension.swift */; };
@@ -105,7 +104,6 @@
 		30E10BAC267DAD2700F4816B /* NTCreditCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTCreditCard.swift; sourceTree = "<group>"; };
 		30E10BB0267DAE2800F4816B /* HomeInterfaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInterfaceView.swift; sourceTree = "<group>"; };
 		30E10BB6267DB7F200F4816B /* UserModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelController.swift; sourceTree = "<group>"; };
-		30E10BB9267DB8C900F4816B /* UserLogicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLogicController.swift; sourceTree = "<group>"; };
 		30E10BBB267DB91100F4816B /* UserMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMockData.swift; sourceTree = "<group>"; };
 		30E10BBE267DBC5B00F4816B /* TransactionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewController.swift; sourceTree = "<group>"; };
 		30E10BC2267DBF1400F4816B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -284,7 +282,6 @@
 		30E10BF52683BC6B00F4816B /* Logic Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				30E10BB9267DB8C900F4816B /* UserLogicController.swift */,
 			);
 			path = "Logic Controllers";
 			sourceTree = "<group>";
@@ -526,7 +523,6 @@
 				30E10BD02681009A00F4816B /* QuickAction.swift in Sources */,
 				30E10BA3267DA95C00F4816B /* Transaction.swift in Sources */,
 				302782AA2679054A00BC9077 /* WelcomeViewController.swift in Sources */,
-				30E10BBA267DB8C900F4816B /* UserLogicController.swift in Sources */,
 				302782552677DC1000BC9077 /* AppDelegate.swift in Sources */,
 				30E10BC8267E6B2700F4816B /* ActionCollectionViewCell.swift in Sources */,
 				302782BF2679330F00BC9077 /* UIStackView+Extension.swift in Sources */,
