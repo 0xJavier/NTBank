@@ -23,6 +23,8 @@ class NTCreditCard: UIView {
         return view
     }()
     
+    lazy private var headerView = NTHeaderView()
+    
     lazy private var titleLabel: UILabel = {
         let label = UILabel()
         
@@ -78,7 +80,9 @@ class NTCreditCard: UIView {
 
     //MARK: - Setup
     private func setUpViews() {
-        addSubviews(background, titleLabel, amountLabel, nameLabel)
+        addSubviews(background, headerView, titleLabel, amountLabel, nameLabel)
+        
+        headerView.headerLabel.textColor = .white
         
         setUpConstraints()
     }
@@ -88,6 +92,7 @@ class NTCreditCard: UIView {
         
         constraints += createCardConstraints()
         constraints += createBackgroundConstraints()
+        constraints += createHeaderConstraints()
         constraints += createAmountConstraints()
         constraints += createTitleConstraints()
         constraints += createNameConstraints()
@@ -109,6 +114,13 @@ class NTCreditCard: UIView {
         let trailing = background.trailingAnchor.constraint(equalTo: trailingAnchor)
         
         return [top, leading, bottom, trailing]
+    }
+    
+    private func createHeaderConstraints() -> [NSLayoutConstraint] {
+        let leading = headerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16)
+        let top = headerView.topAnchor.constraint(equalTo: topAnchor, constant: 24)
+        
+        return [leading, top]
     }
     
     private func createAmountConstraints() -> [NSLayoutConstraint] {
