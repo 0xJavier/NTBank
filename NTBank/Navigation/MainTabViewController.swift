@@ -10,6 +10,7 @@ import UIKit
 class MainTabViewController: UITabBarController {
     
     let userData = UserMockData()
+    let userDataReal = UserModelController()
     let playerModel = PlayerModelController()
 
     // MARK: - Initializers
@@ -39,7 +40,7 @@ class MainTabViewController: UITabBarController {
     }
 
     private func createHomeViewController() -> UIViewController {
-        let viewController = HomeViewController(with: userData)
+        let viewController = HomeViewController(with: userDataReal)
         
         viewController.tabBarItem = UITabBarItem(title: "Home",
                                                  image: UIImage(systemName: "house"),

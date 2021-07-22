@@ -14,11 +14,11 @@ class HomeViewController: UIViewController, HomeInterfaceViewDelegate, ActionCol
     var actionController = ActionCollectionViewController()
     var transactionController = TransactionTableViewController()
     
-    let userData: UserMockData
+    let userData: UserModelController
     
     // MARK: Initalizers
     
-    init(with userData: UserMockData) {
+    init(with userData: UserModelController) {
         self.userData = userData
         super.init(nibName: nil, bundle: nil)
     }
@@ -34,13 +34,10 @@ class HomeViewController: UIViewController, HomeInterfaceViewDelegate, ActionCol
         
         homeInterface.homeDelegate = self
         actionController.actionDelegate = self
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        userData.userDelegate = self
         
         updateCreditCard()
-        transactionController.dataValues = userData.transactions
+        updateTransactions()
     }
     
     override func loadView() {
@@ -53,6 +50,21 @@ class HomeViewController: UIViewController, HomeInterfaceViewDelegate, ActionCol
 
     func updateCreditCard() {
         homeInterface.creditCard.set(with: userData.user)
+    }
+    
+    func updateTransactions() {
+        transactionController.dataValues = userData.transactions
+    }
+}
+
+//MARK: - User Delegate
+extension HomeViewController: UserModelControllerDelegate {
+    func didFetchUser(user: User) {
+        updateCreditCard()
+    }
+    
+    func didFetchTransactions(transactions: [Transaction]) {
+        updateTransactions()
     }
 }
 
