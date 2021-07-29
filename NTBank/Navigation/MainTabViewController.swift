@@ -14,58 +14,21 @@ class MainTabViewController: UITabBarController {
     let playerModel = PlayerModelController()
 
     // MARK: - Initializers
-    
-    init() {
-        super.init(nibName: nil, bundle: nil)
-        
-        setUpTabViewController()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK: - Setup
-    
-    func setUpTabViewController() {
-        let viewControllers = [
-            createHomeViewController(),
-            createLotteryViewController(),
-            createRankingViewController()
+    override func viewDidLoad() {
+        viewControllers = [
+            createNavController(viewController: HomeViewController(with: userDataReal), title: "Home", imageName: "house"),
+            createNavController(viewController: LotteryViewController(), title: "Lottery", imageName: "dollarsign.square"),
+            createNavController(viewController: RankingViewController(with: playerModel), title: "Ranking", imageName: "person.3")
         ]
-        
-        self.viewControllers = viewControllers.map {
-            UINavigationController(rootViewController: $0)
-        }
-    }
-
-    private func createHomeViewController() -> UIViewController {
-        let viewController = HomeViewController(with: userDataReal)
-        
-        viewController.tabBarItem = UITabBarItem(title: "Home",
-                                                 image: UIImage(systemName: "house"),
-                                                 selectedImage: UIImage(systemName: "house.fill"))
-        
-        return viewController
     }
     
-    private func createLotteryViewController() -> UIViewController {
-        let viewController = LotteryViewController()
+    private func createNavController(viewController: UIViewController, title: String, imageName: String) -> UIViewController {
+        viewController.title = title
+        viewController.view.backgroundColor = .systemBackground
         
-        viewController.tabBarItem = UITabBarItem(title: "Lottery",
-                                                 image: UIImage(systemName: "dollarsign.square"),
-                                                 selectedImage: UIImage(systemName: "dollarsign.square.fill"))
-        
-        return viewController
-    }
-    
-    private func createRankingViewController() -> UIViewController {
-        let viewController = RankingViewController(with: playerModel)
-        
-        viewController.tabBarItem = UITabBarItem(title: "Ranking",
-                                                 image: UIImage(systemName: "person.3"),
-                                                 selectedImage: UIImage(systemName: "person.3.fill"))
-        
-        return viewController
+        let navController = UINavigationController(rootViewController: viewController)
+        navController.tabBarItem.image = UIImage(systemName: imageName)
+        navController.tabBarItem.selectedImage = UIImage(systemName: imageName + ".fill")
+        return navController
     }
 }
