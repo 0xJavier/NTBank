@@ -9,16 +9,11 @@ import UIKit
 
 class MainTabViewController: UITabBarController {
     
-    let userData = UserMockData()
-    let userDataReal = UserModelController()
-    let playerModel = PlayerModelController()
-
-    // MARK: - Initializers
     override func viewDidLoad() {
         viewControllers = [
-            createNavController(viewController: HomeViewController(with: userDataReal), title: "Home", imageName: "house"),
-            createNavController(viewController: LotteryViewController(), title: "Lottery", imageName: "dollarsign.square"),
-            createNavController(viewController: RankingViewController(with: playerModel), title: "Ranking", imageName: "person.3")
+            createNavController(viewController: HomeViewController(), title: "Home", imageName: "house"),
+            //createNavController(viewController: LotteryViewController(), title: "Lottery", imageName: "dollarsign.square"),
+            //createNavController(viewController: RankingViewController(with: playerModel), title: "Ranking", imageName: "person.3")
         ]
     }
     

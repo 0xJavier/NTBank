@@ -70,7 +70,8 @@ class NTCreditCard: UIView {
     }
     
     func set(with user: User) {
-        DispatchQueue.main.async { [self] in
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
             self.amountLabel.text = "$\(user.balance)"
             self.nameLabel.text = user.name
             self.background.backgroundColor = user.colorLiteral

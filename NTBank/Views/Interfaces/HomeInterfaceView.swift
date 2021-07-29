@@ -6,17 +6,12 @@
 //
 
 import UIKit
-import SwiftUI
-
-protocol HomeInterfaceViewDelegate: AnyObject {}
-
-private extension CGFloat {}
 
 class HomeInterfaceView: UIView {
     
     lazy var creditCard = NTCreditCard()
     
-    lazy var sendMoneyLabel: UILabel = {
+    lazy var quickActionLabel: UILabel = {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -26,7 +21,7 @@ class HomeInterfaceView: UIView {
         return label
     }()
     
-    lazy var sendMoneyContainerView: UIView = {
+    lazy var actionContainerView: UIView = {
         let view = UIView()
         
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -52,8 +47,6 @@ class HomeInterfaceView: UIView {
         return view
     }()
     
-    weak var homeDelegate: HomeInterfaceViewDelegate?
-    
     // MARK: Initalizers
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -66,7 +59,7 @@ class HomeInterfaceView: UIView {
     }
     
     private func setUpViews() {
-        addSubviews(creditCard, sendMoneyLabel, sendMoneyContainerView,
+        addSubviews(creditCard, quickActionLabel, actionContainerView,
                          transactionLabel, transactionContainerView)
         
         setUpConstraints()
@@ -92,24 +85,24 @@ class HomeInterfaceView: UIView {
     }
     
     private func createSendMoneyLabelConstraints() -> [NSLayoutConstraint] {
-        let top = sendMoneyLabel.topAnchor.constraint(equalTo: creditCard.bottomAnchor)
-        let leading = sendMoneyLabel.leadingAnchor.constraint(equalTo: creditCard.leadingAnchor)
-        let height = sendMoneyLabel.heightAnchor.constraint(equalToConstant: 54)
+        let top = quickActionLabel.topAnchor.constraint(equalTo: creditCard.bottomAnchor)
+        let leading = quickActionLabel.leadingAnchor.constraint(equalTo: creditCard.leadingAnchor)
+        let height = quickActionLabel.heightAnchor.constraint(equalToConstant: 54)
         
         return [top, leading, height]
     }
     
     private func createSendMoneyContainerViewConstraints() -> [NSLayoutConstraint] {
-        let top = sendMoneyContainerView.topAnchor.constraint(equalTo: sendMoneyLabel.bottomAnchor)
-        let leading = sendMoneyContainerView.leadingAnchor.constraint(equalTo: creditCard.leadingAnchor)
-        let trailing = sendMoneyContainerView.trailingAnchor.constraint(equalTo: creditCard.trailingAnchor)
-        let height = sendMoneyContainerView.heightAnchor.constraint(equalToConstant: 105)
+        let top = actionContainerView.topAnchor.constraint(equalTo: quickActionLabel.bottomAnchor)
+        let leading = actionContainerView.leadingAnchor.constraint(equalTo: creditCard.leadingAnchor)
+        let trailing = actionContainerView.trailingAnchor.constraint(equalTo: creditCard.trailingAnchor)
+        let height = actionContainerView.heightAnchor.constraint(equalToConstant: 105)
         
         return [top, leading, trailing, height]
     }
     
     private func createTransactionLabelConstraints() -> [NSLayoutConstraint] {
-        let top = transactionLabel.topAnchor.constraint(equalTo: sendMoneyContainerView.bottomAnchor)
+        let top = transactionLabel.topAnchor.constraint(equalTo: actionContainerView.bottomAnchor)
         let leading = transactionLabel.leadingAnchor.constraint(equalTo: creditCard.leadingAnchor)
         let height = transactionLabel.heightAnchor.constraint(equalToConstant: 54)
         
