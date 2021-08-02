@@ -71,23 +71,15 @@ class LotteryViewController: UIViewController, LotteryInterfaceViewDelegate {
     }
     
     func collectLottery() {
-        NetworkManager.shared.collectLottery(with: lotteryAmount) { bool in
+        showLoadingView()
+        NetworkManager.shared.collectLottery(with: lotteryAmount) { [weak self] bool in
+            guard let self = self else { return }
+            self.dismissLoadingView()
             if bool {
-                let title = "Success"
-                let message = "Successfully collected lottery"
-                
-                let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                
-                let confirmAction = UIAlertAction(title: "Okay", style: .default) { _ in
-                    return
-                }
-                
-                alertController.addAction(confirmAction)
-                
-                DispatchQueue.main.async { self.present(alertController, animated: true) }
                 self.render()
+                self.presentSimpleAlert(title: "Success", message: "Successfully collected lottery")
             } else {
-                print("FAILED")
+                self.presentSimpleAlert(title: "Error", message: "Could not collect lotter.")
             }
         }
     }

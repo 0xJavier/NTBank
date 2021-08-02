@@ -51,10 +51,10 @@ class SignupViewController: UIViewController, SignupInterfaceViewDelegate {
             return
         }
         
-        guard let confirmPassword = signupInterface.confirmPasswordTextfield.text else {
-            print("LOG: Could not unwrap confirm password")
-            return
-        }
+//        guard let confirmPassword = signupInterface.confirmPasswordTextfield.text else {
+//            print("LOG: Could not unwrap confirm password")
+//            return
+//        }
         
         let data: [String:Any] = [
             "email": email.lowercased(),
@@ -63,10 +63,12 @@ class SignupViewController: UIViewController, SignupInterfaceViewDelegate {
             "color": cardColor
         ]
         
+        showLoadingView()
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] dataResult, error in
             guard let self = self else { return }
+            self.dismissLoadingView()
             if let error = error {
-                print("LOG: \(error.localizedDescription)")
+                self.presentSimpleAlert(title: "Error", message: error.localizedDescription)
                 return
             } else {
                 let batch = Firestore.firestore().batch()
@@ -75,7 +77,7 @@ class SignupViewController: UIViewController, SignupInterfaceViewDelegate {
                 batch.setData(data, forDocument: ref)
                 batch.commit { error in
                     if let error = error {
-                        print("LOG: \(error.localizedDescription)")
+                        self.presentSimpleAlert(title: "Error", message: error.localizedDescription)
                         return
                     } else {
                         let tabview = MainTabViewController()

@@ -55,34 +55,45 @@ class ActionCollectionViewController: UICollectionViewController {
     }
     
     private func payBank(with amount: Int) {
-        NetworkManager.shared.payBank(with: amount) { bool in
+        showLoadingView()
+        NetworkManager.shared.payBank(with: amount) { [weak self] bool in
+            guard let self = self else { return }
+            self.dismissLoadingView()
             if bool {
-                print("SUCCESS")
+                self.presentSimpleAlert(title: "Success!", message: "Successfully paid the bank.")
             } else {
-                print("FAILED")
+                self.presentSimpleAlert(title: "Error", message: "Could not pay bank.")
             }
         }
     }
     
     private func payLottery(with amount: Int) {
-        NetworkManager.shared.payLottery(with: amount) { bool in
+        showLoadingView()
+        NetworkManager.shared.payLottery(with: amount) { [weak self] bool in
+            guard let self = self else { return }
+            self.dismissLoadingView()
             if bool {
-                print("SUCCESS")
+                self.presentSimpleAlert(title: "Success!", message: "Successfully paid the lottery.")
             } else {
-                print("FAILED")
+                self.presentSimpleAlert(title: "Error", message: "Could not pay lottery.")
             }
         }
     }
     
     private func recieveMoney(with amount: Int) {
-        NetworkManager.shared.recieveMoney(with: amount) { bool in
+        showLoadingView()
+        NetworkManager.shared.recieveMoney(with: amount) { [weak self] bool in
+            guard let self = self else { return }
+            self.dismissLoadingView()
             if bool {
-                print("SUCCESS")
+                self.presentSimpleAlert(title: "Success!", message: "Successfully recieved money from the bank.")
             } else {
-                print("FAILED")
+                self.presentSimpleAlert(title: "Error", message: "Could not recieve money.")
             }
         }
     }
+    
+    private func isAmountBiggerThenZero(_ amount: Int) -> Bool { return amount <= 0 }
 }
 
 extension ActionCollectionViewController {
@@ -129,9 +140,7 @@ extension ActionCollectionViewController {
         alertController.addAction(cancelAction)
         alertController.addAction(saveAction)
 
-        DispatchQueue.main.async {
-            self.present(alertController, animated: true)
-        }
+        DispatchQueue.main.async { self.present(alertController, animated: true) }
     }
     
     func didSelectPayLottery() {
@@ -156,9 +165,7 @@ extension ActionCollectionViewController {
         alertController.addAction(cancelAction)
         alertController.addAction(saveAction)
         
-        DispatchQueue.main.async {
-            self.present(alertController, animated: true)
-        }
+        DispatchQueue.main.async { self.present(alertController, animated: true) }
     }
     
     func didSelectRecieveMoney() {
@@ -183,8 +190,6 @@ extension ActionCollectionViewController {
         alertController.addAction(cancelAction)
         alertController.addAction(saveAction)
         
-        DispatchQueue.main.async {
-            self.present(alertController, animated: true)
-        }
+        DispatchQueue.main.async { self.present(alertController, animated: true) }
     }
 }

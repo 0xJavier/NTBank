@@ -42,10 +42,13 @@ class LoginViewController: UIViewController, LoginInterfaceViewDelegate {
             return
         }
         
+        showLoadingView()
+        
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] authDataResult, error in
             guard let self = self else { return }
+            self.dismissLoadingView()
             if let error = error {
-                print("ERROR: \(error.localizedDescription)")
+                self.presentSimpleAlert(title: "Error", message: error.localizedDescription)
             } else {
                 let tabview = MainTabViewController()
                 tabview.modalPresentationStyle = .fullScreen
@@ -81,24 +84,15 @@ class LoginViewController: UIViewController, LoginInterfaceViewDelegate {
     }
     
     func sendResetPasswordLink(with email: String) {
-        Auth.auth().sendPasswordReset(withEmail: email) { error in
+        showLoadingView()
+        Auth.auth().sendPasswordReset(withEmail: email) { [weak self] error in
+            guard let self = self else { return }
+            self.dismissLoadingView()
             if let error = error {
-                print("LOG: \(error.localizedDescription)")
+                self.presentSimpleAlert(title: "Error", message: error.localizedDescription)
                 return
             } else {
-                let title = "Success!"
-                let message = "Successfully sent a reset link."
-                
-                let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                
-                let saveAction = UIAlertAction(title: "Ok", style: .default) { _ in return }
-                
-                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in return }
-                
-                alertController.addAction(cancelAction)
-                alertController.addAction(saveAction)
-                
-                DispatchQueue.main.async { self.present(alertController, animated: true) }
+                self.presentSimpleAlert(title: "Success!", message: "Successfully sent a reset link.")
             }
         }
     }
