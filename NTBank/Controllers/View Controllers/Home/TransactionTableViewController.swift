@@ -19,8 +19,6 @@ class TransactionTableViewController: UITableViewController {
     
     lazy var transactionDataSource = TransactionListDataSource(with: transactions)
     
-    static let cellIdentifier = "transaction"
-    
     //MARK: - View Life Cycle
     override func viewDidLoad() {
         setUpTableView()
@@ -28,7 +26,7 @@ class TransactionTableViewController: UITableViewController {
     }
 
     func setUpTableView() {
-        tableView.register(TransactionTableViewCell.self, forCellReuseIdentifier: Self.cellIdentifier)
+        tableView.register(TransactionTableViewCell.self, forCellReuseIdentifier: CellTypes.transactionCell.rawValue)
         tableView.showsVerticalScrollIndicator = false
         tableView.allowsSelection = false
         tableView.delegate = transactionDataSource

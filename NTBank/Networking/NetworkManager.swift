@@ -13,6 +13,8 @@ class NetworkManager {
     
     private let playersRef = Firestore.firestore().collection("players")
     
+    private let lotteryRef = Firestore.firestore().collection("lottery").document("balance")
+    
     private init() { }
     
     //MARK:-
@@ -56,6 +58,72 @@ class NetworkManager {
                 }
                 completion(transactions)
             }
+    }
+    
+    func streamLottery(completion: @escaping(Int?) -> Void) {
+        lotteryRef.addSnapshotListener { documentSnapshot, error in
+            guard let document = documentSnapshot else {
+                print("DEBUG: \(error?.localizedDescription ?? "Error getting document")")
+                return
+            }
+            
+            guard let data = document.data() else {
+                print("DEBUG: Document data was empty")
+                return
+            }
+            let amount = data["amount"] as? Int ?? 0
+            completion(amount)
+        }
+    }
+    
+    func collectLottery(with amount: Int, completion: @escaping(Bool) -> Void) {
+        guard let userID = Auth.auth().currentUser?.uid else {
+            print("DEBUG: Could not get userID when collecting lottery")
+            completion(false)
+            return
+        }
+        
+        let batch = Firestore.firestore().batch()
+        
+        let userRef = Firestore.firestore().collection("players").document(userID)
+        batch.updateData(["balance": FieldValue.increment(Int64(amount))], forDocument: userRef)
+        
+        let data: [String:Any] = [
+            "id": Int(Date().timeIntervalSince1970),
+            "amount": amount,
+            "action": "Won the lottery",
+            "subAction": "Recieved"
+        ]
+        
+        let transactionRef = userRef.collection("transactions").document()
+        batch.setData(data, forDocument: transactionRef)
+        
+        batch.updateData(["amount":0], forDocument: lotteryRef)
+        
+        batch.commit() { error in
+            if let error = error {
+                print("DEBUG: \(error.localizedDescription)")
+                completion(false)
+            } else {
+                print("Success collecting Lottery")
+                completion(true)
+            }
+        }
+    }
+    
+    func getAllPlayers(completion: @escaping([User]?) -> Void) {
+        playersRef.getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("DEBUG: Error Getting Users. \(error.localizedDescription)")
+                return
+            } else {
+                var players = [User]()
+                for document in querySnapshot!.documents {
+                    players.append(User(id: document.documentID, userInfo: document.data()))
+                }
+                completion(players)
+            }
+        }
     }
     
     func payBank(with amount: Int, completion: @escaping(Bool) -> Void) {

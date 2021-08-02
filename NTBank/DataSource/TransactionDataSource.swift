@@ -19,7 +19,7 @@ class TransactionListDataSource: NSObject, UITableViewDataSource, UITableViewDel
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "transaction") as? TransactionTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellTypes.transactionCell.rawValue) as? TransactionTableViewCell else {
             return TransactionTableViewCell()
         }
         

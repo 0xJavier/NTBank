@@ -19,8 +19,7 @@ class ActionDataSource: NSObject, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        //let content = data[indexPath.row]
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "action", for: indexPath) as? ActionCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellTypes.actionCell.rawValue, for: indexPath) as? ActionCollectionViewCell else {
             return ActionCollectionViewCell()
         }
         

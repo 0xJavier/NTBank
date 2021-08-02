@@ -12,8 +12,8 @@ class MainTabViewController: UITabBarController {
     override func viewDidLoad() {
         viewControllers = [
             createNavController(viewController: HomeViewController(), title: "Home", imageName: "house"),
-            //createNavController(viewController: LotteryViewController(), title: "Lottery", imageName: "dollarsign.square"),
-            //createNavController(viewController: RankingViewController(with: playerModel), title: "Ranking", imageName: "person.3")
+            createNavController(viewController: LotteryViewController(), title: "Lottery", imageName: "dollarsign.square"),
+            createNavController(viewController: RankingViewController(), title: "Ranking", imageName: "person.3")
         ]
     }
     

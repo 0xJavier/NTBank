@@ -7,46 +7,80 @@
 
 import UIKit
 
-class RankingViewController: RankingTableViewController, PlayerModelControllerDelegate {
+class RankingViewController: UITableViewController {
     
-    let playerModel: PlayerModelController
+    var players = [User]() {
+        didSet { reloadData() }
+    }
     
-    // MARK: Initalizers
+    //MARK: - Init
     
-    init(with playerModel: PlayerModelController) {
-        self.playerModel = playerModel
-        super.init()
+    init() {
+        super.init(style: .insetGrouped)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = tabBarItem.title
-        playerModel.playerDelegate = self
-        data = playerModel.players
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        playerModel.retrievePlayers()
+        
+        setUpTableView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        data = playerModel.players
-        reloadTableview()
+        super.viewDidAppear(animated)
+        
+        getPlayers()
     }
     
-    func didFetchPlayers(players: [User]) {
-        data = players
-        reloadTableview()
+    func setUpTableView() {
+        tableView.register(RankingTableViewCell.self, forCellReuseIdentifier: CellTypes.rankingCell.rawValue)
+        tableView.showsVerticalScrollIndicator = false
+        tableView.allowsSelection = false
     }
     
-    func reloadTableview() {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
+    func getPlayers() {
+        NetworkManager.shared.getAllPlayers { [weak self] users in
+            guard let self = self else { return }
+            if let users = users {
+                self.configureArray(with: users)
+            } else {
+                print("COULD NOT GET USER")
+                self.players = []
+            }
         }
+    }
+    
+    func configureArray(with users: [User]) {
+        players.removeAll()
+        players = users
+        players.sort { $0.balance > $1.balance }
+    }
+    
+    func reloadData() {
+        DispatchQueue.main.async { self.tableView.reloadData() }
+    }
+}
+
+extension RankingViewController {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return players.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellTypes.rankingCell.rawValue) as? RankingTableViewCell else {
+            return RankingTableViewCell()
+        }
+        
+        let dataValue = players[indexPath.row]
+        
+        cell.textLabel?.text = "\(indexPath.row + 1). \(dataValue.name)"
+        cell.detailTextLabel?.text = "$\(dataValue.balance)"
+        
+        return cell
     }
 }

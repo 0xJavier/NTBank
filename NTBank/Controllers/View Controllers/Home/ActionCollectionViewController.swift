@@ -8,8 +8,6 @@
 import UIKit
 
 class ActionCollectionViewController: UICollectionViewController {
-
-    static let cellIdentifier = "action"
     
     // MARK: - Properties
     var actions: [QuickAction] = [
@@ -38,7 +36,7 @@ class ActionCollectionViewController: UICollectionViewController {
     private func collectionViewSetup() {
         collectionView.collectionViewLayout = makeLayout()
         collectionView.dataSource = actionDataSource
-        collectionView.register(ActionCollectionViewCell.self, forCellWithReuseIdentifier: Self.cellIdentifier)
+        collectionView.register(ActionCollectionViewCell.self, forCellWithReuseIdentifier: CellTypes.actionCell.rawValue)
         collectionView.showsHorizontalScrollIndicator = false
     }
     
