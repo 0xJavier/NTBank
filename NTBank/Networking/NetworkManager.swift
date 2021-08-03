@@ -15,6 +15,10 @@ class NetworkManager {
     
     private let lotteryRef = Firestore.firestore().collection("lottery").document("balance")
     
+    var userID: String? {
+        return Auth.auth().currentUser?.uid
+    }
+    
     private init() { }
     
     //MARK:-
@@ -188,6 +192,40 @@ class NetworkManager {
                                   "subAction": "Sent",
                                   "id": Int(Date().timeIntervalSince1970)]
         batch.setData(data, forDocument: transactionRef)
+        
+        batch.commit { error in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                completion(true)
+            }
+        }
+    }
+    
+    func payPlayer(with amount: Int, from user: User, to player: User, completion: @escaping((Bool) -> Void)) {
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        let batch = Firestore.firestore().batch()
+        
+        let balanceRef = playersRef.document(userID)
+        batch.updateData(["balance": FieldValue.increment(Int64(-amount))], forDocument: balanceRef)
+        
+        let transactionRef = playersRef.document(userID).collection("transactions").document()
+        let data: [String:Any] = ["amount": -amount,
+                                  "action": "Paid \(player.name)",
+                                  "subAction": "Sent",
+                                  "id": Int(Date().timeIntervalSince1970)]
+        
+        let balanceRefPlayer = playersRef.document(player.userID)
+        batch.updateData(["balance": FieldValue.increment(Int64(amount))], forDocument: balanceRefPlayer)
+        
+        let transactionRefPlayer = playersRef.document(player.userID).collection("transactions").document()
+        let dataPlayer: [String:Any] = ["amount": amount,
+                                  "action": "Got paid from \(user.name)",
+                                  "subAction": "Recieved",
+                                  "id": Int(Date().timeIntervalSince1970)]
+        
+        batch.setData(data, forDocument: transactionRef)
+        batch.setData(dataPlayer, forDocument: transactionRefPlayer)
         
         batch.commit { error in
             if let error = error {

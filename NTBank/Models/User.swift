@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct User {
+struct User: Hashable {
     var userID: String = ""
     var name: String = ""
     var email: String = ""

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class ActionCollectionViewController: UICollectionViewController {
     
@@ -115,7 +116,9 @@ extension ActionCollectionViewController {
 
 extension ActionCollectionViewController {
     func didSelectSendMoney() {
-        //TODO: Show Send Money View
+        let view = SendMoneyView(onComplete: {self.dismiss( animated: true, completion: nil )})
+        let hostingController = UIHostingController(rootView: view)
+        present(hostingController, animated: true)
     }
     
     func didSelectPayBank() {

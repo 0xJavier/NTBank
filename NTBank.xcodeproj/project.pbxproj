@@ -31,6 +31,7 @@
 		3074753E2697BD110053E20F /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 3074753D2697BD110053E20F /* FirebaseFirestoreSwift-Beta */; };
 		307475402697BD640053E20F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3074753F2697BD640053E20F /* GoogleService-Info.plist */; };
 		3074754A269F6E0B0053E20F /* PlayerModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30747549269F6E0B0053E20F /* PlayerModelController.swift */; };
+		307F0DF426B97C7D00C66D80 /* SendMoneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307F0DF326B97C7D00C66D80 /* SendMoneyView.swift */; };
 		3096B00226B32C5900E25A76 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3096B00126B32C5900E25A76 /* NetworkManager.swift */; };
 		3096B00526B340BC00E25A76 /* TransactionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3096B00426B340BC00E25A76 /* TransactionDataSource.swift */; };
 		3096B00726B3441100E25A76 /* ActionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3096B00626B3441100E25A76 /* ActionDataSource.swift */; };
@@ -102,6 +103,7 @@
 		303D23B726B84B3000BE95AE /* CellTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTypes.swift; sourceTree = "<group>"; };
 		3074753F2697BD640053E20F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		30747549269F6E0B0053E20F /* PlayerModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModelController.swift; sourceTree = "<group>"; };
+		307F0DF326B97C7D00C66D80 /* SendMoneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMoneyView.swift; sourceTree = "<group>"; };
 		3096B00126B32C5900E25A76 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3096B00426B340BC00E25A76 /* TransactionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDataSource.swift; sourceTree = "<group>"; };
 		3096B00626B3441100E25A76 /* ActionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionDataSource.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				30E10BEC2683BA4000F4816B /* Models */,
 				30E10BF22683BAAB00F4816B /* Views */,
 				30E10BF12683BAA500F4816B /* Controllers */,
+				307F0DF526B9946400C66D80 /* SwiftUIViews */,
 				3096B00326B340A800E25A76 /* DataSource */,
 				30E10BFF2683C03400F4816B /* Data */,
 				30E10C002683C06400F4816B /* Navigation */,
@@ -215,6 +218,14 @@
 				302782782677DC1400BC9077 /* Info.plist */,
 			);
 			path = NTBankUITests;
+			sourceTree = "<group>";
+		};
+		307F0DF526B9946400C66D80 /* SwiftUIViews */ = {
+			isa = PBXGroup;
+			children = (
+				307F0DF326B97C7D00C66D80 /* SendMoneyView.swift */,
+			);
+			path = SwiftUIViews;
 			sourceTree = "<group>";
 		};
 		3096B00326B340A800E25A76 /* DataSource */ = {
@@ -586,6 +597,7 @@
 				302782D126794F4400BC9077 /* NTTextfield.swift in Sources */,
 				30E10BCC2680F55300F4816B /* TransactionTableViewCell.swift in Sources */,
 				30E10BC6267DC0E900F4816B /* ActionCollectionViewController.swift in Sources */,
+				307F0DF426B97C7D00C66D80 /* SendMoneyView.swift in Sources */,
 				303D23B826B84B3000BE95AE /* CellTypes.swift in Sources */,
 				3074754A269F6E0B0053E20F /* PlayerModelController.swift in Sources */,
 				30E10BA6267DABDB00F4816B /* MainTabViewController.swift in Sources */,
