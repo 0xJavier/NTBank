@@ -15,7 +15,7 @@ protocol UserModelControllerDelegate: AnyObject {
 
 class UserModelController {
     public private(set) var user = UserMockData().user
-    public private(set) var transactions = UserMockData().transactions
+    //public private(set) var transactions = UserMockData().transactions
     
     let playersRef = Firestore.firestore().collection("players")
     
@@ -60,12 +60,12 @@ class UserModelController {
                     return
                 }
                 
-                self.transactions.removeAll()
+                //self.transactions.removeAll()
                 
                 for document in documents {
-                    self.transactions.append(Transaction(transactionInfo: document.data()))
+                    //self.transactions.append(Transaction(transactionInfo: document.data()))
                 }
-                self.userDelegate?.didFetchTransactions(transactions: self.transactions)
+                //self.userDelegate?.didFetchTransactions(transactions: self.transactions)
             }
     }
 }

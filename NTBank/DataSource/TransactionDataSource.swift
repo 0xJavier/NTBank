@@ -27,7 +27,7 @@ class TransactionListDataSource: NSObject, UITableViewDataSource, UITableViewDel
 
         cell.amountLabel.text = "$\(data.amount)"
         cell.titleLabel.text = data.action
-        cell.subtitleLabel.text = "Subaction"
+        cell.subtitleLabel.text = data.subAction
         
         return cell
     }
