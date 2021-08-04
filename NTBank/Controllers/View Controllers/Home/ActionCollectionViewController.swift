@@ -12,7 +12,8 @@ class ActionCollectionViewController: UICollectionViewController {
     
     // MARK: - Properties
     var actions: [QuickAction] = [
-        QuickAction(title: "Send Money", backgroundColor: .systemBlue, image: UIImage(systemName: "dollarsign.square.fill")!),
+        QuickAction(title: "Send Money", backgroundColor: .systemBlue, image: UIImage(systemName: "paperplane.fill")!),
+        QuickAction(title: "Collect $200", backgroundColor: .systemPink, image: UIImage(systemName: "dollarsign.square.fill")!),
         QuickAction(title: "Pay Bank", backgroundColor: .systemGreen, image: UIImage(systemName: "building.columns.fill")!),
         QuickAction(title: "Pay Lottery", backgroundColor: .systemOrange, image: UIImage(systemName: "car.fill")!),
         QuickAction(title: "Recieve Money", backgroundColor: .systemPurple, image: UIImage(systemName: "chevron.down.square.fill")!)
@@ -51,8 +52,17 @@ class ActionCollectionViewController: UICollectionViewController {
     }
     
     //MARK: -
-    private func sendMoney(with amount: Int) {
-        
+    private func collect200() {
+        showLoadingView()
+        NetworkManager.shared.collect200 { [weak self] bool in
+            guard let self = self else { return }
+            self.dismissLoadingView()
+            if bool {
+                self.presentSimpleAlert(title: "Success!", message: "Successfully collected $200.")
+            } else {
+                self.presentSimpleAlert(title: "Error", message: "Could not collect $200.")
+            }
+        }
     }
     
     private func payBank(with amount: Int) {
@@ -103,10 +113,12 @@ extension ActionCollectionViewController {
         case 0:
             didSelectSendMoney()
         case 1:
-            didSelectPayBank()
+            didSelectCollect200()
         case 2:
-            didSelectPayLottery()
+            didSelectPayBank()
         case 3:
+            didSelectPayLottery()
+        case 4:
             didSelectRecieveMoney()
         default:
             print("Could not get index for collection view")
@@ -119,6 +131,26 @@ extension ActionCollectionViewController {
         let view = SendMoneyView(onComplete: {self.dismiss( animated: true, completion: nil )})
         let hostingController = UIHostingController(rootView: view)
         present(hostingController, animated: true)
+    }
+    
+    func didSelectCollect200() {
+        let title = "Collect $200"
+        let message = "Would you like to collect $200?"
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+
+        let saveAction = UIAlertAction(title: "Yes", style: .default) { action in
+            self.collect200()
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+            return
+        }
+
+        alertController.addAction(cancelAction)
+        alertController.addAction(saveAction)
+
+        DispatchQueue.main.async { self.present(alertController, animated: true) }
     }
     
     func didSelectPayBank() {

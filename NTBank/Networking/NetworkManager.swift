@@ -153,6 +153,29 @@ class NetworkManager {
         }
     }
     
+    func collect200(completion: @escaping(Bool) -> Void) {
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        let batch = Firestore.firestore().batch()
+        
+        let balanceRef = playersRef.document(userID)
+        batch.updateData(["balance": FieldValue.increment(Int64(200))], forDocument: balanceRef)
+        
+        let transactionRef = playersRef.document(userID).collection("transactions").document()
+        let data: [String:Any] = ["amount": 200,
+                                  "action": "Collected $200",
+                                  "subAction": "Recieved",
+                                  "id": Int(Date().timeIntervalSince1970)]
+        batch.setData(data, forDocument: transactionRef)
+        
+        batch.commit { error in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                completion(true)
+            }
+        }
+    }
+    
     func recieveMoney(with amount: Int, completion: @escaping(Bool) -> Void) {
         guard let userID = Auth.auth().currentUser?.uid else { return }
         let batch = Firestore.firestore().batch()
