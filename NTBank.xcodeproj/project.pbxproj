@@ -35,6 +35,10 @@
 		3096B00226B32C5900E25A76 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3096B00126B32C5900E25A76 /* NetworkManager.swift */; };
 		3096B00526B340BC00E25A76 /* TransactionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3096B00426B340BC00E25A76 /* TransactionDataSource.swift */; };
 		3096B00726B3441100E25A76 /* ActionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3096B00626B3441100E25A76 /* ActionDataSource.swift */; };
+		30D5BFA226BAEA8400F5D5BE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D5BFA126BAEA8400F5D5BE /* SettingsViewController.swift */; };
+		30D5BFA426BAF79800F5D5BE /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D5BFA326BAF79800F5D5BE /* Setting.swift */; };
+		30D5BFA626BAF8CE00F5D5BE /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D5BFA526BAF8CE00F5D5BE /* SettingsTableViewCell.swift */; };
+		30D5BFA826BB049400F5D5BE /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D5BFA726BB049400F5D5BE /* AccountTableViewCell.swift */; };
 		30DA48EB268E52810096ECF3 /* LotteryModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DA48EA268E52810096ECF3 /* LotteryModelController.swift */; };
 		30E10BA1267DA94400F4816B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BA0267DA94400F4816B /* User.swift */; };
 		30E10BA3267DA95C00F4816B /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E10BA2267DA95C00F4816B /* Transaction.swift */; };
@@ -107,6 +111,10 @@
 		3096B00126B32C5900E25A76 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3096B00426B340BC00E25A76 /* TransactionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDataSource.swift; sourceTree = "<group>"; };
 		3096B00626B3441100E25A76 /* ActionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionDataSource.swift; sourceTree = "<group>"; };
+		30D5BFA126BAEA8400F5D5BE /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		30D5BFA326BAF79800F5D5BE /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		30D5BFA526BAF8CE00F5D5BE /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		30D5BFA726BB049400F5D5BE /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
 		30DA48EA268E52810096ECF3 /* LotteryModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryModelController.swift; sourceTree = "<group>"; };
 		30E10BA0267DA94400F4816B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		30E10BA2267DA95C00F4816B /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
@@ -273,12 +281,21 @@
 			path = Ranking;
 			sourceTree = "<group>";
 		};
+		30D5BFA026BAEA5E00F5D5BE /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				30D5BFA126BAEA8400F5D5BE /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		30E10BEC2683BA4000F4816B /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				30E10BA0267DA94400F4816B /* User.swift */,
 				30E10BA2267DA95C00F4816B /* Transaction.swift */,
 				30E10BCF2681009A00F4816B /* QuickAction.swift */,
+				30D5BFA326BAF79800F5D5BE /* Setting.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -342,6 +359,7 @@
 				30AFC32826B35C03008CA4E3 /* Home */,
 				30AFC32A26B35C2A008CA4E3 /* Lottery */,
 				30AFC32B26B35C32008CA4E3 /* Ranking */,
+				30D5BFA026BAEA5E00F5D5BE /* Settings */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -404,6 +422,8 @@
 				30E10BC7267E6B2700F4816B /* ActionCollectionViewCell.swift */,
 				30E10BCB2680F55300F4816B /* TransactionTableViewCell.swift */,
 				30E10C0E2685346200F4816B /* RankingTableViewCell.swift */,
+				30D5BFA526BAF8CE00F5D5BE /* SettingsTableViewCell.swift */,
+				30D5BFA726BB049400F5D5BE /* AccountTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -568,11 +588,13 @@
 				30E10BC3267DBF1400F4816B /* UIViewController+Extension.swift in Sources */,
 				30E10C09268520DB00F4816B /* LotteryViewController.swift in Sources */,
 				30E10C0F2685346200F4816B /* RankingTableViewCell.swift in Sources */,
+				30D5BFA626BAF8CE00F5D5BE /* SettingsTableViewCell.swift in Sources */,
 				30E10BB7267DB7F200F4816B /* UserModelController.swift in Sources */,
 				30E10BAD267DAD2700F4816B /* NTCreditCard.swift in Sources */,
 				302782C826794B6300BC9077 /* LoginInterfaceView.swift in Sources */,
 				30E10BCE2680F6CC00F4816B /* NTSymbolView.swift in Sources */,
 				302782B22679289800BC9077 /* NTButton.swift in Sources */,
+				30D5BFA426BAF79800F5D5BE /* Setting.swift in Sources */,
 				30E10BA8267DABF400F4816B /* HomeViewController.swift in Sources */,
 				302782D326794F5E00BC9077 /* NTSecurefield.swift in Sources */,
 				302782BD26792CEC00BC9077 /* UIView+Extension.swift in Sources */,
@@ -585,6 +607,7 @@
 				30E10BC8267E6B2700F4816B /* ActionCollectionViewCell.swift in Sources */,
 				302782BF2679330F00BC9077 /* UIStackView+Extension.swift in Sources */,
 				302782572677DC1000BC9077 /* SceneDelegate.swift in Sources */,
+				30D5BFA226BAEA8400F5D5BE /* SettingsViewController.swift in Sources */,
 				302782CC26794D5700BC9077 /* NTHeaderView.swift in Sources */,
 				30DA48EB268E52810096ECF3 /* LotteryModelController.swift in Sources */,
 				30E10C072685204B00F4816B /* LotteryInterfaceView.swift in Sources */,
@@ -592,6 +615,7 @@
 				302782CA26794B7C00BC9077 /* SignupInterfaceView.swift in Sources */,
 				302782BA26792BB300BC9077 /* WelcomeInterfaceView.swift in Sources */,
 				302782C1267934AA00BC9077 /* LoginViewController.swift in Sources */,
+				30D5BFA826BB049400F5D5BE /* AccountTableViewCell.swift in Sources */,
 				30E10C052684D5C800F4816B /* Alert.swift in Sources */,
 				30E10C0B2685300300F4816B /* RankingViewController.swift in Sources */,
 				302782D126794F4400BC9077 /* NTTextfield.swift in Sources */,
