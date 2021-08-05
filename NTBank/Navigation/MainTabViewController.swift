@@ -20,7 +20,6 @@ class MainTabViewController: UITabBarController {
     
     private func createNavController(viewController: UIViewController, title: String, imageName: String, hasLargeTitle: Bool = false) -> UIViewController {
         viewController.title = title
-        //viewController.view.backgroundColor = .systemBackground
         
         let navController = UINavigationController(rootViewController: viewController)
         navController.tabBarItem.image = UIImage(systemName: imageName)

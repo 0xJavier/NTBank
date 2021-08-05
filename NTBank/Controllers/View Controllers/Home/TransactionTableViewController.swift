@@ -31,6 +31,7 @@ class TransactionTableViewController: UITableViewController {
         tableView.allowsSelection = false
         tableView.delegate = transactionDataSource
         tableView.dataSource = transactionDataSource
+        tableView.tableFooterView = UIView(frame: .zero)
     }
     
     // MARK: - Data Life Cycle

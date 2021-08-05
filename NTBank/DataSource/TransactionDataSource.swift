@@ -23,11 +23,9 @@ class TransactionListDataSource: NSObject, UITableViewDataSource, UITableViewDel
             return TransactionTableViewCell()
         }
         
-        let data = transactions[indexPath.row]
+        let transaction = transactions[indexPath.row]
 
-        cell.amountLabel.text = "$\(data.amount)"
-        cell.titleLabel.text = data.action
-        cell.subtitleLabel.text = data.subAction
+        cell.set(with: transaction)
         
         return cell
     }

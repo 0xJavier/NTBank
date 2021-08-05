@@ -61,8 +61,42 @@ class TransactionTableViewCell: UITableViewCell {
     //MARK: - Set
     func set(with transaction: Transaction) {
         titleLabel.text = transaction.action
-        subtitleLabel.text = "Subaction"
+        subtitleLabel.text = transaction.subAction
         amountLabel.text = "$\(transaction.amount)"
+        
+        if transaction.amount < 0 {
+            amountLabel.textColor = .systemRed
+        }
+        
+        let type = TransactionType.init(rawValue: transaction.type)
+        
+        switch type {
+        case .paidPlayer:
+            symbolImageView.backgroundView.backgroundColor = .systemBlue
+            symbolImageView.symbolImageView.image = UIImage(systemName: "person.fill")
+        case .receivedMoneyFromPlayer:
+            symbolImageView.backgroundView.backgroundColor = .systemBlue
+            symbolImageView.symbolImageView.image = UIImage(systemName: "person.fill")
+        case .collect200:
+            symbolImageView.backgroundView.backgroundColor = .systemRed
+            symbolImageView.symbolImageView.image = UIImage(systemName: "dollarsign.square.fill")
+        case .paidBank:
+            symbolImageView.backgroundView.backgroundColor = .systemGreen
+            symbolImageView.symbolImageView.image = UIImage(systemName: "building.columns.fill")
+        case .paidLottery:
+            symbolImageView.backgroundView.backgroundColor = .systemOrange
+            symbolImageView.symbolImageView.image = UIImage(systemName: "car.fill")
+        case .receivedMoneyFromBank:
+            symbolImageView.backgroundView.backgroundColor = .systemGreen
+            symbolImageView.symbolImageView.image = UIImage(systemName: "building.columns.fill")
+        case .wonLottery:
+            symbolImageView.backgroundView.backgroundColor = .systemOrange
+            symbolImageView.symbolImageView.image = UIImage(systemName: "car.fill")
+        case .none:
+            print("Could not load Image")
+            symbolImageView.backgroundView.backgroundColor = .systemBlue
+            symbolImageView.symbolImageView.image = UIImage(systemName: "person.fill")
+        }
     }
 
     //MARK: - Setup

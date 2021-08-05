@@ -35,6 +35,7 @@
 		3096B00226B32C5900E25A76 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3096B00126B32C5900E25A76 /* NetworkManager.swift */; };
 		3096B00526B340BC00E25A76 /* TransactionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3096B00426B340BC00E25A76 /* TransactionDataSource.swift */; };
 		3096B00726B3441100E25A76 /* ActionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3096B00626B3441100E25A76 /* ActionDataSource.swift */; };
+		30CB9BA626BC560900E44AE2 /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CB9BA526BC560900E44AE2 /* TransactionType.swift */; };
 		30D5BFA226BAEA8400F5D5BE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D5BFA126BAEA8400F5D5BE /* SettingsViewController.swift */; };
 		30D5BFA426BAF79800F5D5BE /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D5BFA326BAF79800F5D5BE /* Setting.swift */; };
 		30D5BFA626BAF8CE00F5D5BE /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D5BFA526BAF8CE00F5D5BE /* SettingsTableViewCell.swift */; };
@@ -111,6 +112,7 @@
 		3096B00126B32C5900E25A76 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3096B00426B340BC00E25A76 /* TransactionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDataSource.swift; sourceTree = "<group>"; };
 		3096B00626B3441100E25A76 /* ActionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionDataSource.swift; sourceTree = "<group>"; };
+		30CB9BA526BC560900E44AE2 /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
 		30D5BFA126BAEA8400F5D5BE /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		30D5BFA326BAF79800F5D5BE /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		30D5BFA526BAF8CE00F5D5BE /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				303D23B726B84B3000BE95AE /* CellTypes.swift */,
+				30CB9BA526BC560900E44AE2 /* TransactionType.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -586,6 +589,7 @@
 				3096B00526B340BC00E25A76 /* TransactionDataSource.swift in Sources */,
 				3096B00726B3441100E25A76 /* ActionDataSource.swift in Sources */,
 				30E10BC3267DBF1400F4816B /* UIViewController+Extension.swift in Sources */,
+				30CB9BA626BC560900E44AE2 /* TransactionType.swift in Sources */,
 				30E10C09268520DB00F4816B /* LotteryViewController.swift in Sources */,
 				30E10C0F2685346200F4816B /* RankingTableViewCell.swift in Sources */,
 				30D5BFA626BAF8CE00F5D5BE /* SettingsTableViewCell.swift in Sources */,

@@ -96,6 +96,7 @@ class NetworkManager {
             "id": Int(Date().timeIntervalSince1970),
             "amount": amount,
             "action": "Won the lottery",
+            "type": TransactionType.wonLottery.rawValue,
             "subAction": "Recieved"
         ]
         
@@ -141,6 +142,7 @@ class NetworkManager {
         let data: [String:Any] = ["amount": -amount,
                                   "action": "Paid Bank",
                                   "subAction": "Sent",
+                                  "type": TransactionType.paidBank.rawValue,
                                   "id": Int(Date().timeIntervalSince1970)]
         batch.setData(data, forDocument: transactionRef)
         
@@ -164,6 +166,7 @@ class NetworkManager {
         let data: [String:Any] = ["amount": 200,
                                   "action": "Collected $200",
                                   "subAction": "Recieved",
+                                  "type": TransactionType.collect200.rawValue,
                                   "id": Int(Date().timeIntervalSince1970)]
         batch.setData(data, forDocument: transactionRef)
         
@@ -187,6 +190,7 @@ class NetworkManager {
         let data: [String:Any] = ["amount": amount,
                                   "action": "Got money from Bank",
                                   "subAction": "Recieved",
+                                  "type": TransactionType.receivedMoneyFromBank.rawValue,
                                   "id": Int(Date().timeIntervalSince1970)]
         batch.setData(data, forDocument: transactionRef)
         
@@ -212,6 +216,7 @@ class NetworkManager {
         let transactionRef = playersRef.document(userID).collection("transactions").document()
         let data: [String:Any] = ["amount": -amount,
                                   "action": "Paid Lottery",
+                                  "type": TransactionType.paidLottery.rawValue,
                                   "subAction": "Sent",
                                   "id": Int(Date().timeIntervalSince1970)]
         batch.setData(data, forDocument: transactionRef)
@@ -236,6 +241,7 @@ class NetworkManager {
         let data: [String:Any] = ["amount": -amount,
                                   "action": "Paid \(player.name)",
                                   "subAction": "Sent",
+                                  "type": TransactionType.paidPlayer.rawValue,
                                   "id": Int(Date().timeIntervalSince1970)]
         
         let balanceRefPlayer = playersRef.document(player.userID)
@@ -245,6 +251,7 @@ class NetworkManager {
         let dataPlayer: [String:Any] = ["amount": amount,
                                   "action": "Got paid from \(user.name)",
                                   "subAction": "Recieved",
+                                  "type": TransactionType.receivedMoneyFromPlayer.rawValue,
                                   "id": Int(Date().timeIntervalSince1970)]
         
         batch.setData(data, forDocument: transactionRef)

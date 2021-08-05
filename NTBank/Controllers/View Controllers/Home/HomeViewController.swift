@@ -31,6 +31,7 @@ class HomeViewController: UIViewController {
     override func loadView() {
         view = homeInterface
         
+        view.backgroundColor = .systemBackground
         add(childVC: transactionController, to: homeInterface.transactionContainerView)
         add(childVC: actionController, to: homeInterface.actionContainerView)
     }

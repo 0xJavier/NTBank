@@ -27,6 +27,7 @@ class LotteryViewController: UIViewController, LotteryInterfaceViewDelegate {
 
     override func loadView() {
         view = lotteryInterface
+        view.backgroundColor = .systemBackground
     }
     
     func streamLotteryChanges() {
