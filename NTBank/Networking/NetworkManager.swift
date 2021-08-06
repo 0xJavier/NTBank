@@ -80,6 +80,22 @@ class NetworkManager {
         }
     }
     
+    func changeUserCardColor(with color: String, completion: @escaping(Bool) -> Void) {
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        let batch = Firestore.firestore().batch()
+        
+        let balanceRef = playersRef.document(userID)
+        batch.updateData(["color": color], forDocument: balanceRef)
+        
+        batch.commit { error in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                completion(true)
+            }
+        }
+    }
+    
     func collectLottery(with amount: Int, completion: @escaping(Bool) -> Void) {
         guard let userID = Auth.auth().currentUser?.uid else {
             print("DEBUG: Could not get userID when collecting lottery")

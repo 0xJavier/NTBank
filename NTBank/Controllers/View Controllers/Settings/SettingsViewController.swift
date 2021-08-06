@@ -10,10 +10,12 @@ import UIKit
 class SettingsViewController: UITableViewController {
 
     var settings: [Setting] = [
-        Setting(title: "Change Name", image: UIImage(systemName: "person.fill")!, color: .systemOrange),
+        //Setting(title: "Change Name", image: UIImage(systemName: "person.fill")!, color: .systemOrange),
         Setting(title: "Change Card Color", image: UIImage(systemName: "creditcard.fill")!, color: .systemBlue),
-        Setting(title: "Reset Game", image: UIImage(systemName: "arrow.clockwise")!, color: .systemGreen)
+        //Setting(title: "Reset Game", image: UIImage(systemName: "arrow.clockwise")!, color: .systemGreen)
     ]
+    
+    var newCardColor: String?
     
     var user = User(id: "12345", userInfo: ["name": "Player", "email": "player@NTBank.com", "color": "red", "balance": 1500]) {
         didSet { tableView.reloadData() }
@@ -50,6 +52,39 @@ class SettingsViewController: UITableViewController {
         NetworkManager.shared.streamUser { user in
             guard let user = user else { return }
             self.user = user
+        }
+    }
+    
+    func didSelectChangeCardColor() {
+        let sheet = UIAlertController(title: "Change Card Color", message: "Choose new card color.", preferredStyle: .actionSheet)
+        
+        for color in CardColor.allCases {
+            let option = UIAlertAction(title: color.rawValue, style: .default) { [weak self] _ in
+                guard let self = self else { return }
+                self.newCardColor = color.rawValue
+                self.changeColor()
+            }
+            sheet.addAction(option)
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        sheet.addAction(cancel)
+        
+        self.present(sheet, animated: true, completion: nil)
+    }
+    
+    func changeColor() {
+        guard let cardColor = newCardColor else { return }
+        showLoadingView()
+        NetworkManager.shared.changeUserCardColor(with: cardColor) { [weak self] bool in
+            guard let self = self else { return }
+            self.dismissLoadingView()
+            if bool {
+                print("Success!")
+            } else {
+                print("FAILED to change color")
+            }
         }
     }
     
@@ -97,11 +132,7 @@ class SettingsViewController: UITableViewController {
         if indexPath.section == 1 {
             switch indexPath.row {
             case 0:
-                print("Change Name")
-            case 1:
-                print("Change Card")
-            case 2:
-                print("Reset Game")
+                didSelectChangeCardColor()
             default:
                 print("COuld not get index")
             }
