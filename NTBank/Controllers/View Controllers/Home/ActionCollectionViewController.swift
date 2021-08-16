@@ -16,7 +16,7 @@ class ActionCollectionViewController: UICollectionViewController {
         QuickAction(title: "Collect $200", backgroundColor: .systemPink, image: UIImage(systemName: "dollarsign.square.fill")!),
         QuickAction(title: "Pay Bank", backgroundColor: .systemGreen, image: UIImage(systemName: "building.columns.fill")!),
         QuickAction(title: "Pay Lottery", backgroundColor: .systemOrange, image: UIImage(systemName: "car.fill")!),
-        QuickAction(title: "Recieve Money", backgroundColor: .systemPurple, image: UIImage(systemName: "chevron.down.square.fill")!)
+        QuickAction(title: "Receive Money", backgroundColor: .systemPurple, image: UIImage(systemName: "chevron.down.square.fill")!)
     ]
     
     lazy var actionDataSource = ActionDataSource(with: actions)
@@ -54,57 +54,74 @@ class ActionCollectionViewController: UICollectionViewController {
     //MARK: -
     private func collect200() {
         showLoadingView()
-        NetworkManager.shared.collect200 { [weak self] bool in
+        GameService.shared.collect200 { [weak self] result in
             guard let self = self else { return }
             self.dismissLoadingView()
-            if bool {
-                self.presentSimpleAlert(title: "Success!", message: "Successfully collected $200.")
-            } else {
-                self.presentSimpleAlert(title: "Error", message: "Could not collect $200.")
+            switch result {
+            case .success(_):
+                Alert.present(title: "Success!", message: "Successfully collected $200.", from: self)
+            case .failure(let error):
+                Alert.present(title: "Error", message: error.localizedDescription, from: self)
             }
         }
     }
     
     private func payBank(with amount: Int) {
+        if amount <= 0 {
+            Alert.present(title: "Error", message: "Please enter an amount greater then 0.", from: self)
+            return
+        }
+        
         showLoadingView()
-        NetworkManager.shared.payBank(with: amount) { [weak self] bool in
+        GameService.shared.payBank(with: amount) { [weak self] result in
             guard let self = self else { return }
             self.dismissLoadingView()
-            if bool {
-                self.presentSimpleAlert(title: "Success!", message: "Successfully paid the bank.")
-            } else {
-                self.presentSimpleAlert(title: "Error", message: "Could not pay bank.")
+            switch result {
+            case .success(_):
+                Alert.present(title: "Success!", message: "Successfully paid the bank.", from: self)
+            case .failure(let error):
+                Alert.present(title: "Error", message: error.localizedDescription, from: self)
             }
         }
     }
     
     private func payLottery(with amount: Int) {
+        if amount <= 0 {
+            Alert.present(title: "Error", message: "Please enter an amount greater then 0.", from: self)
+            return
+        }
+        
         showLoadingView()
-        NetworkManager.shared.payLottery(with: amount) { [weak self] bool in
+        GameService.shared.payLottery(with: amount) { [weak self] result in
             guard let self = self else { return }
             self.dismissLoadingView()
-            if bool {
-                self.presentSimpleAlert(title: "Success!", message: "Successfully paid the lottery.")
-            } else {
-                self.presentSimpleAlert(title: "Error", message: "Could not pay lottery.")
+            switch result {
+            case .success(_):
+                Alert.present(title: "Success!", message: "Successfully paid the lottery.", from: self)
+            case .failure(let error):
+                Alert.present(title: "Error", message: error.localizedDescription, from: self)
             }
         }
     }
     
-    private func recieveMoney(with amount: Int) {
+    private func receiveMoney(with amount: Int) {
+        if amount <= 0 {
+            Alert.present(title: "Error", message: "Please enter an amount greater then 0.", from: self)
+            return
+        }
+        
         showLoadingView()
-        NetworkManager.shared.recieveMoney(with: amount) { [weak self] bool in
+        GameService.shared.receiveMoney(with: amount) { [weak self] result in
             guard let self = self else { return }
             self.dismissLoadingView()
-            if bool {
-                self.presentSimpleAlert(title: "Success!", message: "Successfully recieved money from the bank.")
-            } else {
-                self.presentSimpleAlert(title: "Error", message: "Could not recieve money.")
+            switch result {
+            case .success(_):
+                Alert.present(title: "Success!", message: "Successfully received money from the bank.", from: self)
+            case .failure(let error):
+                Alert.present(title: "Error", message: error.localizedDescription, from: self)
             }
         }
     }
-    
-    private func isAmountBiggerThenZero(_ amount: Int) -> Bool { return amount <= 0 }
 }
 
 extension ActionCollectionViewController {
@@ -119,7 +136,7 @@ extension ActionCollectionViewController {
         case 3:
             didSelectPayLottery()
         case 4:
-            didSelectRecieveMoney()
+            didSelectReceiveMoney()
         default:
             print("Could not get index for collection view")
         }
@@ -139,13 +156,11 @@ extension ActionCollectionViewController {
         
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
-        let saveAction = UIAlertAction(title: "Yes", style: .default) { action in
+        let saveAction = UIAlertAction(title: "Yes", style: .default) { _ in
             self.collect200()
         }
 
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
-            return
-        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
 
         alertController.addAction(cancelAction)
         alertController.addAction(saveAction)
@@ -157,74 +172,29 @@ extension ActionCollectionViewController {
         let title = "Pay Bank"
         let message = "Please enter the amount you would like to send to the bank"
         
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-
-        alertController.addTextField()
-        alertController.textFields![0].keyboardType = .numberPad
-
-        let saveAction = UIAlertAction(title: "Send", style: .default) { action in
-            guard let input = alertController.textFields![0].text else { return }
-            let amount = Int(input) ?? 0
-            self.payBank(with: amount)
+        Alert.presentTextfieldIntAlert(with: title, message, from: self) { [weak self] amount in
+            guard let amount = amount else { return }
+            self?.payBank(with: amount)
         }
-
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
-            return
-        }
-
-        alertController.addAction(cancelAction)
-        alertController.addAction(saveAction)
-
-        DispatchQueue.main.async { self.present(alertController, animated: true) }
     }
     
     func didSelectPayLottery() {
         let title = "Pay Lottery"
         let message = "Please enter the amount you would like to pay the lottery"
         
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        alertController.addTextField()
-        alertController.textFields![0].keyboardType = .numberPad
-        
-        let saveAction = UIAlertAction(title: "Confirm", style: .default) { action in
-            guard let input = alertController.textFields![0].text else { return }
-            let amount = Int(input) ?? 0
-            self.payLottery(with: amount)
+        Alert.presentTextfieldIntAlert(with: title, message, from: self) { [weak self] amount in
+            guard let amount = amount else { return }
+            self?.payLottery(with: amount)
         }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
-            return
-        }
-        
-        alertController.addAction(cancelAction)
-        alertController.addAction(saveAction)
-        
-        DispatchQueue.main.async { self.present(alertController, animated: true) }
     }
     
-    func didSelectRecieveMoney() {
-        let title = "Recieve Money"
-        let message = "Please enter the amount you would like to recieve from the bank"
+    func didSelectReceiveMoney() {
+        let title = "Receive Money"
+        let message = "Please enter the amount you would like to receive from the bank"
         
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        alertController.addTextField()
-        alertController.textFields![0].keyboardType = .numberPad
-        
-        let saveAction = UIAlertAction(title: "Confirm", style: .default) { action in
-            guard let input = alertController.textFields![0].text else { return }
-            let amount = Int(input) ?? 0
-            self.recieveMoney(with: amount)
+        Alert.presentTextfieldIntAlert(with: title, message, from: self) { [weak self] amount in
+            guard let amount = amount else { return }
+            self?.receiveMoney(with: amount)
         }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
-            return
-        }
-        
-        alertController.addAction(cancelAction)
-        alertController.addAction(saveAction)
-        
-        DispatchQueue.main.async { self.present(alertController, animated: true) }
     }
 }

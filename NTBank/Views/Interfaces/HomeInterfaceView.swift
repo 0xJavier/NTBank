@@ -12,14 +12,14 @@ class HomeInterfaceView: UIView {
     lazy var creditCard = NTCreditCard()
     
     lazy var quickActionLabel: UILabel = {
-        let label = UILabel()
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Quick Actions"
-        label.font = UIFont.systemFont(ofSize: 22, weight: .bold)
-        
-        return label
-    }()
+    let label = UILabel()
+    
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.text = "Quick Actions"
+    label.font = UIFont.systemFont(ofSize: 22, weight: .bold)
+    
+    return label
+}()
     
     lazy var actionContainerView: UIView = {
         let view = UIView()
@@ -117,6 +117,4 @@ class HomeInterfaceView: UIView {
         
         return [top, leading, trailing, bottom]
     }
-    
-    //MARK: - Selectors
 }

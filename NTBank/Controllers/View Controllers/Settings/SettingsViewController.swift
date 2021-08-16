@@ -9,17 +9,13 @@ import UIKit
 
 class SettingsViewController: UITableViewController {
 
-    var settings: [Setting] = [
-        //Setting(title: "Change Name", image: UIImage(systemName: "person.fill")!, color: .systemOrange),
-        Setting(title: "Change Card Color", image: UIImage(systemName: "creditcard.fill")!, color: .systemBlue),
-        //Setting(title: "Reset Game", image: UIImage(systemName: "arrow.clockwise")!, color: .systemGreen)
-    ]
+    var settings: [Setting] = [ Setting(title: "Change Card Color", image: UIImage(systemName: "creditcard.fill")!, color: .systemBlue) ]
     
-    var newCardColor: String?
-    
-    var user = User(id: "12345", userInfo: ["name": "Player", "email": "player@NTBank.com", "color": "red", "balance": 1500]) {
+    var user = User.placeholder {
         didSet { tableView.reloadData() }
     }
+    
+    var newCardColor: String?
     
     init() {
         super.init(style: .grouped)
@@ -49,9 +45,14 @@ class SettingsViewController: UITableViewController {
     }
     
     func getUser() {
-        NetworkManager.shared.streamUser { user in
-            guard let user = user else { return }
-            self.user = user
+        UserService.shared.streamUser { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let user):
+                self.user = user
+            case .failure(let error):
+                Alert.present(title: "Error", message: error.localizedDescription, from: self)
+            }
         }
     }
     
@@ -77,17 +78,20 @@ class SettingsViewController: UITableViewController {
     func changeColor() {
         guard let cardColor = newCardColor else { return }
         showLoadingView()
-        NetworkManager.shared.changeUserCardColor(with: cardColor) { [weak self] bool in
+        UserService.shared.changeUserCardColor(with: cardColor) { [weak self] result in
             guard let self = self else { return }
             self.dismissLoadingView()
-            if bool {
-                print("Success!")
-            } else {
-                print("FAILED to change color")
+            switch result {
+            case .success(_):
+                Alert.present(title: "Success!", message: "Successfully changed card color.", from: self)
+            case .failure(let error):
+                Alert.present(title: "Error", message: error.localizedDescription, from: self)
             }
         }
     }
-    
+}
+
+extension SettingsViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -113,9 +117,9 @@ class SettingsViewController: UITableViewController {
             return SettingsTableViewCell()
         }
         
-        let dataValue = settings[indexPath.row]
+        let setting = settings[indexPath.row]
         
-        cell.set(with: dataValue)
+        cell.set(with: setting)
         cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
         
         return cell
@@ -134,7 +138,7 @@ class SettingsViewController: UITableViewController {
             case 0:
                 didSelectChangeCardColor()
             default:
-                print("COuld not get index")
+                print("Could not get index")
             }
         }
     }

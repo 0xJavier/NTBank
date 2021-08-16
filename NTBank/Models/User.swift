@@ -42,3 +42,7 @@ struct User: Hashable {
         self.balance = userInfo["balance"] as? Int ?? 0
     }
 }
+
+extension User {
+    static let placeholder = User(id: "12345", userInfo: ["name": "Player", "email": "player@NTBank.com", "color": "red", "balance": 1500])
+}

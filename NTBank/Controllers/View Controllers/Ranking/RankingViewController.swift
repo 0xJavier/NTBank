@@ -44,13 +44,13 @@ class RankingViewController: UITableViewController {
     }
     
     func getPlayers() {
-        NetworkManager.shared.getAllPlayers { [weak self] users in
+        GameService.shared.getAllPlayers { [weak self] result in
             guard let self = self else { return }
-            if let users = users {
+            switch result {
+            case .success(let users):
                 self.configureArray(with: users)
-            } else {
-                print("COULD NOT GET USER")
-                self.players = []
+            case .failure(let error):
+                Alert.present(title: "Error", message: error.localizedDescription, from: self)
             }
         }
     }
@@ -76,10 +76,10 @@ extension RankingViewController {
             return RankingTableViewCell()
         }
         
-        let dataValue = players[indexPath.row]
+        let player = players[indexPath.row]
         
-        cell.textLabel?.text = "\(indexPath.row + 1). \(dataValue.name)"
-        cell.detailTextLabel?.text = "$\(dataValue.balance)"
+        cell.textLabel?.text = "\(indexPath.row + 1). \(player.name)"
+        cell.detailTextLabel?.text = "$\(player.balance)"
         
         return cell
     }

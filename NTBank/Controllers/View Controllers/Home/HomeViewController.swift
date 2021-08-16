@@ -37,12 +37,13 @@ class HomeViewController: UIViewController {
     }
     
     private func streamUserChanges() {
-        NetworkManager.shared.streamUser { [weak self] user in
+        UserService.shared.streamUser { [weak self] result in
             guard let self = self else { return }
-            if let user = user {
+            switch result {
+            case .success(let user):
                 self.user = user
-            } else {
-                print("COULD NOT STREAM USER")
+            case .failure(let error):
+                Alert.present(title: "Error", message: error.localizedDescription, from: self)
             }
         }
     }

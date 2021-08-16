@@ -41,13 +41,14 @@ class TransactionTableViewController: UITableViewController {
     
     //MARK: -
     func streamTransactions() {
-        NetworkManager.shared.streamUserTransactions { [weak self] transactions in
+        UserService.shared.streamUserTransactions { [weak self] result in
             guard let self = self else { return }
-            if let transactions = transactions {
+            switch result {
+            case .success(let transactions):
                 self.transactions.removeAll()
                 self.transactions = transactions
-            } else {
-                print("COULD NOT STREAM Transactions")
+            case .failure(let error):
+                Alert.present(title: "Error", message: error.localizedDescription, from: self)
             }
         }
     }

@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class LoginViewController: UIViewController, LoginInterfaceViewDelegate {
+class LoginViewController: UIViewController {
     
     var loginInterface = LoginInterfaceView()
     
@@ -17,7 +17,8 @@ class LoginViewController: UIViewController, LoginInterfaceViewDelegate {
         super.viewDidLoad()
 
         createDismissKeyboardTapGesture()
-        loginInterface.loginDelegate = self
+        configureDidSelectLoginButton()
+        configureDidSelectForgotPasswordButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,56 +31,42 @@ class LoginViewController: UIViewController, LoginInterfaceViewDelegate {
         view.backgroundColor = .systemBackground
     }
     
-    //MARK: - LoginScreenViewControllerDelegate
-    func didSelectLoginButton() {
-        guard let email = loginInterface.emailTextfield.text else {
-            print("LOG: Could not unwrap email text string")
-            return
-        }
-        
-        guard let password = loginInterface.passwordTextfield.text else {
-            print("LOG: Could not unwrap password text string")
-            return
-        }
-        
-        showLoadingView()
-        
-        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authDataResult, error in
+    func configureDidSelectLoginButton() {
+        loginInterface.didSelectLoginButton = { [weak self] in
             guard let self = self else { return }
-            self.dismissLoadingView()
-            if let error = error {
-                self.presentSimpleAlert(title: "Error", message: error.localizedDescription)
-            } else {
-                let tabview = MainTabViewController()
-                tabview.modalPresentationStyle = .fullScreen
-                self.present(tabview, animated: true)
+            guard let email = self.loginInterface.email, !email.isEmpty else {
+                Alert.present(title: "Error", message: "Please enter your email.", from: self)
+                return
+            }
+            
+            guard let password = self.loginInterface.password, !password.isEmpty else {
+                Alert.present(title: "Error", message: "Please enter your password.", from: self)
+                return
+            }
+            
+            self.showLoadingView()
+            
+            AuthService.shared.login(with: email, and: password) { [weak self] error in
+                guard let self = self else { return }
+                self.dismissLoadingView()
+                if let error = error {
+                    Alert.present(title: "Error", message: error.localizedDescription, from: self)
+                } else {
+                    let tabview = MainTabViewController()
+                    tabview.modalPresentationStyle = .fullScreen
+                    self.present(tabview, animated: true)
+                }
             }
         }
     }
     
-    func didSelectForgotPasswordButton() {
-        let title = "Forgot Password?"
-        let message = "Please enter your email to recieve a reset link."
-        
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        alertController.addTextField()
-        alertController.textFields![0].keyboardType = .emailAddress
-        
-        let saveAction = UIAlertAction(title: "Send", style: .default) { action in
-            guard let email = alertController.textFields![0].text else { return }
-            self.sendResetPasswordLink(with: email)
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
-            return
-        }
-        
-        alertController.addAction(cancelAction)
-        alertController.addAction(saveAction)
-        
-        DispatchQueue.main.async {
-            self.present(alertController, animated: true)
+    func configureDidSelectForgotPasswordButton() {
+        loginInterface.didSelectForgotPasswordButton = { [weak self] in
+            guard let self = self else { return }
+            Alert.presentForgotPasswordAlert(from: self) { email in
+                guard let email = email, !email.isEmpty else { return }
+                self.sendResetPasswordLink(with: email)
+            }
         }
     }
     
@@ -89,10 +76,10 @@ class LoginViewController: UIViewController, LoginInterfaceViewDelegate {
             guard let self = self else { return }
             self.dismissLoadingView()
             if let error = error {
-                self.presentSimpleAlert(title: "Error", message: error.localizedDescription)
+                Alert.present(title: "Error", message: error.localizedDescription, from: self)
                 return
             } else {
-                self.presentSimpleAlert(title: "Success!", message: "Successfully sent a reset link.")
+                Alert.present(title: "Success!", message: "Successfully sent a reset link.", from: self)
             }
         }
     }

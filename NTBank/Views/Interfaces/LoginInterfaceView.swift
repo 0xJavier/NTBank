@@ -6,20 +6,20 @@
 //
 
 import UIKit
-import SwiftUI
-
-protocol LoginInterfaceViewDelegate: AnyObject {
-    func didSelectLoginButton()
-    func didSelectForgotPasswordButton()
-}
-
-private extension CGFloat {}
 
 class LoginInterfaceView: UIView {
     
-    lazy var headerView = NTHeaderView()
+    var didSelectLoginButton: (() -> Void)?
     
-    lazy var titleLabel: UILabel = {
+    var didSelectForgotPasswordButton: (() -> Void)?
+    
+    var email: String? { return emailTextfield.text }
+    
+    var password: String? { return passwordTextfield.text }
+    
+    private lazy var headerView = NTHeaderView()
+    
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -30,11 +30,11 @@ class LoginInterfaceView: UIView {
         return label
     }()
     
-    lazy var emailTextfield = NTTextfield(placeholder: "Email", keyboardType: .emailAddress)
+    private lazy var emailTextfield = NTTextfield(placeholder: "Email", keyboardType: .emailAddress)
     
-    lazy var passwordTextfield = NTSecurefield(placeholder: "Password")
+    private lazy var passwordTextfield = NTSecurefield(placeholder: "Password")
     
-    lazy var loginButton: NTButton = {
+    private lazy var loginButton: NTButton = {
         let button = NTButton(title: "Login")
         
         button.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
@@ -42,7 +42,7 @@ class LoginInterfaceView: UIView {
         return button
     }()
     
-    lazy var stackview: UIStackView = {
+    private lazy var stackview: UIStackView = {
         let stackview = UIStackView()
         
         stackview.translatesAutoresizingMaskIntoConstraints = false
@@ -53,7 +53,7 @@ class LoginInterfaceView: UIView {
         return stackview
     }()
     
-    lazy var seperatorView: UIView = {
+    private lazy var seperatorView: UIView = {
         let view = UIView()
         
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -62,7 +62,7 @@ class LoginInterfaceView: UIView {
         return view
     }()
     
-    lazy var forgotPasswordButton: UIButton = {
+    private lazy var forgotPasswordButton: UIButton = {
         let button = UIButton()
         
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -74,8 +74,6 @@ class LoginInterfaceView: UIView {
         return button
     }()
     
-    weak var loginDelegate: LoginInterfaceViewDelegate?
-    
     // MARK: Initalizers
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -85,6 +83,15 @@ class LoginInterfaceView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setUpViews()
+    }
+    
+    //MARK: - Selectors
+    @objc private func didTapLoginButton() {
+        didSelectLoginButton?()
+    }
+    
+    @objc private func didTapForgotPasswordButton() {
+        didSelectForgotPasswordButton?()
     }
     
     private func setUpViews() {
@@ -146,16 +153,5 @@ class LoginInterfaceView: UIView {
         let height = forgotPasswordButton.heightAnchor.constraint(equalToConstant: 50)
         
         return [top, centerX, width, height]
-    }
-    
-    //MARK: - Selectors
-    @objc
-    private func didTapLoginButton() {
-        loginDelegate?.didSelectLoginButton()
-    }
-    
-    @objc
-    private func didTapForgotPasswordButton() {
-        loginDelegate?.didSelectForgotPasswordButton()
     }
 }

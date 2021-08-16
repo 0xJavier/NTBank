@@ -7,11 +7,9 @@
 
 import UIKit
 
-protocol LotteryInterfaceViewDelegate: AnyObject {
-    func didSelectCollectButton()
-}
-
 class LotteryInterfaceView: UIView {
+    
+    var didSelectCollectButton: (() -> Void)?
 
     lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -65,8 +63,6 @@ class LotteryInterfaceView: UIView {
         return stackview
     }()
     
-    weak var lotteryDelegate: LotteryInterfaceViewDelegate?
-    
     // MARK: Initalizers
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -76,6 +72,11 @@ class LotteryInterfaceView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setUpViews()
+    }
+    
+    //MARK: - Selectors
+    @objc private func didTapCollectButton() {
+        didSelectCollectButton?()
     }
 
     //MARK: - Setup
@@ -122,11 +123,5 @@ class LotteryInterfaceView: UIView {
         let trailing = amountLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
         
         return [top, leading, bottom, trailing]
-    }
-    
-    //MARK: - Selectors
-    @objc
-    private func didTapCollectButton() {
-        lotteryDelegate?.didSelectCollectButton()
     }
 }

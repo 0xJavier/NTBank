@@ -19,13 +19,6 @@ extension UIViewController {
     }
     
     //MARK: -
-    public func presentSimpleAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default))
-        DispatchQueue.main.async { self.present(alert, animated: true) }
-    }
-    
-    //MARK: -
     public func createDismissKeyboardTapGesture() {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         self.view.addGestureRecognizer(tap)

@@ -12,14 +12,23 @@ struct Transaction {
     let action: String
     let subAction: String
     let type: String
-    let createdAt: Int
+    var createdAt: Int = Int(Date().timeIntervalSince1970)
     
-    init(amount: Int, action: String, subAction: String, type: TransactionType, createdAt: Int) {
+    var data: [String:Any] {
+        return [
+            "amount": amount,
+            "action": action,
+            "subAction": subAction,
+            "type": TransactionType.collect200.rawValue,
+            "id": Int(Date().timeIntervalSince1970)
+        ]
+    }
+
+    init(amount: Int, action: String, subAction: String, type: TransactionType) {
         self.amount = amount
         self.action = action
         self.subAction = subAction
         self.type = type.rawValue
-        self.createdAt = createdAt
     }
     
     init(transactionInfo: [String:Any]) {

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WelcomeViewController: UIViewController, WelcomeInterfaceViewDelegate {
+class WelcomeViewController: UIViewController {
     
     var welcomeInterface = WelcomeInterfaceView()
     
@@ -15,7 +15,13 @@ class WelcomeViewController: UIViewController, WelcomeInterfaceViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        welcomeInterface.welcomeDelegate = self
+        welcomeInterface.didSelectLoginButton = { [weak self] in
+            self?.navigationController?.pushViewController(LoginViewController(), animated: true)
+        }
+        
+        welcomeInterface.didSelectSignupButton = { [weak self] in
+            self?.navigationController?.pushViewController(SignupViewController(), animated: true)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -25,14 +31,5 @@ class WelcomeViewController: UIViewController, WelcomeInterfaceViewDelegate {
     
     override func loadView() {
         view = welcomeInterface
-    }
-        
-    //MARK: - WelcomeInterfaceViewDelegate
-    func didSelectLoginButton() {
-        navigationController?.pushViewController(LoginViewController(), animated: true)
-    }
-    
-    func didSelectSignupButton() {
-        navigationController?.pushViewController(SignupViewController(), animated: true)
     }
 }

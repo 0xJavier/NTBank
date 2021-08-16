@@ -6,21 +6,22 @@
 //
 
 import UIKit
-import SwiftUI
-
-protocol SignupInterfaceViewDelegate: AnyObject {
-    func didSelectCreateButton()
-}
-
-private extension CGFloat {}
 
 class SignupInterfaceView: UIView {
     
-    fileprivate let cardColors = ["blue", "red", "green", "pink", "purple", "orange"]
+    var didSelectCreateButton: (() -> Void)?
     
-    lazy var headerView = NTHeaderView()
+    var name: String? { return nameTextfield.text }
+    var email: String? { return emailTextfield.text }
+    var color: String? { return colorTextfield.text }
+    var password: String? { return passwordTextfield.text }
+    var confirmPassword: String? { return confirmPasswordTextfield.text }
     
-    lazy var titleLabel: UILabel = {
+    private let cardColors = ["blue", "red", "green", "pink", "purple", "orange"]
+    
+    private lazy var headerView = NTHeaderView()
+    
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -31,19 +32,19 @@ class SignupInterfaceView: UIView {
         return label
     }()
     
-    lazy var nameTextfield = NTTextfield(placeholder: "Name")
+    private lazy var nameTextfield = NTTextfield(placeholder: "Name")
     
-    lazy var emailTextfield = NTTextfield(placeholder: "Email", keyboardType: .emailAddress)
+    private lazy var emailTextfield = NTTextfield(placeholder: "Email", keyboardType: .emailAddress)
     
-    lazy var colorTextfield = NTTextfield(placeholder: "Card Color")
+    private lazy var colorTextfield = NTTextfield(placeholder: "Card Color")
     
-    lazy var colorPickerView = UIPickerView()
+    private lazy var colorPickerView = UIPickerView()
     
-    lazy var passwordTextfield = NTSecurefield(placeholder: "Password")
+    private lazy var passwordTextfield = NTSecurefield(placeholder: "Password")
     
-    lazy var confirmPasswordTextfield = NTSecurefield(placeholder: "Confirm Password")
+    private lazy var confirmPasswordTextfield = NTSecurefield(placeholder: "Confirm Password")
     
-    lazy var stackview: UIStackView = {
+    private lazy var stackview: UIStackView = {
         let stackview = UIStackView()
         
         stackview.translatesAutoresizingMaskIntoConstraints = false
@@ -54,15 +55,13 @@ class SignupInterfaceView: UIView {
         return stackview
     }()
     
-    lazy var createButton: NTButton = {
+    private lazy var createButton: NTButton = {
         let button = NTButton(title: "Create")
         
         button.addTarget(self, action: #selector(didTapCreateButton), for: .touchUpInside)
         
         return button
     }()
-    
-    weak var signupDelegate: SignupInterfaceViewDelegate?
 
     // MARK: Initalizers
     override init(frame: CGRect) {
@@ -75,6 +74,11 @@ class SignupInterfaceView: UIView {
         super.init(coder: aDecoder)
         setUpViews()
         setupPickerview()
+    }
+    
+    //MARK: - Selectors
+    @objc private func didTapCreateButton() {
+        didSelectCreateButton?()
     }
     
     private func setupPickerview() {
@@ -133,12 +137,6 @@ class SignupInterfaceView: UIView {
             createButton.widthAnchor.constraint(equalToConstant: 343),
             createButton.heightAnchor.constraint(equalToConstant: 50)
         ]
-    }
-
-    //MARK: - Selectors
-    @objc
-    private func didTapCreateButton() {
-        signupDelegate?.didSelectCreateButton()
     }
 }
 

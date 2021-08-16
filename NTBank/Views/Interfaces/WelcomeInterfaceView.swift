@@ -6,18 +6,14 @@
 //
 
 import UIKit
-import SwiftUI
-
-protocol WelcomeInterfaceViewDelegate: AnyObject {
-    func didSelectLoginButton()
-    func didSelectSignupButton()
-}
-
-private extension CGFloat {}
 
 class WelcomeInterfaceView: UIView {
     
-    lazy var backgroundImage: UIImageView = {
+    var didSelectLoginButton: (() -> Void)?
+    
+    var didSelectSignupButton: (() -> Void)?
+    
+    private lazy var backgroundImage: UIImageView = {
         let imageView = UIImageView()
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -26,7 +22,7 @@ class WelcomeInterfaceView: UIView {
         return imageView
     }()
     
-    lazy var dollarSignImage: UIImageView = {
+    private lazy var dollarSignImage: UIImageView = {
         let imageView = UIImageView()
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -35,7 +31,7 @@ class WelcomeInterfaceView: UIView {
         return imageView
     }()
     
-    lazy var titleLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -49,7 +45,7 @@ class WelcomeInterfaceView: UIView {
         return label
     }()
     
-    lazy var bodyLabel: UILabel = {
+    private lazy var bodyLabel: UILabel = {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -60,7 +56,7 @@ class WelcomeInterfaceView: UIView {
         return label
     }()
     
-    lazy var buttonStackview: UIStackView = {
+    private lazy var buttonStackview: UIStackView = {
         let stackview = UIStackView()
         
         stackview.translatesAutoresizingMaskIntoConstraints = false
@@ -72,7 +68,7 @@ class WelcomeInterfaceView: UIView {
         return stackview
     }()
     
-    lazy var loginButton: NTButton = {
+    private lazy var loginButton: NTButton = {
         let button = NTButton(title: "Login")
         
         button.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
@@ -80,15 +76,13 @@ class WelcomeInterfaceView: UIView {
         return button
     }()
     
-    lazy var signupButton: NTButton = {
+    private lazy var signupButton: NTButton = {
         let button = NTButton(title: "Sign Up")
         
         button.addTarget(self, action: #selector(didTapSignupButton), for: .touchUpInside)
         
         return button
     }()
-    
-    weak var welcomeDelegate: WelcomeInterfaceViewDelegate?
     
     // MARK: Initalizers
     override init(frame: CGRect) {
@@ -99,6 +93,15 @@ class WelcomeInterfaceView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setUpViews()
+    }
+    
+    //MARK: - Selectors
+    @objc private func didTapLoginButton() {
+        didSelectLoginButton?()
+    }
+    
+    @objc private func didTapSignupButton() {
+        didSelectSignupButton?()
     }
     
     private func setUpViews() {
@@ -165,16 +168,5 @@ class WelcomeInterfaceView: UIView {
         let height = dollarSignImage.heightAnchor.constraint(equalToConstant: 75)
         
         return [leading, bottom, width, height]
-    }
-    
-    //MARK: - Selectors
-    @objc
-    private func didTapLoginButton() {
-        welcomeDelegate?.didSelectLoginButton()
-    }
-    
-    @objc
-    private func didTapSignupButton() {
-        welcomeDelegate?.didSelectSignupButton()
     }
 }

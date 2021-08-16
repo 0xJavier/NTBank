@@ -13,7 +13,6 @@ struct SendMoneyView: View {
     @State private var selectedUser: User?
     @State private var isLoading = false
     @State private var users = [User]()
-    
     @State private var currentUser: User?
     
     var onComplete: (() -> Void)
@@ -28,35 +27,29 @@ struct SendMoneyView: View {
                 .padding(.top)
             
             HStack {
-                Text("Send Money")
-                    .font(.title)
-                    .bold()
+                Text("Send Money").font(.title).bold()
                 Spacer()
             }.padding()
             
             ZStack {
                 List(users, id: \.self, selection: $selectedUser) { user in
-                    UserCell(isSelectedUser: user == selectedUser, userName: user.name, userColor: user.colorLiteral)
-                        .onTapGesture { selectedUser = user }
+                    UserCellView(isSelectedUser: user == selectedUser, userName: user.name, userColor: user.colorLiteral).onTapGesture { selectedUser = user }
                 }
                 
                 if isLoading {
-                    ProgressView()
-                        .scaleEffect(2)
+                    ProgressView().scaleEffect(2)
                 }
             }
             
             Spacer()
             
             ZStack {
-                EmptyView()
-                    .frame(height: 105)
+                EmptyView().frame(height: 105)
                     
                 VStack {
                     Divider()
                     HStack {
-                        Text("AMOUNT")
-                            .font(.caption)
+                        Text("AMOUNT").font(.caption)
                         Spacer()
                     }
                     
@@ -81,59 +74,43 @@ struct SendMoneyView: View {
     
     private func loadUser() {
         isLoading = true
-        NetworkManager.shared.getAllPlayers { users in
+        GameService.shared.getAllPlayers { result in
             isLoading = false
-            guard let userID = NetworkManager.shared.userID else { return }
-            guard let users = users else { return }
-            var temp = users
-            for (index, user) in temp.enumerated() {
-                if user.userID == userID {
-                    currentUser = user
-                    temp.remove(at: index)
+            switch result {
+            case .success(let users):
+                guard let userID = GameService.shared.userID else { return }
+                var temp = users
+                for (index, user) in temp.enumerated() {
+                    if user.userID == userID {
+                        currentUser = user
+                        temp.remove(at: index)
+                    }
                 }
-            }
-            DispatchQueue.main.async {
-                self.users = temp
+                DispatchQueue.main.async {
+                    self.users = temp
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
     }
     
     private func sendMoney() {
-        NetworkManager.shared.payPlayer(with: amountInt, from: currentUser!, to: selectedUser!) { bool in
-            if bool {
+        isLoading = true
+        GameService.shared.payPlayer(with: amountInt, from: currentUser!, to: selectedUser!) { result in
+            isLoading = false
+            switch result {
+            case .success(_):
                 onComplete()
-            } else {
-                print("FAILED")
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
     }
 }
 
-struct UserCell: View {
-    
-    var isSelectedUser: Bool
-    var userName: String
-    var userColor: UIColor
-    
-    var body: some View {
-        HStack {
-            RoundedRectangle(cornerRadius: 10)
-                .frame(width: 40, height: 40)
-                .foregroundColor(Color.init(userColor))
-            
-            Text(userName).font(.title2)
-            
-            Spacer()
-            
-            if isSelectedUser { Image(systemName: "checkmark.circle") }
-        }
-        .frame(height: 50)
-    }
-}
-
 struct SendMoneyView_Previews: PreviewProvider {
     static var previews: some View {
-        //SendMoneyView()
-        UserCell(isSelectedUser: true, userName: "TEST", userColor: UIColor.blue)
+        SendMoneyView(onComplete: {})
     }
 }

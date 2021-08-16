@@ -21,13 +21,27 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         FirebaseApp.configure()
                 
         let window = UIWindow(windowScene: windowScene)
-        let rootViewController = UINavigationController(rootViewController: WelcomeViewController())
-                
+        let rootViewController: UIViewController
+        #warning("Remove")
+//        if userIsLoggedIn() {
+//            rootViewController = MainTabViewController()
+//        } else {
+//            rootViewController = UINavigationController(rootViewController: WelcomeViewController())
+//        }
+        rootViewController = UINavigationController(rootViewController: WelcomeViewController())
         window.rootViewController = rootViewController
                 
         self.window = window
                 
         window.makeKeyAndVisible()
+    }
+    
+    private func userIsLoggedIn() -> Bool {
+        if let _ = Auth.auth().currentUser?.uid {
+            return true
+        } else {
+            return false
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
