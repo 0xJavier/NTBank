@@ -60,9 +60,7 @@ class LotteryViewController: UIViewController {
                 self.collectLottery()
             }
 
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
-                return
-            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
 
             alertController.addAction(cancelAction)
             alertController.addAction(collectAction)

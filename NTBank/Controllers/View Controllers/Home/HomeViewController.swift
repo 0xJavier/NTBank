@@ -9,10 +9,8 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    //MARK: Interface
     var homeInterface = HomeInterfaceView()
     
-    //MARK: Properties
     var user: User! {
         didSet { updateCreditCard() }
     }
@@ -36,6 +34,7 @@ class HomeViewController: UIViewController {
         add(childVC: actionController, to: homeInterface.actionContainerView)
     }
     
+    //MARK: - User + UI
     private func streamUserChanges() {
         UserService.shared.streamUser { [weak self] result in
             guard let self = self else { return }

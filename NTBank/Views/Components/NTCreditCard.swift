@@ -58,7 +58,7 @@ class NTCreditCard: UIView {
         return label
     }()
         
-    //MARK: - Init
+    //MARK: - Initializer
     init() {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
@@ -79,7 +79,7 @@ class NTCreditCard: UIView {
         }
     }
 
-    //MARK: - Setup
+    //MARK: - Layout
     private func setUpViews() {
         addSubviews(background, headerView, titleLabel, amountLabel, nameLabel)
         

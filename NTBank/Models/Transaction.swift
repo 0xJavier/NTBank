@@ -16,11 +16,11 @@ struct Transaction {
     
     var data: [String:Any] {
         return [
-            "amount": amount,
-            "action": action,
-            "subAction": subAction,
-            "type": TransactionType.collect200.rawValue,
-            "id": Int(Date().timeIntervalSince1970)
+            TransactionModelType.amount.rawValue: amount,
+            TransactionModelType.action.rawValue: action,
+            TransactionModelType.subAction.rawValue: subAction,
+            TransactionModelType.type.rawValue: TransactionType.collect200.rawValue,
+            TransactionModelType.id.rawValue: Int(Date().timeIntervalSince1970)
         ]
     }
 
@@ -32,10 +32,10 @@ struct Transaction {
     }
     
     init(transactionInfo: [String:Any]) {
-        self.amount = transactionInfo["amount"] as? Int ?? 0
-        self.action = transactionInfo["action"] as? String ?? ""
-        self.subAction = transactionInfo["subAction"] as? String ?? ""
-        self.type = transactionInfo["type"] as? String ?? ""
-        self.createdAt = transactionInfo["id"] as? Int ?? 0
+        self.amount = transactionInfo[TransactionModelType.amount.rawValue] as? Int ?? 0
+        self.action = transactionInfo[TransactionModelType.action.rawValue] as? String ?? ""
+        self.subAction = transactionInfo[TransactionModelType.subAction.rawValue] as? String ?? ""
+        self.type = transactionInfo[TransactionModelType.type.rawValue] as? String ?? ""
+        self.createdAt = transactionInfo[TransactionModelType.id.rawValue] as? Int ?? 0
     }
 }

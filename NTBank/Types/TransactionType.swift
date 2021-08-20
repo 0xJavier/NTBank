@@ -16,3 +16,7 @@ enum TransactionType: String {
     case receivedMoneyFromBank
     case wonLottery
 }
+
+enum TransactionModelType: String {
+    case amount, action, subAction, type, id, Sent, Received
+}

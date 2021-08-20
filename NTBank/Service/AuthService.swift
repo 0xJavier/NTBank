@@ -29,10 +29,10 @@ class AuthService {
                 completion(error)
             } else {
                 let data: [String:Any] = [
-                    "email": email.lowercased(),
-                    "name": name,
-                    "balance": 1500,
-                    "color": cardColor
+                    UserType.email.rawValue: email.lowercased(),
+                    UserType.name.rawValue: name,
+                    UserType.balance.rawValue: 1500,
+                    UserType.color.rawValue: cardColor
                 ]
                 let batch = Firestore.firestore().batch()
                 guard let userID = Auth.auth().currentUser?.uid else { return }
@@ -45,5 +45,14 @@ class AuthService {
     
     func sendPasswordReset(with email: String, completion: @escaping(Error?) -> Void) {
         Auth.auth().sendPasswordReset(withEmail: email, completion: completion)
+    }
+    
+    func signout(completion: @escaping(Error?) -> Void) {
+        do {
+            try Auth.auth().signOut()
+            completion(nil)
+        } catch {
+            completion(NTError.couldNotLogout)
+        }
     }
 }

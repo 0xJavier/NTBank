@@ -13,8 +13,7 @@ class RankingViewController: UITableViewController {
         didSet { reloadData() }
     }
     
-    //MARK: - Init
-    
+    //MARK: - Initializer
     init() {
         super.init(style: .insetGrouped)
     }
@@ -37,12 +36,14 @@ class RankingViewController: UITableViewController {
         getPlayers()
     }
     
+    //MARK: - Setup
     func setUpTableView() {
         tableView.register(RankingTableViewCell.self, forCellReuseIdentifier: CellTypes.rankingCell.rawValue)
         tableView.showsVerticalScrollIndicator = false
         tableView.allowsSelection = false
     }
     
+    //MARK: -
     func getPlayers() {
         GameService.shared.getAllPlayers { [weak self] result in
             guard let self = self else { return }
@@ -66,6 +67,7 @@ class RankingViewController: UITableViewController {
     }
 }
 
+//MARK: - Tableview
 extension RankingViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return players.count

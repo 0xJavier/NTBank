@@ -45,7 +45,7 @@ class UserService {
         }
         
         playersRef.document(userID).collection(FirebaseType.transactions.rawValue)
-            .order(by: "id", descending: true)
+            .order(by: TransactionModelType.id.rawValue, descending: true)
             .addSnapshotListener { querySnapshot, error in
                 guard let documents = querySnapshot?.documents else {
                     completion(.failure(error!))
@@ -72,7 +72,7 @@ class UserService {
         let batch = Firestore.firestore().batch()
         
         let balanceRef = playersRef.document(userID)
-        batch.updateData(["color": color], forDocument: balanceRef)
+        batch.updateData([UserType.color.rawValue: color], forDocument: balanceRef)
         
         batch.commit { error in
             if let error = error {

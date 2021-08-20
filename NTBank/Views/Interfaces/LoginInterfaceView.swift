@@ -74,7 +74,7 @@ class LoginInterfaceView: UIView {
         return button
     }()
     
-    // MARK: Initalizers
+    // MARK: Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpViews()
@@ -85,7 +85,7 @@ class LoginInterfaceView: UIView {
         setUpViews()
     }
     
-    //MARK: - Selectors
+    //MARK: - User Interaction
     @objc private func didTapLoginButton() {
         didSelectLoginButton?()
     }
@@ -94,6 +94,7 @@ class LoginInterfaceView: UIView {
         didSelectForgotPasswordButton?()
     }
     
+    //MARK: - Layout
     private func setUpViews() {
         addSubviews(headerView, titleLabel, stackview, seperatorView, forgotPasswordButton)
         

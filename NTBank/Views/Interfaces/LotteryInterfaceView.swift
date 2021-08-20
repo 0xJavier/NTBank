@@ -63,7 +63,7 @@ class LotteryInterfaceView: UIView {
         return stackview
     }()
     
-    // MARK: Initalizers
+    // MARK: Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpViews()
@@ -74,12 +74,12 @@ class LotteryInterfaceView: UIView {
         setUpViews()
     }
     
-    //MARK: - Selectors
+    //MARK: - User Interaction
     @objc private func didTapCollectButton() {
         didSelectCollectButton?()
     }
 
-    //MARK: - Setup
+    //MARK: - Layout
     private func setUpViews() {
         addSubview(stackView)
         

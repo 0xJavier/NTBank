@@ -26,6 +26,8 @@
 		302782D126794F4400BC9077 /* NTTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302782D026794F4400BC9077 /* NTTextfield.swift */; };
 		302782D326794F5E00BC9077 /* NTSecurefield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302782D226794F5E00BC9077 /* NTSecurefield.swift */; };
 		303D23B826B84B3000BE95AE /* CellTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303D23B726B84B3000BE95AE /* CellTypes.swift */; };
+		3060616826D013D6001C8507 /* UserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3060616726D013D6001C8507 /* UserType.swift */; };
+		3060616A26D01AAE001C8507 /* SFSymbolType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3060616926D01AAE001C8507 /* SFSymbolType.swift */; };
 		3074753A2697BD110053E20F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 307475392697BD110053E20F /* FirebaseAuth */; };
 		3074753C2697BD110053E20F /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3074753B2697BD110053E20F /* FirebaseFirestore */; };
 		3074753E2697BD110053E20F /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 3074753D2697BD110053E20F /* FirebaseFirestoreSwift-Beta */; };
@@ -109,6 +111,8 @@
 		302782D026794F4400BC9077 /* NTTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTTextfield.swift; sourceTree = "<group>"; };
 		302782D226794F5E00BC9077 /* NTSecurefield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTSecurefield.swift; sourceTree = "<group>"; };
 		303D23B726B84B3000BE95AE /* CellTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTypes.swift; sourceTree = "<group>"; };
+		3060616726D013D6001C8507 /* UserType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserType.swift; sourceTree = "<group>"; };
+		3060616926D01AAE001C8507 /* SFSymbolType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolType.swift; sourceTree = "<group>"; };
 		3074753F2697BD640053E20F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		307F0DF326B97C7D00C66D80 /* SendMoneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMoneyView.swift; sourceTree = "<group>"; };
 		308C9F5C26C18C2E003A4195 /* FirebaseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseType.swift; sourceTree = "<group>"; };
@@ -324,6 +328,8 @@
 				30CB9BA526BC560900E44AE2 /* TransactionType.swift */,
 				30CB9BA726BD824700E44AE2 /* CardColors.swift */,
 				308C9F5C26C18C2E003A4195 /* FirebaseType.swift */,
+				3060616726D013D6001C8507 /* UserType.swift */,
+				3060616926D01AAE001C8507 /* SFSymbolType.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -606,6 +612,7 @@
 				30E10C072685204B00F4816B /* LotteryInterfaceView.swift in Sources */,
 				302782CA26794B7C00BC9077 /* SignupInterfaceView.swift in Sources */,
 				302782BA26792BB300BC9077 /* WelcomeInterfaceView.swift in Sources */,
+				3060616826D013D6001C8507 /* UserType.swift in Sources */,
 				302782C1267934AA00BC9077 /* LoginViewController.swift in Sources */,
 				30D5BFA826BB049400F5D5BE /* AccountTableViewCell.swift in Sources */,
 				30E10C0B2685300300F4816B /* RankingViewController.swift in Sources */,
@@ -613,6 +620,7 @@
 				30E10BCC2680F55300F4816B /* TransactionTableViewCell.swift in Sources */,
 				30E10BC6267DC0E900F4816B /* ActionCollectionViewController.swift in Sources */,
 				307F0DF426B97C7D00C66D80 /* SendMoneyView.swift in Sources */,
+				3060616A26D01AAE001C8507 /* SFSymbolType.swift in Sources */,
 				303D23B826B84B3000BE95AE /* CellTypes.swift in Sources */,
 				30E10BA6267DABDB00F4816B /* MainTabViewController.swift in Sources */,
 				30E10BB1267DAE2800F4816B /* HomeInterfaceView.swift in Sources */,

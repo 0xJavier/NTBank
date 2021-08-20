@@ -26,6 +26,7 @@ class SettingsTableViewCell: UITableViewCell {
         return label
     }()
     
+    //MARK: - Initializer
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUpViews()
@@ -41,6 +42,7 @@ class SettingsTableViewCell: UITableViewCell {
         symbolImageView.symbolImageView.image = setting.image
     }
     
+    //MARK: - Layout
     private func setUpViews() {
         contentView.addSubviews(symbolImageView, titleLabel)
         

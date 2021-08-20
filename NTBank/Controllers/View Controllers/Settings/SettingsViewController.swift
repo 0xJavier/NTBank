@@ -9,7 +9,10 @@ import UIKit
 
 class SettingsViewController: UITableViewController {
 
-    var settings: [Setting] = [ Setting(title: "Change Card Color", image: UIImage(systemName: "creditcard.fill")!, color: .systemBlue) ]
+    var settings: [Setting] = [
+        Setting(title: "Change Card Color", image: SFSymbolType.creditCard.image, color: .systemBlue),
+        Setting(title: "Sign out", image: SFSymbolType.uturnArrow.image, color: .red)
+    ]
     
     var user = User.placeholder {
         didSet { tableView.reloadData() }
@@ -17,6 +20,7 @@ class SettingsViewController: UITableViewController {
     
     var newCardColor: String?
     
+    //MARK: - Initializer
     init() {
         super.init(style: .grouped)
     }
@@ -25,6 +29,7 @@ class SettingsViewController: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,12 +43,14 @@ class SettingsViewController: UITableViewController {
         getUser()
     }
     
+    //MARK: - Setup
     func setUpTableView() {
         tableView.register(SettingsTableViewCell.self, forCellReuseIdentifier: "Settings")
         tableView.register(AccountTableViewCell.self, forCellReuseIdentifier: "Account")
         tableView.showsVerticalScrollIndicator = false
     }
     
+    //MARK: -
     func getUser() {
         UserService.shared.streamUser { [weak self] result in
             guard let self = self else { return }
@@ -56,6 +63,7 @@ class SettingsViewController: UITableViewController {
         }
     }
     
+    //MARK: - User Interaction
     func didSelectChangeCardColor() {
         let sheet = UIAlertController(title: "Change Card Color", message: "Choose new card color.", preferredStyle: .actionSheet)
         
@@ -75,6 +83,39 @@ class SettingsViewController: UITableViewController {
         self.present(sheet, animated: true, completion: nil)
     }
     
+    func didSelectSignout() {
+        let title = "Signout"
+        let message = "Are you sure you want to sign out?"
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+
+        let saveAction = UIAlertAction(title: "Yes", style: .default) { _ in
+            self.signout()
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+
+        alertController.addAction(cancelAction)
+        alertController.addAction(saveAction)
+
+        DispatchQueue.main.async { self.present(alertController, animated: true) }
+    }
+    
+    func signout() {
+        showLoadingView()
+        AuthService.shared.signout { [weak self] error in
+            guard let self = self else { return }
+            self.dismissLoadingView()
+            if let error = error {
+                Alert.present(title: "Error", message: error.localizedDescription, from: self)
+            } else {
+                let welcomeVC = WelcomeViewController()
+                welcomeVC.modalPresentationStyle = .fullScreen
+                self.present(welcomeVC, animated: true)
+            }
+        }
+    }
+    
     func changeColor() {
         guard let cardColor = newCardColor else { return }
         showLoadingView()
@@ -91,6 +132,7 @@ class SettingsViewController: UITableViewController {
     }
 }
 
+//MARK: - Tableview
 extension SettingsViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -137,6 +179,8 @@ extension SettingsViewController {
             switch indexPath.row {
             case 0:
                 didSelectChangeCardColor()
+            case 1:
+                didSelectSignout()
             default:
                 print("Could not get index")
             }

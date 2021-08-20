@@ -10,6 +10,7 @@ import Foundation
 enum NTError: Error {
     case couldNotGetUserID
     case documentDataError
+    case couldNotLogout
 }
 
 extension NTError: CustomStringConvertible {
@@ -19,6 +20,8 @@ extension NTError: CustomStringConvertible {
             return "Could not get current user`s ID."
         case .documentDataError:
             return "Could not get the data from the document."
+        case .couldNotLogout:
+            return "Could not log the current user out."
         }
     }
 }

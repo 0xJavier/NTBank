@@ -28,6 +28,7 @@ class NTHeaderView: UIView {
         return label
     }()
     
+    //MARK: - Initializer
     init() {
         super.init(frame: .zero)
         
@@ -39,6 +40,7 @@ class NTHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Layout
     private func setupViews() {
         addSubviews(miniLogoImage, headerLabel)
         

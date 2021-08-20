@@ -28,7 +28,7 @@ class LotteryService {
                 completion(.failure(NTError.documentDataError))
                 return
             }
-            completion(.success(data["amount"] as? Int ?? 0))
+            completion(.success(data[TransactionModelType.amount.rawValue] as? Int ?? 0))
         }
     }
     
@@ -41,13 +41,13 @@ class LotteryService {
         let batch = Firestore.firestore().batch()
         
         let userRef = Firestore.firestore().collection(FirebaseType.players.rawValue).document(userID)
-        batch.updateData(["balance": FieldValue.increment(Int64(amount))], forDocument: userRef)
+        batch.updateData([UserType.balance.rawValue: FieldValue.increment(Int64(amount))], forDocument: userRef)
         
-        let transaction = Transaction(amount: amount, action: "Won the lottery", subAction: "Received", type: .wonLottery)
+        let transaction = Transaction(amount: amount, action: "Won the lottery", subAction: TransactionModelType.Received.rawValue, type: .wonLottery)
         let transactionRef = userRef.collection(FirebaseType.transactions.rawValue).document()
         batch.setData(transaction.data, forDocument: transactionRef)
         
-        batch.updateData(["amount":0], forDocument: lotteryRef)
+        batch.updateData([TransactionModelType.amount.rawValue : 0], forDocument: lotteryRef)
         
         batch.commit() { error in
             if let error = error {

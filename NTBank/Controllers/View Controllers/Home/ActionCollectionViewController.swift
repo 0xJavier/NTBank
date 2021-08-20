@@ -12,11 +12,11 @@ class ActionCollectionViewController: UICollectionViewController {
     
     // MARK: - Properties
     var actions: [QuickAction] = [
-        QuickAction(title: "Send Money", backgroundColor: .systemBlue, image: UIImage(systemName: "paperplane.fill")!),
-        QuickAction(title: "Collect $200", backgroundColor: .systemPink, image: UIImage(systemName: "dollarsign.square.fill")!),
-        QuickAction(title: "Pay Bank", backgroundColor: .systemGreen, image: UIImage(systemName: "building.columns.fill")!),
-        QuickAction(title: "Pay Lottery", backgroundColor: .systemOrange, image: UIImage(systemName: "car.fill")!),
-        QuickAction(title: "Receive Money", backgroundColor: .systemPurple, image: UIImage(systemName: "chevron.down.square.fill")!)
+        QuickAction(title: "Send Money", backgroundColor: .systemBlue, image: SFSymbolType.paperPlane.image),
+        QuickAction(title: "Collect $200", backgroundColor: .systemPink, image: SFSymbolType.dollarSign.image),
+        QuickAction(title: "Pay Bank", backgroundColor: .systemGreen, image: SFSymbolType.building.image),
+        QuickAction(title: "Pay Lottery", backgroundColor: .systemOrange, image: SFSymbolType.car.image),
+        QuickAction(title: "Receive Money", backgroundColor: .systemPurple, image: SFSymbolType.chevronDown.image)
     ]
     
     lazy var actionDataSource = ActionDataSource(with: actions)
@@ -34,6 +34,8 @@ class ActionCollectionViewController: UICollectionViewController {
         super.viewWillAppear(animated)
         collectionViewSetup()
     }
+    
+    //MARK: - Setup
     
     private func collectionViewSetup() {
         collectionView.collectionViewLayout = makeLayout()

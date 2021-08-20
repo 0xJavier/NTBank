@@ -29,7 +29,7 @@ class SignupViewController: UIViewController {
         view.backgroundColor = .systemBackground
     }
     
-    //MARK: - SignupScreenViewControllerDelegate
+    //MARK: - User Interaction
     func configureDidSelectCreateButton() {
         signupInterface.didSelectCreateButton = { [weak self] in
             guard let self = self else { return }

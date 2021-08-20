@@ -12,37 +12,41 @@ struct User: Hashable {
     var name: String = ""
     var email: String = ""
     var balance: Int = 0
-    var color: String = "blue"
+    var color: String = CardColor.blue.rawValue
     
     var colorLiteral: UIColor {
-        switch color {
-        case "red":
-            return UIColor.systemRed
-        case "blue":
-            return UIColor.systemBlue
-        case "green":
-            return UIColor.systemGreen
-        case "pink":
-            return UIColor.systemPink
-        case "purple":
-            return UIColor.systemPurple
-        case "orange":
-            return UIColor.systemOrange
-        default:
+        let colorType = CardColor.init(rawValue: color)
+        switch colorType {
+        case .red:
+            return .systemRed
+        case .blue:
+            return .systemBlue
+        case .green:
+            return .systemGreen
+        case .pink:
+            return .systemPink
+        case .purple:
+            return .systemPurple
+        case .orange:
+            return .systemOrange
+        case .none:
             print("Could not get color")
-            return UIColor.systemBlue
+            return .systemBlue
         }
     }
     
     init(id: String, userInfo: [String:Any]) {
         self.userID = id
-        self.name = userInfo["name"] as? String ?? ""
-        self.email = userInfo["email"] as? String ?? ""
-        self.color = userInfo["color"] as? String ?? ""
-        self.balance = userInfo["balance"] as? Int ?? 0
+        self.name = userInfo[UserType.name.rawValue] as? String ?? ""
+        self.email = userInfo[UserType.email.rawValue] as? String ?? ""
+        self.color = userInfo[UserType.color.rawValue] as? String ?? ""
+        self.balance = userInfo[UserType.balance.rawValue] as? Int ?? 0
     }
 }
 
 extension User {
-    static let placeholder = User(id: "12345", userInfo: ["name": "Player", "email": "player@NTBank.com", "color": "red", "balance": 1500])
+    static let placeholder = User(id: "12345", userInfo: [UserType.name.rawValue: "Player",
+                                                          UserType.email.rawValue: "player@NTBank.com",
+                                                          UserType.color.rawValue: CardColor.red.rawValue,
+                                                          UserType.balance.rawValue: 1500])
 }

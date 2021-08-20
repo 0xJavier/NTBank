@@ -17,7 +17,7 @@ class SignupInterfaceView: UIView {
     var password: String? { return passwordTextfield.text }
     var confirmPassword: String? { return confirmPasswordTextfield.text }
     
-    private let cardColors = ["blue", "red", "green", "pink", "purple", "orange"]
+    private let cardColors: [String] = CardColor.allCases.map { $0.rawValue }
     
     private lazy var headerView = NTHeaderView()
     
@@ -63,7 +63,7 @@ class SignupInterfaceView: UIView {
         return button
     }()
 
-    // MARK: Initalizers
+    // MARK: Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpViews()
@@ -75,19 +75,20 @@ class SignupInterfaceView: UIView {
         setUpViews()
         setupPickerview()
     }
-    
-    //MARK: - Selectors
+        
+    //MARK: - User Interaction
     @objc private func didTapCreateButton() {
         didSelectCreateButton?()
     }
-    
+
+    //MARK: - Layout
     private func setupPickerview() {
         colorPickerView.delegate = self
         colorPickerView.dataSource = self
         
         colorTextfield.inputView = colorPickerView
     }
-
+    
     private func setUpViews() {
         addSubviews(headerView, titleLabel, stackview, createButton)
         

@@ -60,6 +60,7 @@ class AccountTableViewCell: UITableViewCell {
         return stackview
     }()
     
+    //MARK: - Initializer
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUpViews()
@@ -75,7 +76,7 @@ class AccountTableViewCell: UITableViewCell {
         subtitleLabel.text = user.email
     }
 
-    //MARK: - Setup
+    //MARK: - Layout
     private func setUpViews() {
         contentView.addSubviews(background, stackview)
         background.addSubview(symbolImageView)

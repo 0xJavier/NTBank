@@ -38,6 +38,7 @@ class ActionCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    //MARK: - Initializer
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -48,6 +49,7 @@ class ActionCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Layout
     private func setUpViews() {
         contentView.addSubviews(background)
         background.addSubviews(symbolImageView, cellTitle)

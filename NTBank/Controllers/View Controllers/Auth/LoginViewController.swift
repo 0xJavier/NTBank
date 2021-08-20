@@ -31,6 +31,7 @@ class LoginViewController: UIViewController {
         view.backgroundColor = .systemBackground
     }
     
+    //MARK: - User Interaction
     func configureDidSelectLoginButton() {
         loginInterface.didSelectLoginButton = { [weak self] in
             guard let self = self else { return }

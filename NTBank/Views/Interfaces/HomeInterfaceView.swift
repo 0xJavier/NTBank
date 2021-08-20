@@ -47,7 +47,7 @@ class HomeInterfaceView: UIView {
         return view
     }()
     
-    // MARK: Initalizers
+    // MARK: User Interaction
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpViews()
@@ -58,6 +58,7 @@ class HomeInterfaceView: UIView {
         setUpViews()
     }
     
+    //MARK: - Layout
     private func setUpViews() {
         addSubviews(creditCard, quickActionLabel, actionContainerView,
                          transactionLabel, transactionContainerView)

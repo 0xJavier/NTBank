@@ -84,7 +84,7 @@ class WelcomeInterfaceView: UIView {
         return button
     }()
     
-    // MARK: Initalizers
+    // MARK: Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpViews()
@@ -95,7 +95,7 @@ class WelcomeInterfaceView: UIView {
         setUpViews()
     }
     
-    //MARK: - Selectors
+    //MARK: - User Interaction
     @objc private func didTapLoginButton() {
         didSelectLoginButton?()
     }
@@ -104,6 +104,7 @@ class WelcomeInterfaceView: UIView {
         didSelectSignupButton?()
     }
     
+    //MARK: - Layout
     private func setUpViews() {
         addSubviews(backgroundImage, buttonStackview,
                     bodyLabel, titleLabel, dollarSignImage)

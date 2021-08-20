@@ -22,13 +22,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 
         let window = UIWindow(windowScene: windowScene)
         let rootViewController: UIViewController
-        #warning("Remove")
-//        if userIsLoggedIn() {
-//            rootViewController = MainTabViewController()
-//        } else {
-//            rootViewController = UINavigationController(rootViewController: WelcomeViewController())
-//        }
-        rootViewController = UINavigationController(rootViewController: WelcomeViewController())
+        
+        if userIsLoggedIn() {
+            rootViewController = MainTabViewController()
+        } else {
+            rootViewController = UINavigationController(rootViewController: WelcomeViewController())
+        }
+        
         window.rootViewController = rootViewController
                 
         self.window = window
