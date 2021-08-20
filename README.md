@@ -1,1 +1,1 @@
-![](https://github.com/0xJavier/NTBank/Screenshots/NTScreenshots.png)
+![](https://github.com/0xJavier/NTBank/blob/master/Screenshots/NTScreenshots.png)
