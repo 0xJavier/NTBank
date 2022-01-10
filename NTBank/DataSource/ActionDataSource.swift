@@ -8,9 +8,9 @@
 import UIKit
 
 class ActionDataSource: NSObject, UICollectionViewDataSource {
-    var actions: [QuickAction]
+    var actions: [ImageAction]
     
-    init(with actions: [QuickAction]) {
+    init(with actions: [ImageAction]) {
         self.actions = actions
     }
     
@@ -24,11 +24,7 @@ class ActionDataSource: NSObject, UICollectionViewDataSource {
         }
         
         let item = actions[indexPath.row]
-        
-        cell.cellTitle.text = item.title
-        cell.symbolImageView.backgroundView.backgroundColor = item.backgroundColor
-        cell.symbolImageView.symbolImageView.image = item.image
-        
+        cell.set(with: item)
         return cell
     }
 }

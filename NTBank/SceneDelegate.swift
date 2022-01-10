@@ -37,11 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func userIsLoggedIn() -> Bool {
-        if let _ = Auth.auth().currentUser?.uid {
-            return true
-        } else {
-            return false
-        }
+        return Auth.auth().currentUser?.uid != nil
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -71,7 +67,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
-
 }
-

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum TransactionType: String {
+enum TransactionActionType: String {
     case paidPlayer
     case receivedMoneyFromPlayer
     case collect200

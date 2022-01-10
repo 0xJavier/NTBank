@@ -8,5 +8,5 @@
 import Foundation
 
 enum UserType: String {
-    case name, email, color, balance
+    case userID, name, email, color, balance
 }

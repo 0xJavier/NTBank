@@ -7,54 +7,37 @@
 
 import Foundation
 import Firebase
+import FirebaseFirestoreSwift
 
-class LotteryService {
-    static let shared = LotteryService()
-    
+protocol LotteryServiceProtocol {
+    func fetchLottery() async -> Int
+    func collectLottery(with amount: Int) async throws
+}
+
+class LotteryService: LotteryServiceProtocol {
+    private let userRef = Firestore.firestore().collection(FirebaseType.players.rawValue)
     private let lotteryRef = Firestore.firestore().collection(FirebaseType.lottery.rawValue).document(FirebaseType.balance.rawValue)
     
-    var userID: String? { return Auth.auth().currentUser?.uid }
-    
-    private init() {  }
-    
-    func streamLottery(completion: @escaping(Result<Int, Error>) -> Void) {
-        lotteryRef.addSnapshotListener { documentSnapshot, error in
-            guard let document = documentSnapshot else {
-                completion(.failure(error!))
-                return
-            }
-            
-            guard let data = document.data() else {
-                completion(.failure(NTError.documentDataError))
-                return
-            }
-            completion(.success(data[TransactionModelType.amount.rawValue] as? Int ?? 0))
+    func fetchLottery() async -> Int {
+        do {
+            let document = try await lotteryRef.getDocument()
+            let amount = document.data()?["amount"] as? Int ?? 0
+            return amount
+        } catch {
+            print("Error getting lottery amount [Lottery Service]: \(error.localizedDescription)")
+            return 0
         }
     }
     
-    func collectLottery(with amount: Int, completion: @escaping(Result<Bool, Error>) -> Void) {
-        guard let userID = userID else {
-            completion(.failure(NTError.couldNotGetUserID))
-            return
-        }
-        
-        let batch = Firestore.firestore().batch()
-        
-        let userRef = Firestore.firestore().collection(FirebaseType.players.rawValue).document(userID)
-        batch.updateData([UserType.balance.rawValue: FieldValue.increment(Int64(amount))], forDocument: userRef)
-        
-        let transaction = Transaction(amount: amount, action: "Won the lottery", subAction: TransactionModelType.Received.rawValue, type: .wonLottery)
-        let transactionRef = userRef.collection(FirebaseType.transactions.rawValue).document()
-        batch.setData(transaction.data, forDocument: transactionRef)
-        
-        batch.updateData([TransactionModelType.amount.rawValue : 0], forDocument: lotteryRef)
-        
-        batch.commit() { error in
-            if let error = error {
-                completion(.failure(error))
-            } else {
-                completion(.success(true))
-            }
+    func collectLottery(with amount: Int) async throws {
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        do {
+            try await userRef.document(userID).updateData([FirebaseType.balance.rawValue : FieldValue.increment(Int64(amount))])
+            let transaction = Transaction(amount: amount, action: "Won the lottery", subAction: TransactionModelType.Received, type: TransactionActionType.wonLottery)
+            try userRef.document(userID).collection(FirebaseType.transactions.rawValue).document().setData(from: transaction)
+            try await lotteryRef.updateData([TransactionModelType.amount.rawValue : 0])
+        } catch {
+            print("Could not collect lottery: \(error.localizedDescription)")
         }
     }
 }
