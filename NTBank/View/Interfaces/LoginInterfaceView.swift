@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SnapKit
 
 protocol LoginInterfaceViewDelegate: UIViewController {
     func didSelectLoginButton()

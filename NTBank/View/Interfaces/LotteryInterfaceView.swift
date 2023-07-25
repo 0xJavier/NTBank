@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SnapKit
 
 protocol LotteryInterfaceViewDelegate: LotteryViewController {
     func didSelectCollectButton()
@@ -58,14 +57,14 @@ final class LotteryInterfaceView: UIView {
     }()
     
     lazy var stackView: UIStackView = {
-        let stackview = UIStackView()
+        let stackView = UIStackView()
         
-        stackview.translatesAutoresizingMaskIntoConstraints = false
-        stackview.axis = .vertical
-        stackview.distribution = .fill
-        stackview.spacing = 16
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.spacing = 16
         
-        return stackview
+        return stackView
     }()
     
     // MARK: Initializers

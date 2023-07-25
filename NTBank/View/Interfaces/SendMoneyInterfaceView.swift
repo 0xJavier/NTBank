@@ -59,13 +59,13 @@ final class SendMoneyInterfaceView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpViews()
-        setupPickerview()
+        setupPickerView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setUpViews()
-        setupPickerview()
+        setupPickerView()
     }
     
     @objc private func didTapSendButton() {
@@ -82,7 +82,7 @@ final class SendMoneyInterfaceView: UIView {
     }
     
     //MARK: - Layout
-    private func setupPickerview() {
+    private func setupPickerView() {
         namePickerView.delegate = self
         namePickerView.dataSource = self
         
@@ -103,41 +103,42 @@ final class SendMoneyInterfaceView: UIView {
     }
     
     private func createSendMoneyLabelConstraints() {
-        sendMoneyLabel.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide.snp.top).inset(16)
-            make.trailing.equalToSuperview()
-            make.leading.equalToSuperview().inset(16)
-        }
+        NSLayoutConstraint.activate([
+            sendMoneyLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
+            sendMoneyLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16)
+        ])
     }
     
     private func createUserTextfieldConstraints() {
-        userTextfield.snp.makeConstraints { make in
-            make.top.equalTo(sendMoneyLabel.snp.bottom).inset(-16)
-            make.leading.trailing.equalToSuperview().inset(16)
-            make.height.equalTo(55)
-        }
+        NSLayoutConstraint.activate([
+            userTextfield.topAnchor.constraint(equalTo: sendMoneyLabel.bottomAnchor, constant: 16),
+            userTextfield.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            userTextfield.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            userTextfield.heightAnchor.constraint(equalToConstant: 55)
+        ])
     }
     
     private func createAmountTextfieldConstraints() {
-        amountTextfield.snp.makeConstraints { make in
-            make.top.equalTo(userTextfield.snp.bottom).inset(-16)
-            make.leading.trailing.equalToSuperview().inset(16)
-            make.height.equalTo(55)
-        }
+        NSLayoutConstraint.activate([
+            amountTextfield.topAnchor.constraint(equalTo: userTextfield.bottomAnchor, constant: 16),
+            amountTextfield.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            amountTextfield.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            amountTextfield.heightAnchor.constraint(equalToConstant: 55)
+        ])
     }
     
     private func createSendButtonConstraints() {
-        sendButton.snp.makeConstraints { make in
-            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(16)
-            make.leading.trailing.equalToSuperview().inset(16)
-            make.height.equalTo(55)
-        }
+        NSLayoutConstraint.activate([
+            sendButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            sendButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16),
+            sendButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            sendButton.heightAnchor.constraint(equalToConstant: 55)
+        ])
     }
 }
 
-//MARK: - Pickerview
+//MARK: - PickerView
 extension SendMoneyInterfaceView: UIPickerViewDelegate, UIPickerViewDataSource {
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -156,3 +157,15 @@ extension SendMoneyInterfaceView: UIPickerViewDelegate, UIPickerViewDataSource {
         userTextfield.resignFirstResponder()
     }
 }
+
+#if DEBUG
+import SwiftUI
+
+struct SendMoneyInterfaceView_Previews: PreviewProvider {
+    static var previews: some View {
+        UIViewPreview {
+            SendMoneyInterfaceView()
+        }
+    }
+}
+#endif
