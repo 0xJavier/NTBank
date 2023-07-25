@@ -23,6 +23,7 @@ final class CreditCardViewController: UIViewController {
 
     override func loadView() {
         view = creditCardInterface
+        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .systemBackground
     }
     

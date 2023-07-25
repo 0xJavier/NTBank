@@ -24,7 +24,7 @@ final class NTHeaderView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "NTBank"
         label.font = UIFont.systemFont(ofSize: 17)
-        label.textColor = .white
+        label.textColor = .label
         
         return label
     }()
@@ -55,23 +55,40 @@ final class NTHeaderView: UIView {
     }
     
     private func createViewSizeConstraints() {
-        self.snp.makeConstraints { make in
-            make.width.equalTo(111)
-            make.height.equalTo(30)
-        }
+        NSLayoutConstraint.activate([
+            widthAnchor.constraint(equalToConstant: 111),
+            heightAnchor.constraint(equalToConstant: 30),
+        ])
     }
     
     private func createLogoConstraints() {
-        miniLogoImage.snp.makeConstraints { image in
-            image.top.leading.bottom.equalToSuperview()
-            image.width.equalTo(30)
-        }
+        NSLayoutConstraint.activate([
+            miniLogoImage.topAnchor.constraint(equalTo: topAnchor),
+            miniLogoImage.leadingAnchor.constraint(equalTo: leadingAnchor),
+            miniLogoImage.bottomAnchor.constraint(equalTo: bottomAnchor),
+            miniLogoImage.widthAnchor.constraint(equalToConstant: 30)
+        ])
     }
     
     private func createLabelConstraints() {
-        headerLabel.snp.makeConstraints { label in
-            label.top.bottom.trailing.equalToSuperview()
-            label.leading.equalTo(miniLogoImage.snp.trailing).inset(-10)
+        NSLayoutConstraint.activate([
+            headerLabel.topAnchor.constraint(equalTo: topAnchor),
+            headerLabel.leadingAnchor.constraint(equalTo: miniLogoImage.trailingAnchor, constant: 10),
+            headerLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+            headerLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            headerLabel.widthAnchor.constraint(equalToConstant: 30)
+        ])
+    }
+}
+
+#if DEBUG
+import SwiftUI
+
+struct NTHeaderView_Previews: PreviewProvider {
+    static var previews: some View {
+        UIViewPreview {
+            NTHeaderView()
         }
     }
 }
+#endif

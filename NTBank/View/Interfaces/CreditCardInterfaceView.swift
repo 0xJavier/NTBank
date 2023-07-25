@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SnapKit
 
 final class CreditCardInterfaceView: UIView {
     
@@ -35,8 +34,23 @@ final class CreditCardInterfaceView: UIView {
     }
     
     private func createCreditCardConstraints() {
-        creditCard.snp.makeConstraints { card in
-            card.center.equalToSuperview()
+        creditCard.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            creditCard.centerXAnchor.constraint(equalTo: centerXAnchor),
+            creditCard.centerYAnchor.constraint(equalTo: centerYAnchor)
+        ])
+    }
+}
+
+#if DEBUG
+import SwiftUI
+
+struct CreditCardInterfaceView_Previews: PreviewProvider {
+    static var previews: some View {
+        UIViewPreview {
+            CreditCardInterfaceView()
         }
     }
 }
+#endif

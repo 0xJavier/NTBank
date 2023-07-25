@@ -57,18 +57,30 @@ final class ActionInterfaceView: UIView {
     }
     
     private func createLabelConstraints() {
-        actionLabel.snp.makeConstraints { label in
-            label.leading.equalToSuperview()
-            label.top.trailing.equalToSuperview()
-            label.height.equalTo(24)
-        }
+        NSLayoutConstraint.activate([
+            actionLabel.topAnchor.constraint(equalTo: topAnchor),
+            actionLabel.leadingAnchor.constraint(equalTo: leadingAnchor)
+        ])
     }
     
     private func createListConstraints() {
-        actionList.snp.makeConstraints { list in
-            list.top.equalTo(actionLabel.snp.bottom)
-            list.leading.trailing.equalToSuperview()
-            list.height.equalTo(105)
+        NSLayoutConstraint.activate([
+            actionList.topAnchor.constraint(equalTo: actionLabel.bottomAnchor),
+            actionList.leadingAnchor.constraint(equalTo: leadingAnchor),
+            actionList.trailingAnchor.constraint(equalTo: trailingAnchor),
+            actionList.heightAnchor.constraint(equalToConstant: 105)
+        ])
+    }
+}
+
+#if DEBUG
+import SwiftUI
+
+struct ActionInterfaceView_Previews: PreviewProvider {
+    static var previews: some View {
+        UIViewPreview {
+            ActionInterfaceView()
         }
     }
 }
+#endif

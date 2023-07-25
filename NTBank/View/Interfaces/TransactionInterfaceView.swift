@@ -22,6 +22,7 @@ final class TransactionInterfaceView: UIView {
     lazy var transactionList: UITableView = {
         let list = UITableView()
         
+        list.translatesAutoresizingMaskIntoConstraints = false
         list.register(TransactionTableViewCell.self, forCellReuseIdentifier: CellTypes.transactionCell.rawValue)
         list.showsVerticalScrollIndicator = false
         list.allowsSelection = false
@@ -55,16 +56,31 @@ final class TransactionInterfaceView: UIView {
     }
     
     private func createLabelConstraints() {
-        transactionLabel.snp.makeConstraints { label in
-            label.leading.equalToSuperview().inset(16)
-            label.top.trailing.equalToSuperview()
-        }
+        NSLayoutConstraint.activate([
+            transactionLabel.topAnchor.constraint(equalTo: topAnchor),
+            transactionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            transactionLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
     }
     
     private func createListConstraints() {
-        transactionList.snp.makeConstraints { list in
-            list.top.equalTo(transactionLabel.snp.bottom)
-            list.leading.bottom.trailing.equalToSuperview()
+        NSLayoutConstraint.activate([
+            transactionList.topAnchor.constraint(equalTo: transactionLabel.bottomAnchor),
+            transactionList.leadingAnchor.constraint(equalTo: leadingAnchor),
+            transactionList.bottomAnchor.constraint(equalTo: bottomAnchor),
+            transactionList.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+    }
+}
+
+#if DEBUG
+import SwiftUI
+
+struct TransactionInterfaceView_Previews: PreviewProvider {
+    static var previews: some View {
+        UIViewPreview {
+            TransactionInterfaceView()
         }
     }
 }
+#endif

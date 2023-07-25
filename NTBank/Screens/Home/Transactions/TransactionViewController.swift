@@ -28,6 +28,7 @@ final class TransactionViewController: UIViewController {
     
     override func loadView() {
         view = transactionInterface
+        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .systemBackground
     }
     

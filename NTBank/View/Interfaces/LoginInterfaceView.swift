@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SnapKit
 
 protocol LoginInterfaceViewDelegate: UIViewController {
     func didSelectLoginButton()
@@ -25,7 +24,7 @@ final class LoginInterfaceView: UIView {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Log in to your acount"
+        label.text = "Log in to your account"
         label.font = UIFont.systemFont(ofSize: 28, weight: .bold)
         label.textAlignment = .center
         
@@ -56,18 +55,18 @@ final class LoginInterfaceView: UIView {
         return button
     }()
     
-    private lazy var stackview: UIStackView = {
-        let stackview = UIStackView()
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView()
         
-        stackview.translatesAutoresizingMaskIntoConstraints = false
-        stackview.axis = .vertical
-        stackview.distribution = .fillEqually
-        stackview.spacing = 10
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        stackView.spacing = 10
         
-        return stackview
+        return stackView
     }()
     
-    private lazy var seperatorView: UIView = {
+    private lazy var separatorView: UIView = {
         let view = UIView()
         
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -118,9 +117,9 @@ final class LoginInterfaceView: UIView {
     
     //MARK: - Layout
     private func setUpViews() {
-        addSubviews(headerView, titleLabel, stackview, seperatorView, forgotPasswordButton)
+        addSubviews(headerView, titleLabel, stackView, separatorView, forgotPasswordButton)
         
-        stackview.addArrangedSubviews(emailTextfield, passwordTextfield, loginButton)
+        stackView.addArrangedSubviews(emailTextfield, passwordTextfield, loginButton)
         
         setUpConstraints()
     }
@@ -129,47 +128,60 @@ final class LoginInterfaceView: UIView {
         createHeaderViewConstraints()
         createTitleLabelConstraints()
         createStackViewConstraints()
-        createSeperatorViewConstraints()
+        createSeparatorViewConstraints()
         createForgotPasswordButtonConstraints()
     }
     
     private func createHeaderViewConstraints() {
-        headerView.snp.makeConstraints { view in
-            view.top.equalTo(safeAreaLayoutGuide.snp.top).inset(30)
-            view.centerX.equalToSuperview()
-        }
+        NSLayoutConstraint.activate([
+            headerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 30),
+            headerView.centerXAnchor.constraint(equalTo: centerXAnchor)
+        ])
     }
     
     private func createTitleLabelConstraints() {
-        titleLabel.snp.makeConstraints { label in
-            label.top.equalTo(headerView.snp.bottom).inset(-10)
-            label.centerX.equalToSuperview()
-        }
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 10),
+            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
+        ])
     }
     
     private func createStackViewConstraints() {
-        stackview.snp.makeConstraints { stackView in
-            stackView.top.equalTo(titleLabel.snp.bottom).inset(-32)
-            stackView.centerX.equalToSuperview()
-            stackView.width.equalTo(343)
-            stackView.height.equalTo(170)
-        }
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 32),
+            stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            stackView.widthAnchor.constraint(equalToConstant: 343),
+            stackView.heightAnchor.constraint(equalToConstant: 170)
+        ])
     }
     
-    private func createSeperatorViewConstraints() {
-        seperatorView.snp.makeConstraints { view in
-            view.top.equalTo(stackview.snp.bottom).inset(-16)
-            view.leading.trailing.equalToSuperview()
-            view.height.equalTo(2)
-        }
+    private func createSeparatorViewConstraints() {
+        NSLayoutConstraint.activate([
+            separatorView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 16),
+            separatorView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            separatorView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            separatorView.heightAnchor.constraint(equalToConstant: 2)
+        ])
     }
     
     private func createForgotPasswordButtonConstraints() {
-        forgotPasswordButton.snp.makeConstraints { button in
-            button.top.equalTo(seperatorView.snp.bottom)
-            button.centerX.equalToSuperview()
-            button.width.equalTo(242)
-            button.height.equalTo(50)
+        NSLayoutConstraint.activate([
+            forgotPasswordButton.topAnchor.constraint(equalTo: separatorView.bottomAnchor),
+            forgotPasswordButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            forgotPasswordButton.widthAnchor.constraint(equalToConstant: 242),
+            forgotPasswordButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+}
+
+#if DEBUG
+import SwiftUI
+
+struct LoginInterfaceView_Previews: PreviewProvider {
+    static var previews: some View {
+        UIViewPreview {
+            LoginInterfaceView()
         }
     }
 }
+#endif
