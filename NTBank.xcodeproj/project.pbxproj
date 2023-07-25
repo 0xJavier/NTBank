@@ -61,7 +61,6 @@
 		30ADFB31275D333D00DC983A /* ActionInterfaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30ADFB30275D333D00DC983A /* ActionInterfaceView.swift */; };
 		30CB9BA626BC560900E44AE2 /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CB9BA526BC560900E44AE2 /* TransactionType.swift */; };
 		30CB9BA826BD824700E44AE2 /* CardColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CB9BA726BD824700E44AE2 /* CardColors.swift */; };
-		30D2F2562A7046F6002BBE46 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 30D2F2552A7046F6002BBE46 /* SnapKit */; };
 		30D2F2592A70483A002BBE46 /* UIViewControllerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D2F2582A70483A002BBE46 /* UIViewControllerPreview.swift */; };
 		30D2F25B2A704876002BBE46 /* UIViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D2F25A2A704876002BBE46 /* UIViewPreview.swift */; };
 		30D5BFA226BAEA8400F5D5BE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D5BFA126BAEA8400F5D5BE /* SettingsViewController.swift */; };
@@ -193,7 +192,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				302DDD432A703F1A00C65E91 /* FirebaseAuth in Frameworks */,
-				30D2F2562A7046F6002BBE46 /* SnapKit in Frameworks */,
 				302DDD452A703F1A00C65E91 /* FirebaseFirestore in Frameworks */,
 				302DDD472A703F1A00C65E91 /* FirebaseFirestoreSwift in Frameworks */,
 			);
@@ -538,7 +536,6 @@
 				302DDD422A703F1A00C65E91 /* FirebaseAuth */,
 				302DDD442A703F1A00C65E91 /* FirebaseFirestore */,
 				302DDD462A703F1A00C65E91 /* FirebaseFirestoreSwift */,
-				30D2F2552A7046F6002BBE46 /* SnapKit */,
 			);
 			productName = NTBank;
 			productReference = 302782512677DC1000BC9077 /* NTBank.app */;
@@ -614,7 +611,6 @@
 			mainGroup = 302782482677DC1000BC9077;
 			packageReferences = (
 				302DDD412A703F1A00C65E91 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				30D2F2542A7046F6002BBE46 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 302782522677DC1000BC9077 /* Products */;
 			projectDirPath = "";
@@ -1068,14 +1064,6 @@
 				minimumVersion = 10.12.0;
 			};
 		};
-		30D2F2542A7046F6002BBE46 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.6.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1093,11 +1081,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 302DDD412A703F1A00C65E91 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;
-		};
-		30D2F2552A7046F6002BBE46 /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 30D2F2542A7046F6002BBE46 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
