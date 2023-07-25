@@ -21,10 +21,11 @@ final class RankingService: RankingServiceProtocol {
             let snapshot = try await playersRef.getDocuments()
             var users = [User]()
             for document in snapshot.documents {
-                guard let user = try document.data(as: User.self) else {
-                    print("LOG: Error unwrapping users [RankingService -> fetchAllPlayers()]. Returning Empty array")
-                    return []
-                }
+                let user = try document.data(as: User.self)
+//                guard let user = try document.data(as: User.self) else {
+//                    print("LOG: Error unwrapping users [RankingService -> fetchAllPlayers()]. Returning Empty array")
+//                    return []
+//                }
                 users.append(user)
             }
             users.sort { $0.balance > $1.balance }
