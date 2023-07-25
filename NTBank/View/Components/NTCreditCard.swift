@@ -91,43 +91,58 @@ final class NTCreditCard: UIView {
     }
     
     private func createCardConstraints() {
-        self.snp.makeConstraints { make in
-            make.width.equalTo(343)
-            make.height.equalTo(192)
-        }
+        NSLayoutConstraint.activate([
+            widthAnchor.constraint(equalToConstant: 343),
+            heightAnchor.constraint(equalToConstant: 192),
+        ])
     }
     
     private func createBackgroundConstraints() {
-        background.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+        NSLayoutConstraint.activate([
+            background.topAnchor.constraint(equalTo: topAnchor),
+            background.leadingAnchor.constraint(equalTo: leadingAnchor),
+            background.bottomAnchor.constraint(equalTo: bottomAnchor),
+            background.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
     }
     
     private func createHeaderConstraints() {
-        headerView.snp.makeConstraints { view in
-            view.top.equalToSuperview().inset(24)
-            view.leading.equalToSuperview().inset(16)
-        }
+        NSLayoutConstraint.activate([
+            headerView.topAnchor.constraint(equalTo: topAnchor, constant: 24),
+            headerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16)
+        ])
     }
     
     private func createAmountConstraints() {
-        amountLabel.snp.makeConstraints { label in
-            label.leading.equalToSuperview().inset(16)
-            label.bottom.equalToSuperview().inset(24)
-        }
+        NSLayoutConstraint.activate([
+            amountLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            amountLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24),
+        ])
     }
     
     private func createTitleConstraints() {
-        titleLabel.snp.makeConstraints { label in
-            label.leading.equalToSuperview().inset(16)
-            label.bottom.equalTo(amountLabel.snp.top)
-        }
+        NSLayoutConstraint.activate([
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            titleLabel.bottomAnchor.constraint(equalTo: amountLabel.topAnchor)
+        ])
     }
     
     private func createNameConstraints() {
-        nameLabel.snp.makeConstraints { label in
-            label.bottom.equalToSuperview().inset(24)
-            label.trailing.equalToSuperview().inset(16)
+        NSLayoutConstraint.activate([
+            nameLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24),
+            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
+        ])
+    }
+}
+
+#if DEBUG
+import SwiftUI
+
+struct NTCreditCard_Previews: PreviewProvider {
+    static var previews: some View {
+        UIViewPreview {
+            NTCreditCard()
         }
     }
 }
+#endif
