@@ -59,16 +59,16 @@ final class WelcomeInterfaceView: UIView {
         return label
     }()
     
-    private lazy var buttonStackview: UIStackView = {
-        let stackview = UIStackView()
+    private lazy var buttonStackView: UIStackView = {
+        let stackView = UIStackView()
         
-        stackview.translatesAutoresizingMaskIntoConstraints = false
-        stackview.axis = .vertical
-        stackview.spacing = 16.0
-        stackview.alignment = .fill
-        stackview.distribution = .fillEqually
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = 16.0
+        stackView.alignment = .fill
+        stackView.distribution = .fillEqually
         
-        return stackview
+        return stackView
     }()
     
     private lazy var loginButton: NTButton = {
@@ -109,10 +109,10 @@ final class WelcomeInterfaceView: UIView {
     
     //MARK: - Layout
     private func setUpViews() {
-        addSubviews(backgroundImage, buttonStackview,
+        addSubviews(backgroundImage, buttonStackView,
                     bodyLabel, titleLabel, dollarSignImage)
         
-        buttonStackview.addArrangedSubviews(loginButton, signupButton)
+        buttonStackView.addArrangedSubviews(loginButton, signupButton)
         
         setUpConstraints()
     }
@@ -136,17 +136,17 @@ final class WelcomeInterfaceView: UIView {
     
     private func createButtonStackViewConstraints() {
         NSLayoutConstraint.activate([
-            buttonStackview.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            buttonStackview.centerXAnchor.constraint(equalTo: centerXAnchor),
-            buttonStackview.widthAnchor.constraint(equalToConstant: 343),
-            buttonStackview.heightAnchor.constraint(equalToConstant: 116)
+            buttonStackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            buttonStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            buttonStackView.widthAnchor.constraint(equalToConstant: 343),
+            buttonStackView.heightAnchor.constraint(equalToConstant: 116)
         ])
     }
     
     private func createBodyLabelConstraints() {
         NSLayoutConstraint.activate([
-            bodyLabel.leadingAnchor.constraint(equalTo: buttonStackview.leadingAnchor),
-            bodyLabel.bottomAnchor.constraint(equalTo: buttonStackview.topAnchor, constant: -100),
+            bodyLabel.leadingAnchor.constraint(equalTo: buttonStackView.leadingAnchor),
+            bodyLabel.bottomAnchor.constraint(equalTo: buttonStackView.topAnchor, constant: -100),
             bodyLabel.widthAnchor.constraint(equalToConstant: 300),
             bodyLabel.heightAnchor.constraint(equalToConstant: 80)
         ])
@@ -154,7 +154,7 @@ final class WelcomeInterfaceView: UIView {
     
     private func createTitleLabelConstraints() {
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: buttonStackview.leadingAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: buttonStackView.leadingAnchor),
             titleLabel.bottomAnchor.constraint(equalTo: bodyLabel.topAnchor),
             titleLabel.widthAnchor.constraint(equalToConstant: 300),
             titleLabel.heightAnchor.constraint(equalToConstant: 110)
@@ -163,7 +163,7 @@ final class WelcomeInterfaceView: UIView {
     
     private func createDollarImageConstraints() {
         NSLayoutConstraint.activate([
-            dollarSignImage.leadingAnchor.constraint(equalTo: buttonStackview.leadingAnchor),
+            dollarSignImage.leadingAnchor.constraint(equalTo: buttonStackView.leadingAnchor),
             dollarSignImage.bottomAnchor.constraint(equalTo: titleLabel.topAnchor),
             dollarSignImage.widthAnchor.constraint(equalToConstant: 75),
             dollarSignImage.heightAnchor.constraint(equalToConstant: 75)
