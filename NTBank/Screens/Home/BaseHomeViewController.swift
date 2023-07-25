@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SnapKit
 
 final class BaseHomeViewController: UIViewController {
     
@@ -29,35 +28,35 @@ extension BaseHomeViewController {
         addChild(cardVC)
         view.addSubview(cardVC.view)
         cardVC.didMove(toParent: self)
-        cardVC.view.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(5)
-            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
-            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
-            make.height.equalTo(195)
-        }
+        NSLayoutConstraint.activate([
+            cardVC.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
+            cardVC.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            cardVC.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            cardVC.view.heightAnchor.constraint(equalToConstant: 195)
+        ])
     }
     
     private func setupActionVC() {
         addChild(actionVC)
         view.addSubview(actionVC.view)
         actionVC.didMove(toParent: self)
-        actionVC.view.snp.makeConstraints { make in
-            make.top.equalTo(cardVC.view.snp.bottom).inset(-5)
-            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).inset(16)
-            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).inset(16)
-            make.height.equalTo(130)
-        }
+        NSLayoutConstraint.activate([
+            actionVC.view.topAnchor.constraint(equalTo: cardVC.view.bottomAnchor, constant: 5),
+            actionVC.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            actionVC.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            actionVC.view.heightAnchor.constraint(equalToConstant: 130)
+        ])
     }
     
     private func setupTransactionVC() {
         addChild(transactionVC)
         view.addSubview(transactionVC.view)
         transactionVC.didMove(toParent: self)
-        transactionVC.view.snp.makeConstraints { make in
-            make.top.equalTo(actionVC.view.snp.bottom).inset(-5)
-            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
-            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).inset(16)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-        }
+        NSLayoutConstraint.activate([
+            transactionVC.view.topAnchor.constraint(equalTo: actionVC.view.bottomAnchor, constant: 5),
+            transactionVC.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            transactionVC.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            transactionVC.view.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
     }
 }

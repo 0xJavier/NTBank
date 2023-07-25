@@ -34,6 +34,8 @@ final class CreditCardInterfaceView: UIView {
     }
     
     private func createCreditCardConstraints() {
+        creditCard.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             creditCard.centerXAnchor.constraint(equalTo: centerXAnchor),
             creditCard.centerYAnchor.constraint(equalTo: centerYAnchor)

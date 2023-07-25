@@ -27,6 +27,7 @@ final class ActionViewController: UIViewController {
     
     override func loadView() {
         view = actionInterface
+        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .systemBackground
     }
 
