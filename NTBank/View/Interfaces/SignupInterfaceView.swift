@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SnapKit
 
 protocol SignupInterfaceViewDelegate: UIViewController {
     func didSelectCreateButton()
@@ -72,15 +71,15 @@ final class SignupInterfaceView: UIView {
         return textfield
     }()
     
-    private lazy var stackview: UIStackView = {
-        let stackview = UIStackView()
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView()
         
-        stackview.translatesAutoresizingMaskIntoConstraints = false
-        stackview.axis = .vertical
-        stackview.distribution = .fillEqually
-        stackview.spacing = 4
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        stackView.spacing = 4
         
-        return stackview
+        return stackView
     }()
     
     lazy var createButton: NTButton = {
@@ -95,13 +94,13 @@ final class SignupInterfaceView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpViews()
-        setupPickerview()
+        setupPickerView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setUpViews()
-        setupPickerview()
+        setupPickerView()
     }
     
     //MARK: - User Interaction
@@ -116,7 +115,7 @@ final class SignupInterfaceView: UIView {
     @objc func didChangeConfirmPasswordTextfield(_ textField: UITextField) { delegate?.didChangeConfirmPasswordTextfield(confirm: textField.text ?? "") }
     
     //MARK: - Layout
-    private func setupPickerview() {
+    private func setupPickerView() {
         colorPickerView.delegate = self
         colorPickerView.dataSource = self
         
@@ -124,9 +123,9 @@ final class SignupInterfaceView: UIView {
     }
     
     private func setUpViews() {
-        addSubviews(headerView, titleLabel, stackview, createButton)
+        addSubviews(headerView, titleLabel, stackView, createButton)
         
-        stackview.addArrangedSubviews(nameTextfield, emailTextfield, colorTextfield, passwordTextfield, confirmPasswordTextfield)
+        stackView.addArrangedSubviews(nameTextfield, emailTextfield, colorTextfield, passwordTextfield, confirmPasswordTextfield)
         
         setUpConstraints()
     }
@@ -139,39 +138,39 @@ final class SignupInterfaceView: UIView {
     }
     
     private func createHeaderViewConstraints() {
-        headerView.snp.makeConstraints { view in
-            view.top.equalTo(safeAreaLayoutGuide.snp.top).inset(30)
-            view.centerX.equalToSuperview()
-        }
+        NSLayoutConstraint.activate([
+            headerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 30),
+            headerView.centerXAnchor.constraint(equalTo: centerXAnchor)
+        ])
     }
     
     private func createTitleLabelConstraints() {
-        titleLabel.snp.makeConstraints { label in
-            label.top.equalTo(headerView.snp.bottom).inset(-30)
-            label.centerX.equalToSuperview()
-        }
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 30),
+            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
+        ])
     }
     
     private func createStackviewConstraints() {
-        stackview.snp.makeConstraints { stackView in
-            stackView.top.equalTo(titleLabel.snp.bottom).inset(-20)
-            stackView.centerX.equalToSuperview()
-            stackView.width.equalTo(343)
-            stackView.height.equalTo(250)
-        }
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
+            stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            stackView.widthAnchor.constraint(equalToConstant: 343),
+            stackView.heightAnchor.constraint(equalToConstant: 250)
+        ])
     }
     
     private func createButtonConstraints() {
-        createButton.snp.makeConstraints { button in
-            button.top.equalTo(stackview.snp.bottom).inset(-10)
-            button.centerX.equalToSuperview()
-            button.width.equalTo(343)
-            button.height.equalTo(50)
-        }
+        NSLayoutConstraint.activate([
+            createButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 10),
+            createButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            createButton.widthAnchor.constraint(equalToConstant: 343),
+            createButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
 }
 
-//MARK: - Pickerview
+//MARK: - PickerView
 extension SignupInterfaceView: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -191,3 +190,15 @@ extension SignupInterfaceView: UIPickerViewDelegate, UIPickerViewDataSource {
         delegate?.didChangeColorTextfield(color: cardColors[row])
     }
 }
+
+#if DEBUG
+import SwiftUI
+
+struct SignupInterfaceView_Previews: PreviewProvider {
+    static var previews: some View {
+        UIViewPreview {
+            SignupInterfaceView()
+        }
+    }
+}
+#endif
