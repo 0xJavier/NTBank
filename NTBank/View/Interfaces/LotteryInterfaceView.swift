@@ -101,27 +101,39 @@ final class LotteryInterfaceView: UIView {
     }
     
     private func createHeightConstraints() {
-        collectButton.snp.makeConstraints { button in
-            button.height.equalTo(50)
-        }
-        
-        containerView.snp.makeConstraints { view in
-            view.height.equalTo(96)
-        }
+        NSLayoutConstraint.activate([
+            collectButton.heightAnchor.constraint(equalToConstant: 50),
+            containerView.heightAnchor.constraint(equalToConstant: 96)
+        ])
     }
     
     private func createStackViewConstraints() {
-        stackView.snp.makeConstraints { stackView in
-            stackView.top.equalTo(safeAreaLayoutGuide.snp.top).inset(85)
-            stackView.centerX.equalToSuperview()
-            stackView.width.equalTo(343)
-            stackView.height.equalTo(230)
-        }
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 85),
+            stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            stackView.widthAnchor.constraint(equalToConstant: 343),
+            stackView.heightAnchor.constraint(equalToConstant: 230),
+        ])
     }
     
     private func createAmountLabelConstraints() {
-        amountLabel.snp.makeConstraints { label in
-            label.edges.equalToSuperview()
+        NSLayoutConstraint.activate([
+            amountLabel.topAnchor.constraint(equalTo: containerView.topAnchor),
+            amountLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            amountLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            amountLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+        ])
+    }
+}
+
+#if DEBUG
+import SwiftUI
+
+struct LotteryInterfaceView_Previews: PreviewProvider {
+    static var previews: some View {
+        UIViewPreview {
+            LotteryInterfaceView()
         }
     }
 }
+#endif
