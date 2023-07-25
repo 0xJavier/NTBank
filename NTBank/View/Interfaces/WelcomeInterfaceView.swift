@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SnapKit
 
 protocol WelcomeInterfaceViewDelegate: WelcomeViewController {
     func didSelectLoginButton()
@@ -127,44 +126,48 @@ final class WelcomeInterfaceView: UIView {
     }
     
     private func createBackgroundConstraints() {
-        backgroundImage.snp.makeConstraints { image in
-            image.edges.equalToSuperview()
-        }
+        NSLayoutConstraint.activate([
+            backgroundImage.topAnchor.constraint(equalTo: topAnchor),
+            backgroundImage.leadingAnchor.constraint(equalTo: leadingAnchor),
+            backgroundImage.bottomAnchor.constraint(equalTo: bottomAnchor),
+            backgroundImage.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
     }
     
     private func createButtonStackViewConstraints() {
-        buttonStackview.snp.makeConstraints { stackView in
-            stackView.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(20)
-            stackView.centerX.equalToSuperview()
-            stackView.width.equalTo(343)
-            stackView.height.equalTo(116)
-        }
+        NSLayoutConstraint.activate([
+            buttonStackview.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            buttonStackview.centerXAnchor.constraint(equalTo: centerXAnchor),
+            buttonStackview.widthAnchor.constraint(equalToConstant: 343),
+            buttonStackview.heightAnchor.constraint(equalToConstant: 116)
+        ])
     }
     
     private func createBodyLabelConstraints() {
-        bodyLabel.snp.makeConstraints { label in
-            label.leading.equalTo(buttonStackview.snp.leading)
-            label.bottom.equalTo(buttonStackview.snp.top).inset(-100)
-            label.width.equalTo(300)
-            label.height.equalTo(80)
-        }
+        NSLayoutConstraint.activate([
+            bodyLabel.leadingAnchor.constraint(equalTo: buttonStackview.leadingAnchor),
+            bodyLabel.bottomAnchor.constraint(equalTo: buttonStackview.topAnchor, constant: -100),
+            bodyLabel.widthAnchor.constraint(equalToConstant: 300),
+            bodyLabel.heightAnchor.constraint(equalToConstant: 80)
+        ])
     }
     
     private func createTitleLabelConstraints() {
-        titleLabel.snp.makeConstraints { label in
-            label.leading.equalTo(buttonStackview.snp.leading)
-            label.bottom.equalTo(bodyLabel.snp.top)
-            label.width.equalTo(300)
-            label.height.equalTo(110)
-        }
+        NSLayoutConstraint.activate([
+            titleLabel.leadingAnchor.constraint(equalTo: buttonStackview.leadingAnchor),
+            titleLabel.bottomAnchor.constraint(equalTo: bodyLabel.topAnchor),
+            titleLabel.widthAnchor.constraint(equalToConstant: 300),
+            titleLabel.heightAnchor.constraint(equalToConstant: 110)
+        ])
     }
     
     private func createDollarImageConstraints() {
-        dollarSignImage.snp.makeConstraints { image in
-            image.leading.equalTo(buttonStackview.snp.leading)
-            image.bottom.equalTo(titleLabel.snp.top)
-            image.width.height.equalTo(75)
-        }
+        NSLayoutConstraint.activate([
+            dollarSignImage.leadingAnchor.constraint(equalTo: buttonStackview.leadingAnchor),
+            dollarSignImage.bottomAnchor.constraint(equalTo: titleLabel.topAnchor),
+            dollarSignImage.widthAnchor.constraint(equalToConstant: 75),
+            dollarSignImage.heightAnchor.constraint(equalToConstant: 75)
+        ])
     }
 }
 
