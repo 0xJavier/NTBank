@@ -167,3 +167,15 @@ final class WelcomeInterfaceView: UIView {
         }
     }
 }
+
+#if DEBUG
+import SwiftUI
+
+struct WelcomeInterfaceView_Previews: PreviewProvider {
+    static var previews: some View {
+        UIViewPreview {
+            WelcomeInterfaceView()
+        }
+    }
+}
+#endif

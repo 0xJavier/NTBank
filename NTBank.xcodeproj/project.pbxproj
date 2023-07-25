@@ -54,7 +54,6 @@
 		308C9F5D26C18C2E003A4195 /* FirebaseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308C9F5C26C18C2E003A4195 /* FirebaseType.swift */; };
 		3096B00526B340BC00E25A76 /* TransactionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3096B00426B340BC00E25A76 /* TransactionDataSource.swift */; };
 		3096B00726B3441100E25A76 /* ActionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3096B00626B3441100E25A76 /* ActionDataSource.swift */; };
-		30AADE96276C2E9A00D56048 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 30AADE95276C2E9A00D56048 /* SnapKit */; };
 		30ADFB22275CA55400DC983A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30ADFB21275CA55400DC983A /* LoginViewModel.swift */; };
 		30ADFB24275D2D6B00DC983A /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30ADFB23275D2D6B00DC983A /* SignupViewModel.swift */; };
 		30ADFB2B275D2FA400DC983A /* BaseHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30ADFB2A275D2FA400DC983A /* BaseHomeViewController.swift */; };
@@ -62,6 +61,9 @@
 		30ADFB31275D333D00DC983A /* ActionInterfaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30ADFB30275D333D00DC983A /* ActionInterfaceView.swift */; };
 		30CB9BA626BC560900E44AE2 /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CB9BA526BC560900E44AE2 /* TransactionType.swift */; };
 		30CB9BA826BD824700E44AE2 /* CardColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CB9BA726BD824700E44AE2 /* CardColors.swift */; };
+		30D2F2562A7046F6002BBE46 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 30D2F2552A7046F6002BBE46 /* SnapKit */; };
+		30D2F2592A70483A002BBE46 /* UIViewControllerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D2F2582A70483A002BBE46 /* UIViewControllerPreview.swift */; };
+		30D2F25B2A704876002BBE46 /* UIViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D2F25A2A704876002BBE46 /* UIViewPreview.swift */; };
 		30D5BFA226BAEA8400F5D5BE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D5BFA126BAEA8400F5D5BE /* SettingsViewController.swift */; };
 		30D5BFA626BAF8CE00F5D5BE /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D5BFA526BAF8CE00F5D5BE /* SettingsTableViewCell.swift */; };
 		30D5BFA826BB049400F5D5BE /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D5BFA726BB049400F5D5BE /* AccountTableViewCell.swift */; };
@@ -160,6 +162,8 @@
 		30ADFB30275D333D00DC983A /* ActionInterfaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionInterfaceView.swift; sourceTree = "<group>"; };
 		30CB9BA526BC560900E44AE2 /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
 		30CB9BA726BD824700E44AE2 /* CardColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardColors.swift; sourceTree = "<group>"; };
+		30D2F2582A70483A002BBE46 /* UIViewControllerPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerPreview.swift; sourceTree = "<group>"; };
+		30D2F25A2A704876002BBE46 /* UIViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewPreview.swift; sourceTree = "<group>"; };
 		30D5BFA126BAEA8400F5D5BE /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		30D5BFA526BAF8CE00F5D5BE /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		30D5BFA726BB049400F5D5BE /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
@@ -188,8 +192,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30AADE96276C2E9A00D56048 /* SnapKit in Frameworks */,
 				302DDD432A703F1A00C65E91 /* FirebaseAuth in Frameworks */,
+				30D2F2562A7046F6002BBE46 /* SnapKit in Frameworks */,
 				302DDD452A703F1A00C65E91 /* FirebaseFirestore in Frameworks */,
 				302DDD472A703F1A00C65E91 /* FirebaseFirestoreSwift in Frameworks */,
 			);
@@ -253,6 +257,7 @@
 				3096B00326B340A800E25A76 /* DataSource */,
 				30E10C002683C06400F4816B /* Navigation */,
 				30E10BEF2683BA9400F4816B /* Types */,
+				30D2F2572A704821002BBE46 /* Preview */,
 				30E10BF02683BA9D00F4816B /* Utilities */,
 				3027825D2677DC1300BC9077 /* Assets.xcassets */,
 				302782622677DC1400BC9077 /* Info.plist */,
@@ -396,6 +401,15 @@
 			path = Lottery;
 			sourceTree = "<group>";
 		};
+		30D2F2572A704821002BBE46 /* Preview */ = {
+			isa = PBXGroup;
+			children = (
+				30D2F2582A70483A002BBE46 /* UIViewControllerPreview.swift */,
+				30D2F25A2A704876002BBE46 /* UIViewPreview.swift */,
+			);
+			path = Preview;
+			sourceTree = "<group>";
+		};
 		30E10BEC2683BA4000F4816B /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -521,10 +535,10 @@
 			);
 			name = NTBank;
 			packageProductDependencies = (
-				30AADE95276C2E9A00D56048 /* SnapKit */,
 				302DDD422A703F1A00C65E91 /* FirebaseAuth */,
 				302DDD442A703F1A00C65E91 /* FirebaseFirestore */,
 				302DDD462A703F1A00C65E91 /* FirebaseFirestoreSwift */,
+				30D2F2552A7046F6002BBE46 /* SnapKit */,
 			);
 			productName = NTBank;
 			productReference = 302782512677DC1000BC9077 /* NTBank.app */;
@@ -599,8 +613,8 @@
 			);
 			mainGroup = 302782482677DC1000BC9077;
 			packageReferences = (
-				30AADE94276C2E9A00D56048 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				302DDD412A703F1A00C65E91 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				30D2F2542A7046F6002BBE46 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 302782522677DC1000BC9077 /* Products */;
 			projectDirPath = "";
@@ -704,8 +718,10 @@
 				3060616A26D01AAE001C8507 /* SFSymbolType.swift in Sources */,
 				30651F28278A08F900550A77 /* ImageAction.swift in Sources */,
 				307AB2F5275C9265002282CD /* SettingsService.swift in Sources */,
+				30D2F2592A70483A002BBE46 /* UIViewControllerPreview.swift in Sources */,
 				3022C57B2762A60D0047BE33 /* SendMoneyService.swift in Sources */,
 				303D23B826B84B3000BE95AE /* CellTypes.swift in Sources */,
+				30D2F25B2A704876002BBE46 /* UIViewPreview.swift in Sources */,
 				3022C56E27623EDF0047BE33 /* TransactionViewModel.swift in Sources */,
 				30E10BA6267DABDB00F4816B /* MainTabViewController.swift in Sources */,
 				307AB2F2275C924E002282CD /* SettingsViewModel.swift in Sources */,
@@ -1052,12 +1068,12 @@
 				minimumVersion = 10.12.0;
 			};
 		};
-		30AADE94276C2E9A00D56048 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		30D2F2542A7046F6002BBE46 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				minimumVersion = 5.6.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1078,9 +1094,9 @@
 			package = 302DDD412A703F1A00C65E91 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;
 		};
-		30AADE95276C2E9A00D56048 /* SnapKit */ = {
+		30D2F2552A7046F6002BBE46 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 30AADE94276C2E9A00D56048 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = 30D2F2542A7046F6002BBE46 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
