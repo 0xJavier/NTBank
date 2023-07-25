@@ -53,19 +53,36 @@ final class NTSymbolView: UIView {
     
     private func setUpConstraints() {
         createBackgroundConstraints()
-        createSymbolConstraints ()
+        createSymbolConstraints()
     }
     
     private func createBackgroundConstraints() {
-        backgroundView.snp.makeConstraints { view in
-            view.edges.equalToSuperview()
-        }
+        NSLayoutConstraint.activate([
+            backgroundView.topAnchor.constraint(equalTo: topAnchor),
+            backgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            backgroundView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            backgroundView.trailingAnchor.constraint(equalTo: trailingAnchor),
+        ])
     }
     
     private func createSymbolConstraints() {
-        symbolImageView.snp.makeConstraints { imageView in
-            imageView.center.equalTo(backgroundView.snp.center)
-            imageView.width.height.equalTo(20)
+        NSLayoutConstraint.activate([
+            symbolImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            symbolImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            symbolImageView.widthAnchor.constraint(equalToConstant: 20),
+            symbolImageView.heightAnchor.constraint(equalToConstant: 20),
+        ])
+    }
+}
+
+#if DEBUG
+import SwiftUI
+
+struct NTSymbolView_Previews: PreviewProvider {
+    static var previews: some View {
+        UIViewPreview {
+            NTSymbolView()
         }
     }
 }
+#endif
