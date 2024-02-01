@@ -71,7 +71,7 @@ final class AccountTableViewCell: UITableViewCell {
     }
     
     func set(with user: User) {
-        background.backgroundColor = user.colorLiteral
+        background.backgroundColor = user.color.uiColor
         titleLabel.text = user.name
         subtitleLabel.text = user.email
     }

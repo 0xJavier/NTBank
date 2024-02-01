@@ -40,14 +40,14 @@ import Firebase
     }
     
     func createUser() async {
-        do {
-            try await service.createUser(with: email, and: password)
-            guard let userID = Auth.auth().currentUser?.uid else { return }
-            let user = User(userID: userID, name: name, email: email, balance: 1500, color: cardColor)
-            try Firestore.firestore().collection(FirebaseType.players.rawValue).document(userID).setData(from: user)
-            state = .success
-        } catch {
-            state = .error(error)
-        }
+//        do {
+//            try await service.createUser(with: email, and: password)
+//            guard let userID = Auth.auth().currentUser?.uid else { return }
+//            let user = User(userID: userID, name: name, email: email, balance: 1500, color: cardColor)
+//            try Firestore.firestore().collection(FirebaseType.players.rawValue).document(userID).setData(from: user)
+//            state = .success
+//        } catch {
+//            state = .error(error)
+//        }
     }
 }

@@ -8,6 +8,7 @@
 import Foundation
 import Firebase
 import FirebaseFirestoreSwift
+import OSLog
 
 protocol SettingsServiceProtocol {
     func fetchUser() async -> User
@@ -20,16 +21,15 @@ final class SettingsService: SettingsServiceProtocol {
     var userID: String? { return Auth.auth().currentUser?.uid }
     
     func fetchUser() async -> User {
-        guard let userID = userID else {
-            print("Error getting current userID [SettingService -> FetchUser]")
+        guard let userID else {
+            Logger.settingsService.error("Could not get current userID. Returning placeholder.")
             return User.placeholder
         }
         do {
             let document = try await playerRef.document(userID).getDocument()
-            let user = try document.data(as: User.self)
-            return user ?? User.placeholder
+            return try document.data(as: User.self)
         } catch {
-            print("Error: \(error.localizedDescription)")
+            Logger.settingsService.error("Could not fetch / create user: \(error.localizedDescription)")
             return User.placeholder
         }
     }

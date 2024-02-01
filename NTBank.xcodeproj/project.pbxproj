@@ -84,6 +84,9 @@
 		30F04DA626C6E45500E11C45 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F04DA526C6E45500E11C45 /* Alert.swift */; };
 		30F04DA826C6EAA500E11C45 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F04DA726C6EAA500E11C45 /* UserService.swift */; };
 		30F04DAA26C6EF7300E11C45 /* LotteryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F04DA926C6EF7300E11C45 /* LotteryService.swift */; };
+		30FB73ED2B6C2AAE0060706C /* OSLogger+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FB73EC2B6C2AAE0060706C /* OSLogger+Extension.swift */; };
+		30FB73EF2B6C40910060706C /* NTTransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FB73EE2B6C40910060706C /* NTTransactionType.swift */; };
+		30FB73F12B6C40E40060706C /* IconViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FB73F02B6C40E40060706C /* IconViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,6 +187,9 @@
 		30F04DA526C6E45500E11C45 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		30F04DA726C6EAA500E11C45 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		30F04DA926C6EF7300E11C45 /* LotteryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryService.swift; sourceTree = "<group>"; };
+		30FB73EC2B6C2AAE0060706C /* OSLogger+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLogger+Extension.swift"; sourceTree = "<group>"; };
+		30FB73EE2B6C40910060706C /* NTTransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTTransactionType.swift; sourceTree = "<group>"; };
+		30FB73F02B6C40E40060706C /* IconViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,6 +261,7 @@
 				3096B00326B340A800E25A76 /* DataSource */,
 				30E10C002683C06400F4816B /* Navigation */,
 				30E10BEF2683BA9400F4816B /* Types */,
+				30FB73EB2B6C28F90060706C /* Logger */,
 				30D2F2572A704821002BBE46 /* Preview */,
 				30E10BF02683BA9D00F4816B /* Utilities */,
 				3027825D2677DC1300BC9077 /* Assets.xcassets */,
@@ -414,6 +421,7 @@
 				30E10BA0267DA94400F4816B /* User.swift */,
 				30E10BA2267DA95C00F4816B /* Transaction.swift */,
 				30651F27278A08F900550A77 /* ImageAction.swift */,
+				30FB73F02B6C40E40060706C /* IconViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -436,6 +444,7 @@
 		30E10BEF2683BA9400F4816B /* Types */ = {
 			isa = PBXGroup;
 			children = (
+				30FB73EE2B6C40910060706C /* NTTransactionType.swift */,
 				303D23B726B84B3000BE95AE /* CellTypes.swift */,
 				30CB9BA526BC560900E44AE2 /* TransactionType.swift */,
 				30CB9BA726BD824700E44AE2 /* CardColors.swift */,
@@ -514,6 +523,14 @@
 				30E10BA5267DABDB00F4816B /* MainTabViewController.swift */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		30FB73EB2B6C28F90060706C /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				30FB73EC2B6C2AAE0060706C /* OSLogger+Extension.swift */,
+			);
+			path = Logger;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -655,6 +672,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30FB73EF2B6C40910060706C /* NTTransactionType.swift in Sources */,
 				307AB2FC275C94F6002282CD /* RankingViewModel.swift in Sources */,
 				3022C57227623F540047BE33 /* CreditCardViewModel.swift in Sources */,
 				3022C57027623F170047BE33 /* TransactionService.swift in Sources */,
@@ -680,6 +698,7 @@
 				30ADFB22275CA55400DC983A /* LoginViewModel.swift in Sources */,
 				307AB2FA275C94CC002282CD /* RankingService.swift in Sources */,
 				303551E127611DFC002B364F /* TransactionViewController.swift in Sources */,
+				30FB73ED2B6C2AAE0060706C /* OSLogger+Extension.swift in Sources */,
 				302782BD26792CEC00BC9077 /* UIView+Extension.swift in Sources */,
 				30E10BA1267DA94400F4816B /* User.swift in Sources */,
 				302782C626794AB900BC9077 /* SignupViewController.swift in Sources */,
@@ -720,6 +739,7 @@
 				30D2F25B2A704876002BBE46 /* UIViewPreview.swift in Sources */,
 				3022C56E27623EDF0047BE33 /* TransactionViewModel.swift in Sources */,
 				30E10BA6267DABDB00F4816B /* MainTabViewController.swift in Sources */,
+				30FB73F12B6C40E40060706C /* IconViewModel.swift in Sources */,
 				307AB2F2275C924E002282CD /* SettingsViewModel.swift in Sources */,
 				30E10BB1267DAE2800F4816B /* CreditCardInterfaceView.swift in Sources */,
 				30F04DA026C6D76900E11C45 /* AuthService.swift in Sources */,

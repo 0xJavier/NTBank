@@ -70,7 +70,7 @@ final class NTCreditCard: UIView {
             guard let self = self else { return }
             self.amountLabel.text = "$\(user.balance)"
             self.nameLabel.text = user.name
-            self.background.backgroundColor = user.colorLiteral
+            self.background.backgroundColor = user.color.uiColor
         }
     }
 

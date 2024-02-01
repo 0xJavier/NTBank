@@ -8,37 +8,36 @@
 import Foundation
 import Firebase
 import FirebaseFirestoreSwift
+import OSLog
 
 protocol TransactionServiceProtocol {
     func streamUserTransactions(completion: @escaping(Result<[Transaction], Error>) -> Void)
 }
 
 final class TransactionService: TransactionServiceProtocol {
+    private let playersRef = Firestore
+        .firestore()
+        .collection(FirebaseType.players.rawValue)
     
-    private let playersRef = Firestore.firestore().collection(FirebaseType.players.rawValue)
+    var userID: String? {
+        Auth.auth().currentUser?.uid
+    }
     
     func streamUserTransactions(completion: @escaping (Result<[Transaction], Error>) -> Void) {
-        guard let userID = Auth.auth().currentUser?.uid else {
-            print("COULD NOT GET ID")
+        guard let userID else {
+            Logger.transactionService.error("Could not get UserID")
             return
         }
         
         playersRef.document(userID).collection(FirebaseType.transactions.rawValue)
-            .order(by: TransactionModelType.id.rawValue, descending: true)
+            .order(by: "createdAt", descending: true)
             .addSnapshotListener { querySnapshot, error in
                 guard let documents = querySnapshot?.documents else {
-                    print("Could not get documents")
+                    Logger.transactionService.error("Could not get transactions")
                     return
                 }
                 
-                var transactions = [Transaction]()
-                
-                for document in documents {
-                    if let transaction = try? document.data(as: Transaction.self) {
-                        transactions.append(transaction)
-                    }
-                }
-                
+                let transactions = documents.compactMap { try? $0.data(as: Transaction.self) }
                 completion(.success(transactions))
             }
     }

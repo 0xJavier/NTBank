@@ -8,30 +8,24 @@
 import Foundation
 import Firebase
 import FirebaseFirestoreSwift
+import OSLog
 
 protocol RankingServiceProtocol {
     func fetchAllPlayers() async -> [User]
 }
 
 final class RankingService: RankingServiceProtocol {
-    private let playersRef = Firestore.firestore().collection(FirebaseType.players.rawValue)
+    private let query = Firestore
+        .firestore()
+        .collection(FirebaseType.players.rawValue)
+        .order(by: FirebaseType.balance.rawValue, descending: true)
     
     func fetchAllPlayers() async -> [User] {
         do {
-            let snapshot = try await playersRef.getDocuments()
-            var users = [User]()
-            for document in snapshot.documents {
-                let user = try document.data(as: User.self)
-//                guard let user = try document.data(as: User.self) else {
-//                    print("LOG: Error unwrapping users [RankingService -> fetchAllPlayers()]. Returning Empty array")
-//                    return []
-//                }
-                users.append(user)
-            }
-            users.sort { $0.balance > $1.balance }
-            return users
+            let snapshot = try await query.getDocuments()
+            return try snapshot.documents.compactMap { try $0.data(as: User.self) }
         } catch {
-            print("LOG: Error fetching players [RankingService]: \(error.localizedDescription)")
+            Logger.rankingService.error("Could not fetch/create users: \(error.localizedDescription)")
             return []
         }
     }
