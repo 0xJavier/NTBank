@@ -35,6 +35,10 @@ final class NTHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override var intrinsicContentSize: CGSize {
+        CGSize(width: 111, height: 30)
+    }
+    
     //MARK: - Layout
     private func setupViews() {
         addSubviews(miniLogoImage, headerLabel)
@@ -43,16 +47,8 @@ final class NTHeaderView: UIView {
     }
     
     private func addConstraints() {
-        createViewSizeConstraints()
         createLogoConstraints()
         createLabelConstraints()
-    }
-    
-    private func createViewSizeConstraints() {
-        NSLayoutConstraint.activate([
-            widthAnchor.constraint(equalToConstant: 111),
-            heightAnchor.constraint(equalToConstant: 30),
-        ])
     }
     
     private func createLogoConstraints() {
@@ -69,8 +65,7 @@ final class NTHeaderView: UIView {
             headerLabel.topAnchor.constraint(equalTo: topAnchor),
             headerLabel.leadingAnchor.constraint(equalTo: miniLogoImage.trailingAnchor, constant: 10),
             headerLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
-            headerLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            headerLabel.widthAnchor.constraint(equalToConstant: 30)
+            headerLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
 }
