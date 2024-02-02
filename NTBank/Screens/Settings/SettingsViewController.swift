@@ -32,7 +32,7 @@ final class SettingsViewController: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewDidAppear(animated)
         
         Task.init { await viewModel.fetchUser() }
     }

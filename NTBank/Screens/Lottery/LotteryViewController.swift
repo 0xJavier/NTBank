@@ -25,7 +25,7 @@ final class LotteryViewController: UIViewController, LotteryInterfaceViewDelegat
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewDidAppear(animated)
         
         Task.init { await viewModel.fetchLotteryAmount() }
     }
