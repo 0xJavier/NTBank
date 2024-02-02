@@ -19,15 +19,10 @@ final class SendMoneyInterfaceView: UIView {
     
     var users = [User]()
     
-    private lazy var sendMoneyLabel: UILabel = {
-        let label = UILabel()
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var sendMoneyLabel: UILabel = .build { label in
         label.text = "Send Money"
         label.font = UIFont.systemFont(ofSize: 22, weight: .bold)
-        
-        return label
-    }()
+    }
     
     private lazy var userTextfield = NTTextfield(placeholder: "User", keyboardType: .numberPad)
     

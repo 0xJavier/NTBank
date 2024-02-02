@@ -9,15 +9,10 @@ import UIKit
 
 final class TransactionInterfaceView: UIView {
 
-    lazy var transactionLabel: UILabel = {
-        let label = UILabel()
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
+    lazy var transactionLabel: UILabel = .build { label in
         label.text = "Latest Transactions"
         label.font = UIFont.systemFont(ofSize: 22, weight: .bold)
-        
-        return label
-    }()
+    }
     
     lazy var transactionList: UITableView = {
         let list = UITableView()

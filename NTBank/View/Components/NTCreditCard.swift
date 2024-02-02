@@ -9,50 +9,30 @@ import UIKit
 
 final class NTCreditCard: UIView {
 
-    lazy private var background: UIView = {
-        let view = UIView()
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
+    lazy private var background: UIView = .build { view in
         view.backgroundColor = .systemBlue
         view.layer.cornerRadius = 10
-        
-        return view
-    }()
+    }
     
-    lazy private var headerView = NTHeaderView()
+    lazy private var headerView = NTHeaderView(titleTextColor: .white)
     
-    lazy private var titleLabel: UILabel = {
-        let label = UILabel()
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
+    lazy private var titleLabel: UILabel = .build { label in
         label.text = "Balance:"
         label.font = UIFont.systemFont(ofSize: 17)
         label.textColor = .white
-        
-        return label
-    }()
+    }
     
-    lazy private var amountLabel: UILabel = {
-        let label = UILabel()
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
+    lazy private var amountLabel: UILabel = .build { label in
         label.text = "$"
         label.font = UIFont.systemFont(ofSize: 28, weight: .bold)
         label.textColor = .white
-        
-        return label
-    }()
+    }
     
-    lazy private var nameLabel: UILabel = {
-        let label = UILabel()
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
+    lazy private var nameLabel: UILabel = .build { label in
         label.text = "Player"
         label.font = UIFont.systemFont(ofSize: 25, weight: .semibold)
         label.textColor = .white
-        
-        return label
-    }()
+    }
         
     //MARK: - Initializer
     init() {

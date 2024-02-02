@@ -9,25 +9,15 @@ import UIKit
 
 final class NTSymbolView: UIView {
     
-    lazy var backgroundView: UIView = {
-        let view = UIView()
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
+    lazy var backgroundView: UIView = .build { view in
         view.backgroundColor = .systemBlue
         view.layer.cornerRadius = 10
-        
-        return view
-    }()
+    }
     
-    lazy var symbolImageView: UIImageView = {
-        let view = UIImageView()
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.image = UIImage(systemName: "person.fill")
+    lazy var symbolImageView: UIImageView = .build { view in
+        view.image = UIImage(systemName: SFSymbols.person.rawValue)
         view.tintColor = .white
-        
-        return view
-    }()
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)

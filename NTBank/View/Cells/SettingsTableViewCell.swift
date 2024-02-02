@@ -8,23 +8,12 @@
 import UIKit
 
 final class SettingsTableViewCell: UITableViewCell {
-    private lazy var symbolImageView: NTSymbolView = {
-        let view = NTSymbolView()
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        return view
-    }()
+    private lazy var symbolImageView: NTSymbolView = .build()
     
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var titleLabel: UILabel = .build { label in
         label.font = UIFont.systemFont(ofSize: 17)
         label.textAlignment = .left
-        
-        return label
-    }()
+    }
     
     //MARK: - Initializer
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -36,6 +25,7 @@ final class SettingsTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @MainActor
     func set(with action: ImageAction) {
         titleLabel.text = action.title
         symbolImageView.backgroundView.backgroundColor = action.backgroundColor

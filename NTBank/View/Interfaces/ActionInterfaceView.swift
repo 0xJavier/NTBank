@@ -8,15 +8,10 @@
 import UIKit
 
 final class ActionInterfaceView: UIView {
-    lazy var actionLabel: UILabel = {
-        let label = UILabel()
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
+    lazy var actionLabel: UILabel = .build { label in
         label.text = "Quick Actions"
         label.font = UIFont.systemFont(ofSize: 22, weight: .bold)
-        
-        return label
-    }()
+    }
     
     var actionList: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()

@@ -9,44 +9,23 @@ import UIKit
 
 final class TransactionTableViewCell: UITableViewCell {
     
-    private lazy var symbolImageView: NTSymbolView = {
-        let view = NTSymbolView()
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        return view
-    }()
+    private lazy var symbolImageView: NTSymbolView = .build()
     
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var titleLabel: UILabel = .build { label in
         label.font = UIFont.systemFont(ofSize: 17)
         label.textAlignment = .left
-        
-        return label
-    }()
+    }
     
-    private lazy var subtitleLabel: UILabel = {
-        let label = UILabel()
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var subtitleLabel: UILabel = .build { label in
         label.font = UIFont.systemFont(ofSize: 15)
         label.textColor = .lightGray
-        
-        return label
-    }()
+    }
     
-    private lazy var amountLabel: UILabel = {
-        let label = UILabel()
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var amountLabel: UILabel = .build { label in
         label.font = UIFont.systemFont(ofSize: 20)
         label.textColor = .label
         label.textAlignment = .right
-        
-        return label
-    }()
+    }
     
     //MARK: - Initializer
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

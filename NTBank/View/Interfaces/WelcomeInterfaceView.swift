@@ -16,60 +16,49 @@ final class WelcomeInterfaceView: UIView {
     
     weak var delegate: WelcomeInterfaceViewDelegate?
     
-    private lazy var backgroundImage: UIImageView = {
-        let imageView = UIImageView()
-        
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "background")
-        
-        return imageView
-    }()
+    private lazy var backgroundImage: UIImageView = .build { view in
+        view.image = UIImage(resource: .background)
+    }
     
-    private lazy var dollarSignImage: UIImageView = {
-        let imageView = UIImageView()
-        
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(systemName: "dollarsign.circle.fill")
-        
-        return imageView
-    }()
+    private lazy var dollarSignImage: UIImageView = .build { view in
+        view.image = UIImage(systemName: SFSymbols.dollarSignCircle.rawValue)
+    }
     
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
+    private lazy var titleLabel: UILabel = .build { label in
+        let attributedTitle = NSMutableAttributedString(
+            string: "Enhance ",
+            attributes: [
+                NSAttributedString.Key.font: UIFont.systemFont(ofSize: 40, weight: .bold),
+                NSAttributedString.Key.foregroundColor: UIColor.label
+            ]
+        )
         
-        label.translatesAutoresizingMaskIntoConstraints = false
-        let attributedTitle = NSMutableAttributedString(string: "Enhance ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 40, weight: .bold), NSAttributedString.Key.foregroundColor: UIColor.label])
-        
-        attributedTitle.append(NSAttributedString(string: "Family Game Nights", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 40, weight: .bold), NSAttributedString.Key.foregroundColor: UIColor.systemBlue]))
+        attributedTitle.append(
+            NSAttributedString(
+                string: "Family Game Nights",
+                attributes: [
+                    NSAttributedString.Key.font: UIFont.systemFont(ofSize: 40, weight: .bold),
+                    NSAttributedString.Key.foregroundColor: UIColor.systemBlue
+                ]
+            )
+        )
         
         label.attributedText = attributedTitle
         label.numberOfLines = 2
-        
-        return label
-    }()
+    }
     
-    private lazy var bodyLabel: UILabel = {
-        let label = UILabel()
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var bodyLabel: UILabel = .build { label in
         label.text = "Welcome to NTBank. Speed up game banking with our easy to use balance cards."
         label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         label.numberOfLines = 3
-        
-        return label
-    }()
+    }
     
-    private lazy var buttonStackView: UIStackView = {
-        let stackView = UIStackView()
-        
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.spacing = 16.0
-        stackView.alignment = .fill
-        stackView.distribution = .fillEqually
-        
-        return stackView
-    }()
+    private lazy var buttonStackView: UIStackView = .build { view in
+        view.axis = .vertical
+        view.spacing = 16.0
+        view.alignment = .fill
+        view.distribution = .fillEqually
+    }
     
     private lazy var loginButton: NTButton = {
         let button = NTButton(title: "Login")

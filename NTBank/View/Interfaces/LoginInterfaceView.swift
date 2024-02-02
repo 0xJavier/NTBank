@@ -20,16 +20,11 @@ final class LoginInterfaceView: UIView {
     
     private lazy var headerView = NTHeaderView()
     
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var titleLabel: UILabel = .build { label in
         label.text = "Log in to your account"
         label.font = UIFont.systemFont(ofSize: 28, weight: .bold)
         label.textAlignment = .center
-        
-        return label
-    }()
+    }
     
     private lazy var emailTextfield: NTTextfield = {
         let textfield = NTTextfield(placeholder: "Email", keyboardType: .emailAddress)
@@ -55,37 +50,22 @@ final class LoginInterfaceView: UIView {
         return button
     }()
     
-    private lazy var stackView: UIStackView = {
-        let stackView = UIStackView()
-        
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.distribution = .fillEqually
-        stackView.spacing = 10
-        
-        return stackView
-    }()
+    private lazy var stackView: UIStackView = .build { view in
+        view.axis = .vertical
+        view.distribution = .fillEqually
+        view.spacing = 10
+    }
     
-    private lazy var separatorView: UIView = {
-        let view = UIView()
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var separatorView: UIView = .build { view in
         view.backgroundColor = .secondarySystemBackground
-        
-        return view
-    }()
+    }
     
-    lazy var forgotPasswordButton: UIButton = {
-        let button = UIButton()
-        
-        button.translatesAutoresizingMaskIntoConstraints = false
+    lazy var forgotPasswordButton: UIButton = .build { [weak self] button in
         button.setTitle("Forgot your password?", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         button.setTitleColor(.systemBlue, for: .normal)
-        button.addTarget(self, action: #selector(didTapForgotPasswordButton), for: .touchUpInside)
-        
-        return button
-    }()
+        button.addTarget(self, action: #selector(self?.didTapForgotPasswordButton), for: .touchUpInside)
+    }
     
     // MARK: Initializers
     override init(frame: CGRect) {

@@ -11,15 +11,10 @@ final class ActionCollectionViewCell: UICollectionViewCell {
     
     private let reuseID = "ActionCollectionViewCell"
     
-    private lazy var background: UIView = {
-        let view = UIView()
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var background: UIView = .build { view in
         view.backgroundColor = .secondarySystemBackground
         view.layer.cornerRadius = 10
-        
-        return view
-    }()
+    }
     
     private lazy var symbolImageView: NTSymbolView = {
         let view = NTSymbolView()
@@ -29,16 +24,11 @@ final class ActionCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
-    private lazy var cellTitle: UILabel = {
-        let label = UILabel()
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var cellTitle: UILabel = .build { label in
+        label.text = "Josie Maran"
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.text = "Josie Maran"
-        
-        return label
-    }()
+    }
     
     //MARK: - Initializer
     override init(frame: CGRect) {
@@ -51,6 +41,7 @@ final class ActionCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @MainActor
     func set(with action: ImageAction) {
         cellTitle.text = action.title
         symbolImageView.set(with: action)

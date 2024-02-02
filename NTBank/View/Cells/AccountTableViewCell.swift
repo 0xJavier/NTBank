@@ -8,57 +8,33 @@
 import UIKit
 
 final class AccountTableViewCell: UITableViewCell {
-    private lazy var background: UIView = {
-        let view = UIView()
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var background: UIView = .build { view in
         view.backgroundColor = .systemBlue
         view.layer.cornerRadius = 62 / 2
-        
-        return view
-    }()
+    }
     
-    private lazy var symbolImageView: UIImageView = {
-        let view = UIImageView()
-        
+    private lazy var symbolImageView: UIImageView = .build { view in
         let boldFont = UIFont.boldSystemFont(ofSize: 24)
         let configuration = UIImage.SymbolConfiguration(font: boldFont)
         
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.image = UIImage(systemName: "person.fill", withConfiguration: configuration)
+        view.image = UIImage(systemName: SFSymbols.person.rawValue, withConfiguration: configuration)
         view.tintColor = .white
-        
-        return view
-    }()
+    }
     
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var titleLabel: UILabel = .build { label in
         label.font = UIFont.systemFont(ofSize: 20)
         label.textAlignment = .left
-        
-        return label
-    }()
+    }
     
-    private lazy var subtitleLabel: UILabel = {
-        let label = UILabel()
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var subtitleLabel: UILabel = .build { label in
         label.font = UIFont.systemFont(ofSize: 17)
-        
-        return label
-    }()
+    }
     
-    private lazy var stackview: UIStackView = {
-        let stackview = UIStackView()
-        
-        stackview.translatesAutoresizingMaskIntoConstraints = false
-        stackview.axis = .vertical
-        stackview.distribution = .fillEqually
-        
-        return stackview
-    }()
+    private lazy var stackview: UIStackView = .build { view in
+        view.axis = .vertical
+        view.distribution = .fillEqually
+    }
     
     //MARK: - Initializer
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

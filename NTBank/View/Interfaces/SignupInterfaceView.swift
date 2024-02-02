@@ -24,16 +24,11 @@ final class SignupInterfaceView: UIView {
     
     private lazy var headerView = NTHeaderView()
     
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var titleLabel: UILabel = .build { label in
         label.text = "Create an Account"
         label.font = UIFont.systemFont(ofSize: 28, weight: .bold)
         label.textAlignment = .center
-        
-        return label
-    }()
+    }
     
     private lazy var nameTextfield: NTTextfield = {
         let textfield = NTTextfield(placeholder: "Name")
@@ -71,16 +66,11 @@ final class SignupInterfaceView: UIView {
         return textfield
     }()
     
-    private lazy var stackView: UIStackView = {
-        let stackView = UIStackView()
-        
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.distribution = .fillEqually
-        stackView.spacing = 4
-        
-        return stackView
-    }()
+    private lazy var stackView: UIStackView = .build { view in
+        view.axis = .vertical
+        view.distribution = .fillEqually
+        view.spacing = 4
+    }
     
     lazy var createButton: NTButton = {
         let button = NTButton(title: "Create")

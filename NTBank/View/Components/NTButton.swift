@@ -25,6 +25,5 @@ final class NTButton: UIButton {
     
     private func configure() {
         configuration = .borderedProminent()
-        //configuration?.cornerStyle = .medium
     }
 }

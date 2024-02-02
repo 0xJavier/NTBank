@@ -8,26 +8,15 @@
 import UIKit
 
 final class NTHeaderView: UIView {
+    lazy private var miniLogoImage: UIImageView = .build { view in
+        view.image = UIImage(resource: .miniLogo)
+    }
     
-    lazy private var miniLogoImage: UIImageView = {
-        let view = UIImageView()
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.image = UIImage(named: "miniLogo")
-        
-        return view
-    }()
-    
-    lazy private var headerLabel: UILabel = {
-        let label = UILabel()
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
+    lazy private var headerLabel: UILabel = .build { label in
         label.text = "NTBank"
         label.font = UIFont.systemFont(ofSize: 17)
         label.textColor = .label
-        
-        return label
-    }()
+    }
     
     //MARK: - Initializer
     init() {
@@ -35,6 +24,11 @@ final class NTHeaderView: UIView {
         
         translatesAutoresizingMaskIntoConstraints = false
         setupViews()
+    }
+    
+    convenience init(titleTextColor: UIColor) {
+        self.init()
+        headerLabel.textColor = titleTextColor
     }
     
     required init?(coder: NSCoder) {

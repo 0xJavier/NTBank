@@ -15,38 +15,23 @@ final class LotteryInterfaceView: UIView {
     
     weak var delegate: LotteryInterfaceViewDelegate?
 
-    lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
+    lazy var titleLabel: UILabel = .build { label in
         label.text = "Free Parking Lottery"
         label.font = UIFont.systemFont(ofSize: 25, weight: .bold)
         label.textAlignment = .center
-        
-        return label
-    }()
+    }
     
-    lazy var containerView: UIView = {
-        let view = UIView()
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
+    lazy var containerView: UIView = .build { view in
         view.backgroundColor = .secondarySystemBackground
         view.layer.cornerRadius = 10
-        
-        return view
-    }()
+    }
     
-    lazy var amountLabel: UILabel = {
-        let label = UILabel()
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
+    lazy var amountLabel: UILabel = .build { label in
         label.text = "$"
         label.font = UIFont.systemFont(ofSize: 50, weight: .bold)
         label.textAlignment = .center
         label.textColor = .systemBlue
-        
-        return label
-    }()
+    }
     
     lazy var collectButton: NTButton = {
         let button = NTButton(title: "Collect")
@@ -56,16 +41,11 @@ final class LotteryInterfaceView: UIView {
         return button
     }()
     
-    lazy var stackView: UIStackView = {
-        let stackView = UIStackView()
-        
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.distribution = .fill
-        stackView.spacing = 16
-        
-        return stackView
-    }()
+    lazy var stackView: UIStackView = .build { view in
+        view.axis = .vertical
+        view.distribution = .fill
+        view.spacing = 16
+    }
     
     // MARK: Initializers
     override init(frame: CGRect) {
