@@ -10,6 +10,7 @@ import UIKit
 final class WelcomeViewController: UIViewController, WelcomeInterfaceViewDelegate {
     
     private var welcomeInterface = WelcomeInterfaceView()
+    weak var coordinator: AuthCoordinator?
     
     //MARK: - View Lifecycle
     override func viewDidLoad() {
@@ -30,10 +31,10 @@ final class WelcomeViewController: UIViewController, WelcomeInterfaceViewDelegat
     //MARK: -
     
     func didSelectLoginButton() {
-        self.navigationController?.pushViewController(LoginViewController(), animated: true)
+        coordinator?.loginTapped()
     }
     
     func didSelectSignupButton() {
-        self.navigationController?.pushViewController(SignupViewController(), animated: true)
+        coordinator?.signupTapped()
     }
 }

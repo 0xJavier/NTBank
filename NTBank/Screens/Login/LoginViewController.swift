@@ -14,7 +14,8 @@ final class LoginViewController: UIViewController, LoginInterfaceViewDelegate {
     private var cancellables: Set<AnyCancellable> = []
     
     private var loginInterface = LoginInterfaceView()
-    
+    weak var coordinator: AuthCoordinator?
+
     //MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,15 +72,18 @@ final class LoginViewController: UIViewController, LoginInterfaceViewDelegate {
         Task.init { await viewModel.sendPasswordReset(with: email) }
     }
     
+    @MainActor
     private func render(with state: LoginState) {
         switch state {
-        case .loaded: return
+        case .loaded:
+            return
+
         case .loginSuccessfull:
-            let tabview = MainTabViewController()
-            tabview.modalPresentationStyle = .fullScreen
-            self.present(tabview, animated: true)
+            coordinator?.userAuthenticated()
+
         case .forgotPasswordSuccessfull:
             Alert.present(title: "Success!", message: "Successfully sent a reset link.", from: self)
+
         case .failed(let error):
             Alert.present(title: "Error", message: error.localizedDescription, from: self)
         }

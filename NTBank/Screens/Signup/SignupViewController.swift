@@ -14,6 +14,7 @@ class SignupViewController: UIViewController, SignupInterfaceViewDelegate {
     private var cancellables: Set<AnyCancellable> = []
     
     private var signupInterface = SignupInterfaceView()
+    weak var coordinator: AuthCoordinator?
     
     //MARK: - View Lifecycle
     override func viewDidLoad() {
@@ -56,16 +57,17 @@ class SignupViewController: UIViewController, SignupInterfaceViewDelegate {
     
     func didSelectCreateButton() { Task.init { await viewModel.createUser() } }
     
-    @MainActor private func render(with state: State) {
+    @MainActor 
+    private func render(with state: State) {
         switch state {
-        case .loading: return
-        case .loaded: return
+        case .loading, .loaded:
+            return
+
         case .error(let error):
             Alert.present(title: "Error", message: error.localizedDescription, from: self)
+
         case .success:
-            let tabview = MainTabViewController()
-            tabview.modalPresentationStyle = .fullScreen
-            self.present(tabview, animated: true)
+            coordinator?.userAuthenticated()
         }
     }
 }
